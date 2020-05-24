@@ -11,12 +11,14 @@ description: >-
 #######################################################################################
 # Execution settings
 execute:
-  execute_notebooks           : auto
+  execute_notebooks         : "off"  # Whether to execute notebooks at build time. Must be one of ("auto", "force", "cache", "off")
+  cache                     : ""  # A path to the jupyter cache that will be used to store execution artifacs. Defaults to `_build/.jupyter_cache/`
+  exclude_patterns          : []  # A list of patterns to *skip* in execution (e.g. a notebook that takes a really long time)
 
 #######################################################################################
 # HTML-specific settings
 html:
-  home_page_in_navbar         : false
+  home_page_in_navbar         : true
 
 # #######################################################################################
 # Interact link settings
@@ -27,7 +29,7 @@ notebook_interface            : "notebook"
 repository:
   url                         : https://github.com/visiont3lab/tecnologie_data_science
   path_to_book                : "book"
-  branch                      : mater
+  branch                      : master
 
 latex:
   latex_engine                : "xelatex"
