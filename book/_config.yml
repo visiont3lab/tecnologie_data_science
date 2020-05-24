@@ -1,0 +1,33 @@
+#######################################################################################
+# Book settings
+title : Tecnologie & Software di Data Science 
+author: Manuel Rucci / Daniele Grotti
+logo: 'logo.png'
+
+# Information about where the book exists on the web
+description: >-
+  Libro di Machine Learning e Data Visualization
+
+#######################################################################################
+# Execution settings
+execute:
+  execute_notebooks           : auto
+
+#######################################################################################
+# HTML-specific settings
+html:
+  home_page_in_navbar         : false
+
+# #######################################################################################
+# Interact link settings
+notebook_interface            : "notebook"
+
+#######################################################################################
+# Launch button settings
+repository:
+  url                         : https://github.com/visiont3lab/tecnologie_data_science
+  path_to_book                : "book"
+  branch                      : mater
+
+latex:
+  latex_engine                : "xelatex"

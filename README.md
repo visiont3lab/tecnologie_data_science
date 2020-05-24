@@ -1,37 +1,14 @@
-## Welcome to GitHub Pages
+## Jupyter Book
 
-You can use the [editor on GitHub](https://github.com/visiont3lab/tecnologie_data_science/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Come creare un libro utilizzando Github pages, Mardown e Jupyter notebook.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+* [Jupyter Book](https://jupyterbook.org/intro.html)
 
-### Markdown
+```
+pip install -U "jupyter-book>=0.7.0b"
+jupyter-book build book/
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/visiont3lab/tecnologie_data_science/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+* [Configure Book](https://jupyterbook.org/customize/config.html)
+* [Example book](https://github.com/executablebooks/github-action-demo)

@@ -1,0 +1,6 @@
+# - file: README
+- file: docs/Introduzione_generale
+  sections:
+    - file: docs/Python
+    - file: docs/Pandas
+    - file: docs/Github-GoogleDrive-GoogleColab
