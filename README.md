@@ -1,14 +1,4 @@
-## Jupyter Book
+# Corso Tecnologie & Software di Data Science 
 
-Come creare un libro utilizzando Github pages, Mardown e Jupyter notebook.
+Per consultare il materiale visitare il seguente [SITO](https://visiont3lab.github.io/tecnologie_data_science/)
 
-* [Jupyter Book](https://jupyterbook.org/intro.html)
-
-```
-pip install -U "jupyter-book>=0.7.0b"
-jupyter-book build book/
-
-```
-
-* [Configure Book](https://jupyterbook.org/customize/config.html)
-* [Example book](https://github.com/executablebooks/github-action-demo)
