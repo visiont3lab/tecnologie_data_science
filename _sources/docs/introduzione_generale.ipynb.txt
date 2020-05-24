@@ -1,0 +1,144 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "colab_type": "text",
+    "id": "view-in-github"
+   },
+   "source": [
+    "<a href=\"https://colab.research.google.com/github/visiont3lab/tecnologie_data_science/blob/master/docs/introduzione_generale.ipynb\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "colab_type": "text",
+    "id": "RzsvZ1lCyjCq"
+   },
+   "source": [
+    "# Introduzione\n",
+    "\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "colab_type": "text",
+    "id": "w2bUAogxynAL"
+   },
+   "source": [
+    "## Informazioni  \n",
+    "\n",
+    "### Docenti\n",
+    "\n",
+    "* Manuel Rucci    manuel.rucci@t3lab.it\n",
+    "* Daniele Grotti  danielegrottiuk@gmail.com\n",
+    "\n",
+    "### Domande\n",
+    "\n",
+    "* Per domande relative ad argomenti fatti a lezione o dubbi di qualunque tipo come installazione di programmi o errori di codice scrivere a questa email visiont3lab@gmail.com\n",
+    "\n",
+    "### Materiale del Corso\n",
+    "\n",
+    "* [Github Repository](https://github.com/visiont3lab/tecnologie_data_science)\n",
+    "* [Website Book](https://visiont3lab.github.io/tecnologie_data_science/)\n",
+    "\n",
+    "#### Extra\n",
+    "\n",
+    "Materiale associato ai corsi di data visualization e machine learning.\n",
+    "* [Materiale del corso Data Visualization](https://github.com/visiont3lab/data-visualization)\n",
+    "* [Materiale del corso Machine Learning](https://github.com/visiont3lab/machine_learning)\n",
+    "\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "colab_type": "text",
+    "id": "x9EWTD6xqFaj"
+   },
+   "source": [
+    "## Linguaggio di Programmazione: Python"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "colab_type": "text",
+    "id": "M8sOvxlRqPLu"
+   },
+   "source": [
+    "[Pyhton](https://www.python.org/) è un linguaggio di programmazione interpretato di alto livello. Esso fu create da Guido an Rossum nel 1991. Sono state rilasciate diverse versioni di Python in particolare Python2 e Python3 e in questo corso utilizzermo Python3 in quanto Python2 è deprecato. La scelta di utilizzare python come linguaggio è dovuta al fatto che esso offre una grande varietà di pacchetti (o librerie) che permettoro facilmente di approcciare al mondo di data-science. Utilizzando Python è possibile visualizzare grafici 2D e 3D utilizzando librerie come matplotlib, seaborn, echarts, plotly, creare algoritmi di Regressisione  e Classificazione per analizzare dati usando librerie come scikit-learn, utilizzare il calcolo vettoriale e matriciale con numpy e anche manipolare tabelle di dati (come fogli excel) usando pandas.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "colab_type": "text",
+    "id": "EfP-rat4t5sa"
+   },
+   "source": [
+    "## Ambiente di Sviluppo Online: Google-Colaboratory\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "colab_type": "text",
+    "id": "RaFUE8f7uHrE"
+   },
+   "source": [
+    "Utilizzermo [Google-Colaboratory](https://colab.research.google.com/notebooks/welcome.ipynb) come piattorma di scrittura ed esecuzione codice. Quest'ultimo è un ambiente di sviluppo creato dal Google Research Team che permette a chiunque gratuitamente di eseguire codice nel browser. In particolare esso fornisce all'utente la possibilitá di editare Jupyter Notebooks senza che l'utente debba installare alcun programma sul propio pc. Inoltre è connesso a google drive e per questo motivo ogni notebook editato attraverso questa piattaforma viene automaticamente salvato nel Google drive dell'utente. Questa piattorma è gratuita e offre risorse di computazione (12GB di Ram, High Performace CPU e Gpu) valide che permettono a chiunque di avere tutti i mezzi necessari per programmare e sviluppare nuovi algoritmi di machine learning, deep learning.  \n",
+    "\n",
+    "In termini più tecnici  Gogole Colab è un servizio fornito da Google  a cui accediamo tramite browser. In particolare tramite il browser accediamo a un Jupyter notebook che sta andando su una macchina di Google che non richiede nessun setup per essere utilizzato, inoltre esso fornisce acesso gratutio a risorse computazionali elevate come GPU e TPU.\n",
+    "\n",
+    "Per avere più informazioni sulle prinpali funzionalitá di Google Colaboratory consultare [Google Colab Welcome Notebook](https://colab.research.google.com/notebooks/welcome.ipynb)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "colab_type": "text",
+    "id": "F5iw2wLJ4lgL"
+   },
+   "source": [
+    "## Ambiente di Sviluppo Offline: Anaconda \n",
+    "\n",
+    "[Anaconda Indivual Edition](https://www.anaconda.com/products/individual) è un insieme di tools tra cui librerie e ambiente di sviluppo pensato per data science.  Esso necessita di essere installato sul proprio pc ma allo stesso tempo l'installazione ha l'obbiettivo di fornire all'utente tutto il materiale necessario per approcciare al mondo di data science usando i linguaggi programmazione R e Python. Pertanto è un ottima scelta per avere un setup di data science installato sul proprio pc.\n",
+    "\n",
+    "Per quanto riguarda l'installazione è consigliato scegliere **64-Bit Graphical Installer Python 3.7** poichè la versione Pyhton 2.7 è deprecata.\n"
+   ]
+  }
+ ],
+ "metadata": {
+  "colab": {
+   "authorship_tag": "ABX9TyOD2OtUS1j80GpCcPx2bJyM",
+   "collapsed_sections": [],
+   "include_colab_link": true,
+   "name": "Introduzione-generale.ipynb",
+   "provenance": []
+  },
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.9"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 1
+}

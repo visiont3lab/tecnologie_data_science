@@ -1,0 +1,278 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Introduzione &#8212; Tecnologie &amp; Software di Data Science</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .secondtoggle, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Introduzione a Google Colaboratory" href="google_colab.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Tecnologie & Software di Data Science</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="active">
+    <a href="#">Introduzione</a>
+  </li>
+  <li class="">
+    <a href="google_colab.html">Introduzione a Google Colaboratory</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="../_sources/docs/introduzione_generale.ipynb.txt"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.ipynb</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Edit this page -->
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+            <div class="dropdown-buttons">
+                
+                <a class="binder-button" href="https://mybinder.org/v2/gh/visiont3lab/tecnologie_data_science/master?urlpath=tree/book/docs/introduzione_generale.ipynb"><button type="button" class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip" data-placement="left"><img class="binder-button-logo" src="../_static/images/logo_binder.svg" alt="Interact on binder">Binder</button></a>
+                
+                
+                
+            </div>
+        </div>
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#informazioni" class="nav-link">Informazioni</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#docenti" class="nav-link">Docenti</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#domande" class="nav-link">Domande</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#materiale-del-corso" class="nav-link">Materiale del Corso</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#extra" class="nav-link">Extra</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#linguaggio-di-programmazione-python" class="nav-link">Linguaggio di Programmazione: Python</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#ambiente-di-sviluppo-online-google-colaboratory" class="nav-link">Ambiente di Sviluppo Online: Google-Colaboratory</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#ambiente-di-sviluppo-offline-anaconda" class="nav-link">Ambiente di Sviluppo Offline: Anaconda</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><a href="https://colab.research.google.com/github/visiont3lab/tecnologie_data_science/blob/master/docs/introduzione_generale.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<div class="section" id="introduzione">
+<h1>Introduzione<a class="headerlink" href="#introduzione" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="informazioni">
+<h2>Informazioni<a class="headerlink" href="#informazioni" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="docenti">
+<h3>Docenti<a class="headerlink" href="#docenti" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Manuel Rucci    manuel.rucci&#64;t3lab.it</p></li>
+<li><p>Daniele Grotti  danielegrottiuk&#64;gmail.com</p></li>
+</ul>
+</div>
+<div class="section" id="domande">
+<h3>Domande<a class="headerlink" href="#domande" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Per domande relative ad argomenti fatti a lezione o dubbi di qualunque tipo come installazione di programmi o errori di codice scrivere a questa email visiont3lab&#64;gmail.com</p></li>
+</ul>
+</div>
+<div class="section" id="materiale-del-corso">
+<h3>Materiale del Corso<a class="headerlink" href="#materiale-del-corso" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/visiont3lab/tecnologie_data_science">Github Repository</a></p></li>
+<li><p><a class="reference external" href="https://visiont3lab.github.io/tecnologie_data_science/">Website Book</a></p></li>
+</ul>
+<div class="section" id="extra">
+<h4>Extra<a class="headerlink" href="#extra" title="Permalink to this headline">¶</a></h4>
+<p>Materiale associato ai corsi di data visualization e machine learning.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/visiont3lab/data-visualization">Materiale del corso Data Visualization</a></p></li>
+<li><p><a class="reference external" href="https://github.com/visiont3lab/machine_learning">Materiale del corso Machine Learning</a></p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="linguaggio-di-programmazione-python">
+<h2>Linguaggio di Programmazione: Python<a class="headerlink" href="#linguaggio-di-programmazione-python" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://www.python.org/">Pyhton</a> è un linguaggio di programmazione interpretato di alto livello. Esso fu create da Guido an Rossum nel 1991. Sono state rilasciate diverse versioni di Python in particolare Python2 e Python3 e in questo corso utilizzermo Python3 in quanto Python2 è deprecato. La scelta di utilizzare python come linguaggio è dovuta al fatto che esso offre una grande varietà di pacchetti (o librerie) che permettoro facilmente di approcciare al mondo di data-science. Utilizzando Python è possibile visualizzare grafici 2D e 3D utilizzando librerie come matplotlib, seaborn, echarts, plotly, creare algoritmi di Regressisione  e Classificazione per analizzare dati usando librerie come scikit-learn, utilizzare il calcolo vettoriale e matriciale con numpy e anche manipolare tabelle di dati (come fogli excel) usando pandas.</p>
+</div>
+<div class="section" id="ambiente-di-sviluppo-online-google-colaboratory">
+<h2>Ambiente di Sviluppo Online: Google-Colaboratory<a class="headerlink" href="#ambiente-di-sviluppo-online-google-colaboratory" title="Permalink to this headline">¶</a></h2>
+<p>Utilizzermo <a class="reference external" href="https://colab.research.google.com/notebooks/welcome.ipynb">Google-Colaboratory</a> come piattorma di scrittura ed esecuzione codice. Quest’ultimo è un ambiente di sviluppo creato dal Google Research Team che permette a chiunque gratuitamente di eseguire codice nel browser. In particolare esso fornisce all’utente la possibilitá di editare Jupyter Notebooks senza che l’utente debba installare alcun programma sul propio pc. Inoltre è connesso a google drive e per questo motivo ogni notebook editato attraverso questa piattaforma viene automaticamente salvato nel Google drive dell’utente. Questa piattorma è gratuita e offre risorse di computazione (12GB di Ram, High Performace CPU e Gpu) valide che permettono a chiunque di avere tutti i mezzi necessari per programmare e sviluppare nuovi algoritmi di machine learning, deep learning.</p>
+<p>In termini più tecnici  Gogole Colab è un servizio fornito da Google  a cui accediamo tramite browser. In particolare tramite il browser accediamo a un Jupyter notebook che sta andando su una macchina di Google che non richiede nessun setup per essere utilizzato, inoltre esso fornisce acesso gratutio a risorse computazionali elevate come GPU e TPU.</p>
+<p>Per avere più informazioni sulle prinpali funzionalitá di Google Colaboratory consultare <a class="reference external" href="https://colab.research.google.com/notebooks/welcome.ipynb">Google Colab Welcome Notebook</a></p>
+</div>
+<div class="section" id="ambiente-di-sviluppo-offline-anaconda">
+<h2>Ambiente di Sviluppo Offline: Anaconda<a class="headerlink" href="#ambiente-di-sviluppo-offline-anaconda" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://www.anaconda.com/products/individual">Anaconda Indivual Edition</a> è un insieme di tools tra cui librerie e ambiente di sviluppo pensato per data science.  Esso necessita di essere installato sul proprio pc ma allo stesso tempo l’installazione ha l’obbiettivo di fornire all’utente tutto il materiale necessario per approcciare al mondo di data science usando i linguaggi programmazione R e Python. Pertanto è un ottima scelta per avere un setup di data science installato sul proprio pc.</p>
+<p>Per quanto riguarda l’installazione è consigliato scegliere <strong>64-Bit Graphical Installer Python 3.7</strong> poichè la versione Pyhton 2.7 è deprecata.</p>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='right-next' id="next-link" href="google_colab.html" title="next page">Introduzione a Google Colaboratory</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Manuel Rucci / Daniele Grotti<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>
