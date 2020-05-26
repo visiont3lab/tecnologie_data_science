@@ -2,3 +2,5 @@
 - file: docs/introduzione_generale
   sections:
     - file: docs/google_colab
+    - file: docs/pandas
+    
