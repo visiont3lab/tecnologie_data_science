@@ -1,6 +1,11 @@
 # - file: README
 - file: docs/introduzione_generale
   sections:
+    - file: docs/introduzione_programmazione
     - file: docs/google_colab
+    - file: docs/numpy
+    - file: docs/matplotlib
     - file: docs/pandas
+    
+    
     
