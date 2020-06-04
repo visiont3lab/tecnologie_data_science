@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Intro &#8212; Tecnologie &amp; Software di Data Science</title>
+    <title>Introduzione programmazione &#8212; Tecnologie &amp; Software di Data Science</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="../_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
@@ -31,6 +31,8 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Google Colaboratory" href="google_colab.html" />
+    <link rel="prev" title="Introduzione" href="introduzione_generale.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -68,14 +70,20 @@
   <li class="">
     <a href="introduzione_generale.html">Introduzione</a>
   </li>
+  <li class="active">
+    <a href="">Introduzione programmazione</a>
+  </li>
   <li class="">
     <a href="google_colab.html">Google Colaboratory</a>
   </li>
   <li class="">
-    <a href="pandas.html">Pandas</a>
+    <a href="numpy.html">Numpy Array</a>
   </li>
   <li class="">
-    <a href="03_numpy.html">Numpy Array</a>
+    <a href="matplotlib.html">Intro Matplotlib</a>
+  </li>
+  <li class="">
+    <a href="pandas.html">Pandas</a>
   </li>
 </ul>
 </nav>
@@ -114,7 +122,7 @@
                 <!-- ipynb file if we had a myst markdown file -->
                 
                 <!-- Download raw file -->
-                <a class="dropdown-buttons" href="../_sources/docs/02_intro.ipynb.txt"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.ipynb</button></a>
+                <a class="dropdown-buttons" href="../_sources/docs/introduzione_programmazione.ipynb.txt"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.ipynb</button></a>
                 <!-- Download PDF via print -->
                 <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
             </div>
@@ -127,7 +135,7 @@
             <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
             <div class="dropdown-buttons sourcebuttons">
                 <a class="repository-button" href="https://github.com/visiont3lab/tecnologie_data_science"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
-                <a class="issues-button" href="https://github.com/visiont3lab/tecnologie_data_science/issues/new?title=Issue%20on%20page%20%2Fdocs/02_intro.html&body=Your%20issue%20content%20here."><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+                <a class="issues-button" href="https://github.com/visiont3lab/tecnologie_data_science/issues/new?title=Issue%20on%20page%20%2Fdocs/introduzione_programmazione.html&body=Your%20issue%20content%20here."><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
                 
             </div>
         </div>
@@ -142,7 +150,7 @@
             <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
             <div class="dropdown-buttons">
                 
-                <a class="binder-button" href="https://mybinder.org/v2/gh/visiont3lab/tecnologie_data_science/master?urlpath=tree/book/docs/02_intro.ipynb"><button type="button" class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip" data-placement="left"><img class="binder-button-logo" src="../_static/images/logo_binder.svg" alt="Interact on binder">Binder</button></a>
+                <a class="binder-button" href="https://mybinder.org/v2/gh/visiont3lab/tecnologie_data_science/master?urlpath=tree/book/docs/introduzione_programmazione.ipynb"><button type="button" class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip" data-placement="left"><img class="binder-button-logo" src="../_static/images/logo_binder.svg" alt="Interact on binder">Binder</button></a>
                 
                 
                 
@@ -166,8 +174,9 @@
         
               <div>
                 
-  <div class="section" id="intro">
-<h1>Intro<a class="headerlink" href="#intro" title="Permalink to this headline">¶</a></h1>
+  <p><a href="https://colab.research.google.com/github/visiont3lab/tecnologie_data_science/blob/master/book/docs/introduzione_programmazione.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<div class="section" id="introduzione-programmazione">
+<h1>Introduzione programmazione<a class="headerlink" href="#introduzione-programmazione" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
@@ -518,7 +527,7 @@ sample_data
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02_intro_34_0.jpg" src="../_images/02_intro_34_0.jpg" />
+<img alt="../_images/introduzione_programmazione_35_0.jpg" src="../_images/introduzione_programmazione_35_0.jpg" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -528,7 +537,7 @@ sample_data
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02_intro_35_0.jpg" src="../_images/02_intro_35_0.jpg" />
+<img alt="../_images/introduzione_programmazione_36_0.jpg" src="../_images/introduzione_programmazione_36_0.jpg" />
 </div>
 </div>
 </div>
@@ -2151,6 +2160,8 @@ Bene!!! dunque hai 3  anni. Il porssimo anno ne avrai 4
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="introduzione_generale.html" title="previous page">Introduzione</a>
+    <a class='right-next' id="next-link" href="google_colab.html" title="next page">Google Colaboratory</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
