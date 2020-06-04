@@ -14,7 +14,7 @@
     "id": "qOrk9LM72bFD"
    },
    "source": [
-    "# Analisi Covid19 dataset usando Pandas, Matplotlib, Plotly, Dash : (Soluzione)"
+    "# Analisi Covid19 dataset usando Pandas, Matplotlib, Plotly, Dash : (Spiegazione)"
    ]
   },
   {
