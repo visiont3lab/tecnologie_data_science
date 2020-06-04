@@ -1,0 +1,460 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Descrizione &#8212; Tecnologie &amp; Software di Data Science</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .secondtoggle, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Esempio Pratico di analisi dati usando Pandas, Matplotlib, Plotly, Dash" href="analisi_covid19_spiegazione.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Tecnologie & Software di Data Science</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="introduzione_generale.html">Introduzione</a>
+  </li>
+  <li class="">
+    <a href="introduzione_programmazione.html">Introduzione programmazione</a>
+  </li>
+  <li class="">
+    <a href="google_colab.html">Google Colaboratory</a>
+  </li>
+  <li class="">
+    <a href="numpy.html">Numpy Array</a>
+  </li>
+  <li class="">
+    <a href="matplotlib.html">Intro Matplotlib</a>
+  </li>
+  <li class="">
+    <a href="pandas.html">Pandas</a>
+  </li>
+  <li class="">
+    <a href="analisi_covid19_spiegazione.html">Esempio Pratico di analisi dati usando Pandas, Matplotlib, Plotly, Dash</a>
+  </li>
+  <li class="active">
+    <a href="">Descrizione</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="../_sources/docs/analisi_covid19_esercizio.ipynb.txt"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.ipynb</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Source interaction buttons -->
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+            <div class="dropdown-buttons sourcebuttons">
+                <a class="repository-button" href="https://github.com/visiont3lab/tecnologie_data_science"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
+                <a class="issues-button" href="https://github.com/visiont3lab/tecnologie_data_science/issues/new?title=Issue%20on%20page%20%2Fdocs/analisi_covid19_esercizio.html&body=Your%20issue%20content%20here."><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+                
+            </div>
+        </div>
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+            <div class="dropdown-buttons">
+                
+                <a class="binder-button" href="https://mybinder.org/v2/gh/visiont3lab/tecnologie_data_science/master?urlpath=tree/book/docs/analisi_covid19_esercizio.ipynb"><button type="button" class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip" data-placement="left"><img class="binder-button-logo" src="../_static/images/logo_binder.svg" alt="Interact on binder">Binder</button></a>
+                
+                
+                
+            </div>
+        </div>
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#importare-librerie" class="nav-link">Importare Librerie</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#parte-1-plottare-l-andamento-nel-tempo-dei-contagiati-della-propria-provincia" class="nav-link">Parte 1:  Plottare l’andamento nel tempo dei contagiati della propria provincia.</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#parte-2-comparare-l-andamento-nel-tempo-dei-contagiati-delle-prime-3-provincie-della-nostra-regione-emilia-romagna-con-quelli-di-una-provincia-appartenente-sempre-alla-nostra-regione" class="nav-link">Parte 2: Comparare l’andamento nel tempo dei contagiati delle prime 3 provincie della nostra regione (Emilia-Romagna) con quelli  di una provincia appartenente sempre alla nostra regione.</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#parte-3-creare-un-grafico-a-torta-con-le-percentuali-di-contagiati-per-ogni-provincia-apparente-alla-nostra-regione-emilia-romagna" class="nav-link">Parte 3: Creare un grafico a torta con le percentuali di contagiati per ogni provincia apparente alla nostra regione (Emilia-Romagna)</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#website-development" class="nav-link">Website development</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><a href="https://colab.research.google.com/github/visiont3lab/tecnologie_data_science/blob/master/book/docs/analisi-covid19-esercizio.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<div class="section" id="descrizione">
+<h1>Descrizione<a class="headerlink" href="#descrizione" title="Permalink to this headline">¶</a></h1>
+<p>Datasets:</p>
+<ul class="simple">
+<li><p>dati_province = “https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-province/dpc-covid19-ita-province.csv”</p></li>
+<li><p>dati_regioni = “https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv”</p></li>
+<li><p>dati_italia = “https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-andamento-nazionale/dpc-covid19-ita-andamento-nazionale.csv”</p></li>
+</ul>
+<p>Obbiettivo: Utilizzando i dati provinciali analizzare l’andamento dei contagiati nella propria provincia nel tempo.</p>
+<ol class="simple">
+<li><p>Plottare l’andamento nel tempo dei contagiati della propria provincia.</p></li>
+<li><p>Comparare l’andamento nel tempo dei contagiati delle prime 3 provincie della nostra regione (Emilia-Romagna) con quelli  di una provincia appartenente sempre alla nostra regione.</p></li>
+<li><p>Creare un grafico a torta con le percentuali di contagiati per ogni provincia apparente alla nostra regione (Emilia-Romagna)</p></li>
+</ol>
+<div class="section" id="importare-librerie">
+<h2>Importare Librerie<a class="headerlink" href="#importare-librerie" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;assets/images/&quot;</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="parte-1-plottare-l-andamento-nel-tempo-dei-contagiati-della-propria-provincia">
+<h2>Parte 1:  Plottare l’andamento nel tempo dei contagiati della propria provincia.<a class="headerlink" href="#parte-1-plottare-l-andamento-nel-tempo-dei-contagiati-della-propria-provincia" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_andamento_provincia_style</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">provincia</span><span class="p">):</span>
+    <span class="n">df_new</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;denominazione_provincia&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">provincia</span><span class="p">]</span>
+    <span class="c1">#display(df_new.head())</span>
+    <span class="c1">#display(df_new.info())</span>
+    <span class="c1">#plt.style.use(&quot;dark_background&quot;)</span>
+    <span class="n">lista</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df_new</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">])</span>
+    <span class="n">new_lista</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">lista</span><span class="p">),</span><span class="mi">2</span><span class="p">):</span>
+        <span class="n">new_lista</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lista</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s2">&quot;dark_background&quot;</span><span class="p">):</span>
+        
+        <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;lines&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+        <span class="c1">#plt.rcParams[&#39;lines.linewidth&#39;]=10</span>
+        <span class="c1">#plt.rcParams[&#39;lines.markersize&#39;]=10</span>
+        <span class="c1">#plt.rcParams[&#39;lines.markerfacecolor&#39;] =&quot;red&quot;</span>
+        <span class="c1">#plt.rcParams[&#39;axes.prop_cycle&#39;] = cycler(color=[&#39;y&#39;]) # color line</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;grid&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;axes&quot;</span><span class="p">,</span><span class="n">titlesize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">titlecolor</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;font&quot;</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s2">&quot;DejaVu Serif&quot;</span><span class="p">,</span> <span class="n">fantasy</span><span class="o">=</span><span class="s2">&quot;Comic Neue&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;date.autoformatter.day&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;%m-</span><span class="si">%d</span><span class="s2">&quot;</span>
+        
+        <span class="c1">#plt.rcParams[&quot;date.autoformatter.day&quot;]= &quot;%m-%d&quot; #&quot;%Y-%m&quot;</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">df_new</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;totale_casi&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Andamento Provincia: &quot;</span> <span class="o">+</span> <span class="n">provincia</span> <span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">9</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;o--c&quot;</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="n">new_lista</span><span class="p">)</span>
+
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Data&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Totale casi&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span><span class="n">labelcolor</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span><span class="n">labelcolor</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Legenda&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;assets/images/fig1.png&quot;</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ax</span><span class="o">.</span><span class="n">figure</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-province/dpc-covid19-ita-province.csv&quot;</span><span class="p">)</span>
+<span class="n">provincia</span> <span class="o">=</span> <span class="s2">&quot;Ravenna&quot;</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">])</span>
+
+<span class="c1"># Esercizion 1)</span>
+<span class="n">fig1</span> <span class="o">=</span> <span class="n">plot_andamento_provincia_style</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">provincia</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/analisi_covid19_esercizio_5_0.png" src="../_images/analisi_covid19_esercizio_5_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="parte-2-comparare-l-andamento-nel-tempo-dei-contagiati-delle-prime-3-provincie-della-nostra-regione-emilia-romagna-con-quelli-di-una-provincia-appartenente-sempre-alla-nostra-regione">
+<h2>Parte 2: Comparare l’andamento nel tempo dei contagiati delle prime 3 provincie della nostra regione (Emilia-Romagna) con quelli  di una provincia appartenente sempre alla nostra regione.<a class="headerlink" href="#parte-2-comparare-l-andamento-nel-tempo-dei-contagiati-delle-prime-3-provincie-della-nostra-regione-emilia-romagna-con-quelli-di-una-provincia-appartenente-sempre-alla-nostra-regione" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_nomi_regioni</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+  <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;denominazione_regione&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+
+<span class="k">def</span> <span class="nf">get_nomi_province</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">regione</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;denominazione_regione&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">regione</span><span class="p">]</span>
+    <span class="c1">#ultima_data = list(a.tail(1)[&quot;data&quot;])[0]</span>
+    <span class="n">ultima_data</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">ultima_data</span><span class="p">][</span><span class="s2">&quot;denominazione_provincia&quot;</span><span class="p">])</span>
+    <span class="n">res</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;In fase di definizione/aggiornamento&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span>
+
+<span class="k">def</span> <span class="nf">get_andamento_province</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">regione</span><span class="p">):</span>
+    <span class="n">nomi_province</span> <span class="o">=</span> <span class="n">get_nomi_province</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">regione</span><span class="p">)</span>
+    <span class="n">my_dict</span><span class="o">=</span><span class="p">{}</span>
+    <span class="n">my_dict</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">nome</span> <span class="ow">in</span> <span class="n">nomi_province</span><span class="p">:</span>
+        <span class="n">my_dict</span><span class="p">[</span><span class="n">nome</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;denominazione_provincia&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">nome</span><span class="p">][</span><span class="s2">&quot;totale_casi&quot;</span><span class="p">])</span>
+
+    <span class="n">df_new</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">my_dict</span><span class="p">)</span>
+    <span class="c1">#display(df_new.head())</span>
+    <span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s2">&quot;seaborn&quot;</span><span class="p">):</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">df_new</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Andamento Province della regione &quot;</span> <span class="o">+</span><span class="n">regione</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;assets/images/fig2.png&quot;</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ax</span><span class="o">.</span><span class="n">figure</span>
+
+<span class="c1"># Esercizio 2)</span>
+<span class="n">regione</span><span class="o">=</span><span class="s2">&quot;Emilia-Romagna&quot;</span>
+<span class="n">fig2</span> <span class="o">=</span> <span class="n">get_andamento_province</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">regione</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/analisi_covid19_esercizio_7_0.png" src="../_images/analisi_covid19_esercizio_7_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="parte-3-creare-un-grafico-a-torta-con-le-percentuali-di-contagiati-per-ogni-provincia-apparente-alla-nostra-regione-emilia-romagna">
+<h2>Parte 3: Creare un grafico a torta con le percentuali di contagiati per ogni provincia apparente alla nostra regione (Emilia-Romagna)<a class="headerlink" href="#parte-3-creare-un-grafico-a-torta-con-le-percentuali-di-contagiati-per-ogni-provincia-apparente-alla-nostra-regione-emilia-romagna" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pie_plot_province</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">regione</span><span class="p">):</span>
+    <span class="n">ultima_data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="s2">&quot;data&quot;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">a</span> <span class="o">=</span><span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;denominazione_regione&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">regione</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">ultima_data</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;denominazione_provincia&quot;</span><span class="p">]</span><span class="o">!=</span><span class="s2">&quot;In fase di definizione/aggiornamento&quot;</span><span class="p">)</span> <span class="p">]</span>
+    <span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s2">&quot;Solarize_Light2&quot;</span><span class="p">):</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;denominazione_provincia&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;pie&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;totale_casi&quot;</span><span class="p">,</span><span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.0f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span> <span class="c1">#, pctdistance=1.1, labeldistance=1.2)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;assets/images/fig3.png&quot;</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ax</span><span class="o">.</span><span class="n">figure</span>
+
+<span class="c1"># Check style</span>
+<span class="c1"># print(plt.style.available)</span>
+<span class="c1"># Esercizio 3</span>
+<span class="n">fig3</span> <span class="o">=</span> <span class="n">pie_plot_province</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">regione</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/analisi_covid19_esercizio_9_0.png" src="../_images/analisi_covid19_esercizio_9_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="website-development">
+<h2>Website development<a class="headerlink" href="#website-development" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>%%capture
+!pip install dash flask_ngrok
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">assets</span><span class="o">/</span><span class="n">typography</span><span class="o">.</span><span class="n">css</span>
+<span class="n">body</span> <span class="p">{</span>
+    <span class="n">padding</span><span class="p">:</span> <span class="mi">20</span><span class="n">px</span> <span class="mi">300</span><span class="n">px</span> <span class="mi">0</span><span class="n">px</span> <span class="mi">300</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">margin</span> <span class="p">:</span> <span class="mi">0</span><span class="n">px</span> <span class="mi">0</span><span class="n">px</span> <span class="mi">0</span><span class="n">px</span>  <span class="mi">0</span><span class="n">px</span><span class="p">;</span>
+    <span class="o">/*</span><span class="n">padding</span> <span class="p">:</span> <span class="mi">0</span><span class="n">px</span> <span class="mi">0</span><span class="n">px</span> <span class="mi">0</span><span class="n">px</span> <span class="mi">0</span><span class="n">px</span><span class="p">;</span><span class="o">*/</span>
+    <span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="p">:</span> <span class="n">white</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Overwriting assets/typography.css
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dash</span>
+<span class="kn">import</span> <span class="nn">dash_html_components</span> <span class="k">as</span> <span class="nn">html</span>
+<span class="kn">from</span> <span class="nn">flask_ngrok</span> <span class="kn">import</span> <span class="n">run_with_ngrok</span>
+
+<span class="n">external_stylesheets</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;https://codepen.io/chriddyp/pen/bWLwgP.css&#39;</span><span class="p">]</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">dash</span><span class="o">.</span><span class="n">Dash</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">external_stylesheets</span><span class="o">=</span><span class="n">external_stylesheets</span><span class="p">)</span>
+<span class="n">server</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">server</span>
+<span class="n">run_with_ngrok</span><span class="p">(</span><span class="n">server</span><span class="p">)</span> 
+
+<span class="n">app</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">([</span>
+        <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">(</span>
+        <span class="p">[</span>   
+            <span class="n">html</span><span class="o">.</span><span class="n">Img</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s1">&#39;/assets/images/fig1.png&#39;</span><span class="p">),</span>
+        <span class="p">]),</span>
+        <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">(</span>
+        <span class="p">[</span>   
+            <span class="n">html</span><span class="o">.</span><span class="n">Img</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s1">&#39;/assets/images/fig2.png&#39;</span><span class="p">),</span>
+        <span class="p">]),</span>
+        <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">(</span>
+        <span class="p">[</span>   
+            <span class="n">html</span><span class="o">.</span><span class="n">Img</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s1">&#39;/assets/images/fig3.png&#39;</span><span class="p">),</span>
+        <span class="p">])</span>
+    <span class="p">],</span><span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;backgroundColor&#39;</span><span class="p">:</span> <span class="s2">&quot;rgb(255,255,255)&quot;</span><span class="p">,</span>  <span class="s2">&quot;margin&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="s2">&quot;padding&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">})</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">server</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+    <span class="c1">#app.run_server() #debug=True, host=&quot;0.0.0.0&quot;, port=8900)</span>
+
+<span class="sd">&#39;&#39;&#39;   </span>
+<span class="sd"> * Serving Flask app &quot;__main__&quot; (lazy loading)</span>
+<span class="sd"> * Environment: production</span>
+<span class="sd">   WARNING: This is a development server. Do not use it in a production deployment.</span>
+<span class="sd">   Use a production WSGI server instead.</span>
+<span class="sd"> * Debug mode: off</span>
+<span class="sd"> * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block"> * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="analisi_covid19_spiegazione.html" title="previous page">Esempio Pratico di analisi dati usando Pandas, Matplotlib, Plotly, Dash</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Manuel Rucci / Daniele Grotti<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>
