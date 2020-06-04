@@ -4,7 +4,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "<a href=\"https://colab.research.google.com/github/visiont3lab/tecnologie_data_science/blob/master/book/docs/analisi-covid19-esercizio.ipynb\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+    "<a href=\"https://colab.research.google.com/github/visiont3lab/tecnologie_data_science/blob/master/book/docs/analisi_covid19_esercizio.ipynb\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
    ]
   },
   {
@@ -14,12 +14,12 @@
     "id": "sMM63f1cW1wJ"
    },
    "source": [
-    "# Descrizione\n",
+    "# Esercizio: Analisi Covid19\n",
     "\n",
     "Datasets:\n",
-    "* dati_province = \"https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-province/dpc-covid19-ita-province.csv\"\n",
-    "* dati_regioni = \"https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv\"\n",
-    "* dati_italia = \"https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-andamento-nazionale/dpc-covid19-ita-andamento-nazionale.csv\"\n",
+    "* [dati_province](https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-province/dpc-covid19-ita-province.csv) = \"https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-province/dpc-covid19-ita-province.csv\"\n",
+    "* [dati_regioni](https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv) = \"https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv\"\n",
+    "* [dati_italia](https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-andamento-nazionale/dpc-covid19-ita-andamento-nazionale.csv) = \"https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-andamento-nazionale/dpc-covid19-ita-andamento-nazionale.csv\"\n",
     "\n",
     "Obbiettivo: Utilizzando i dati provinciali analizzare l'andamento dei contagiati nella propria provincia nel tempo.\n",
     "\n",
