@@ -14,7 +14,7 @@
     "id": "sMM63f1cW1wJ"
    },
    "source": [
-    "# Esercizio: Analisi Covid19\n",
+    "# Analisi Covid19 dataset usando Pandas, Matplotlib, Plotly, Dash : (Spiegazione)\n",
     "\n",
     "Datasets:\n",
     "* [dati_province](https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-province/dpc-covid19-ita-province.csv) = \"https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-province/dpc-covid19-ita-province.csv\"\n",
