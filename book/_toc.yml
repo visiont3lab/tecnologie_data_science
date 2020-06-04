@@ -3,4 +3,4 @@
   sections:
     - file: docs/google_colab
     - file: docs/pandas
-    
+    - file: docs/03_numpy
