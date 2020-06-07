@@ -178,10 +178,6 @@
     <ul class="nav section-nav flex-column">
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#introduzione" class="nav-link">Introduzione</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
             <a href="#overview-clustering" class="nav-link">1. Overview Clustering</a><ul class="nav section-nav flex-column">
                 
         <li class="nav-item toc-entry toc-h3">
@@ -242,19 +238,19 @@
         </li>
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#clustering-for-image-segmentation" class="nav-link">Clustering for Image Segmentation</a>
+            <a href="#clustering-for-image-segmentation" class="nav-link">3. Clustering for Image Segmentation</a>
         </li>
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#clustering-for-preprocessing" class="nav-link">Clustering for Preprocessing</a>
+            <a href="#clustering-for-preprocessing" class="nav-link">4. Clustering for Preprocessing</a>
         </li>
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#clustering-for-semi-supervised-learning" class="nav-link">Clustering for semi-supervised Learning</a>
+            <a href="#clustering-for-semi-supervised-learning" class="nav-link">5. Clustering for semi-supervised Learning</a>
         </li>
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#dbscan-algoritmo" class="nav-link">DBSCAN Algoritmo</a>
+            <a href="#dbscan-algoritmo" class="nav-link">6. DBSCAN Algoritmo</a>
         </li>
     
         <li class="nav-item toc-entry toc-h2">
@@ -303,34 +299,6 @@
 <li><p><a class="reference external" href="https://mmuratarat.github.io/2019-07-23/kmeans_from_scratch">Kmeans from scratch tutorial</a></p></li>
 <li><p><a class="reference external" href="https://www.youtube.com/watch?v=5TPldC_dC0s">Silohuette score explaination</a></p></li>
 </ul>
-<div class="section" id="introduzione">
-<h2>Introduzione<a class="headerlink" href="#introduzione" title="Permalink to this headline">¶</a></h2>
-<p>Cosa faremo oggi? Clustering!</p>
-<ol class="simple">
-<li><p>Overview clustering</p></li>
-<li><p>Kmeans algoritmo</p></li>
-</ol>
-<ul class="simple">
-<li><p>come funziona?</p></li>
-<li><p>inizializzazione</p></li>
-<li><p>hard clustering vs soft clustering</p></li>
-<li><p>come si sceglie in il numero di clusters? Elbow method  vs silhouette coefficient</p></li>
-<li><p>limiti</p></li>
-</ul>
-<ol class="simple">
-<li><p>A cosa serve il clustering? Esempi utili</p></li>
-</ol>
-<ul class="simple">
-<li><p>Clustering for Image Segmentation</p></li>
-<li><p>Clustering for Preprocessing</p></li>
-<li><p>Clustering for semi-supervised Learning</p></li>
-</ul>
-<ol class="simple">
-<li><p>DBSCAN (Density-Based Spatial Clustering of Applications with Noise) algoritmo</p></li>
-<li><p>Differenti opzioni disponibili di clustering (discussione)</p></li>
-<li><p>Esempio pratico</p></li>
-</ol>
-</div>
 <div class="section" id="overview-clustering">
 <h2>1. Overview Clustering<a class="headerlink" href="#overview-clustering" title="Permalink to this headline">¶</a></h2>
 <p>Apprendimento non supervisionato. L’obbiettivo è strutturare i dati in base a qualcosa che essi hanno in comune senza avere una conoscenza a priopri di essi.</p>
@@ -408,7 +376,7 @@ these types of elliptical clusters, Gaussian mixture models work great.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clustering_8_0.png" src="../_images/clustering_8_0.png" />
+<img alt="../_images/clustering_7_0.png" src="../_images/clustering_7_0.png" />
 </div>
 </div>
 <div class="section" id="implentazione-da-zero">
@@ -454,7 +422,7 @@ these types of elliptical clusters, Gaussian mixture models work great.</p>
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fd33104aa90&gt;
 </pre></div>
 </div>
-<img alt="../_images/clustering_10_2.png" src="../_images/clustering_10_2.png" />
+<img alt="../_images/clustering_9_2.png" src="../_images/clustering_9_2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -475,7 +443,7 @@ these types of elliptical clusters, Gaussian mixture models work great.</p>
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fd3308f73c8&gt;
 </pre></div>
 </div>
-<img alt="../_images/clustering_11_2.png" src="../_images/clustering_11_2.png" />
+<img alt="../_images/clustering_10_2.png" src="../_images/clustering_10_2.png" />
 </div>
 </div>
 <p>Importante:</p>
@@ -501,7 +469,7 @@ these types of elliptical clusters, Gaussian mixture models work great.</p>
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fd3294e0f28&gt;
 </pre></div>
 </div>
-<img alt="../_images/clustering_14_1.png" src="../_images/clustering_14_1.png" />
+<img alt="../_images/clustering_13_1.png" src="../_images/clustering_13_1.png" />
 </div>
 </div>
 <p>Problema:</p>
@@ -522,7 +490,7 @@ these types of elliptical clusters, Gaussian mixture models work great.</p>
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fd3295eac50&gt;
 </pre></div>
 </div>
-<img alt="../_images/clustering_16_1.png" src="../_images/clustering_16_1.png" />
+<img alt="../_images/clustering_15_1.png" src="../_images/clustering_15_1.png" />
 </div>
 </div>
 </div>
@@ -614,7 +582,7 @@ these types of elliptical clusters, Gaussian mixture models work great.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clustering_23_0.png" src="../_images/clustering_23_0.png" />
+<img alt="../_images/clustering_22_0.png" src="../_images/clustering_22_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -628,7 +596,7 @@ these types of elliptical clusters, Gaussian mixture models work great.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clustering_24_0.png" src="../_images/clustering_24_0.png" />
+<img alt="../_images/clustering_23_0.png" src="../_images/clustering_23_0.png" />
 </div>
 </div>
 </div>
@@ -767,11 +735,11 @@ For n_clusters = 5 The average silhouette_score is : 0.5745566973301872
 For n_clusters = 6 The average silhouette_score is : 0.4387644975296138
 </pre></div>
 </div>
-<img alt="../_images/clustering_27_1.png" src="../_images/clustering_27_1.png" />
-<img alt="../_images/clustering_27_2.png" src="../_images/clustering_27_2.png" />
-<img alt="../_images/clustering_27_3.png" src="../_images/clustering_27_3.png" />
-<img alt="../_images/clustering_27_4.png" src="../_images/clustering_27_4.png" />
-<img alt="../_images/clustering_27_5.png" src="../_images/clustering_27_5.png" />
+<img alt="../_images/clustering_26_1.png" src="../_images/clustering_26_1.png" />
+<img alt="../_images/clustering_26_2.png" src="../_images/clustering_26_2.png" />
+<img alt="../_images/clustering_26_3.png" src="../_images/clustering_26_3.png" />
+<img alt="../_images/clustering_26_4.png" src="../_images/clustering_26_4.png" />
+<img alt="../_images/clustering_26_5.png" src="../_images/clustering_26_5.png" />
 </div>
 </div>
 </div>
@@ -810,7 +778,7 @@ For n_clusters = 6 The average silhouette_score is : 0.4387644975296138
   warnings.warn(&quot;Graph is not fully connected, spectral embedding&quot;
 </pre>
 </div>
-<img alt="../_images/clustering_31_1.png" src="../_images/clustering_31_1.png" />
+<img alt="../_images/clustering_30_1.png" src="../_images/clustering_30_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -822,13 +790,13 @@ For n_clusters = 6 The average silhouette_score is : 0.4387644975296138
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clustering_32_0.png" src="../_images/clustering_32_0.png" />
+<img alt="../_images/clustering_31_0.png" src="../_images/clustering_31_0.png" />
 </div>
 </div>
 </div>
 </div>
 <div class="section" id="clustering-for-image-segmentation">
-<h2>Clustering for Image Segmentation<a class="headerlink" href="#clustering-for-image-segmentation" title="Permalink to this headline">¶</a></h2>
+<h2>3. Clustering for Image Segmentation<a class="headerlink" href="#clustering-for-image-segmentation" title="Permalink to this headline">¶</a></h2>
 <p>Divide image into multiple segment (color segmentation). We will collect pixel having the same color.</p>
 <p>Importnat: K-Means prefers clusters of similar size</p>
 <div class="cell docutils container">
@@ -913,13 +881,13 @@ For n_clusters = 6 The average silhouette_score is : 0.4387644975296138
 (1707200, 3)
 </pre></div>
 </div>
-<img alt="../_images/clustering_36_1.png" src="../_images/clustering_36_1.png" />
-<img alt="../_images/clustering_36_2.png" src="../_images/clustering_36_2.png" />
+<img alt="../_images/clustering_35_1.png" src="../_images/clustering_35_1.png" />
+<img alt="../_images/clustering_35_2.png" src="../_images/clustering_35_2.png" />
 </div>
 </div>
 </div>
 <div class="section" id="clustering-for-preprocessing">
-<h2>Clustering for Preprocessing<a class="headerlink" href="#clustering-for-preprocessing" title="Permalink to this headline">¶</a></h2>
+<h2>4. Clustering for Preprocessing<a class="headerlink" href="#clustering-for-preprocessing" title="Permalink to this headline">¶</a></h2>
 <p>We have seen PCA (dimensionality reduction).</p>
 <p>Although it is tempting to define the number of clusters to 10, since
 there are 10 different digits, it is unlikely to perform well, because there
@@ -1013,7 +981,7 @@ Please also refer to the documentation for alternative solver options:
 </div>
 </div>
 <div class="section" id="clustering-for-semi-supervised-learning">
-<h2>Clustering for semi-supervised Learning<a class="headerlink" href="#clustering-for-semi-supervised-learning" title="Permalink to this headline">¶</a></h2>
+<h2>5. Clustering for semi-supervised Learning<a class="headerlink" href="#clustering-for-semi-supervised-learning" title="Permalink to this headline">¶</a></h2>
 <p>Another use case for clustering is in semi-supervised learning, when
 we have plenty of unlabeled instances and very few labeled instances.</p>
 <p>Since it is often costly and
@@ -1180,7 +1148,7 @@ largest drop in the model’s validation error, or the instances that different 
 SVM, a Random Forest, and so on).</p>
 </div>
 <div class="section" id="dbscan-algoritmo">
-<h2>DBSCAN Algoritmo<a class="headerlink" href="#dbscan-algoritmo" title="Permalink to this headline">¶</a></h2>
+<h2>6. DBSCAN Algoritmo<a class="headerlink" href="#dbscan-algoritmo" title="Permalink to this headline">¶</a></h2>
 <p>local density estimation. It allows to identify clusters of arbitraty shapes. This algorithm defines clusters as continuous regions of high density.
 This algorithm works well if all the clusters are dense enough, and they
 are well separated by low-density regions.</p>
@@ -1218,7 +1186,7 @@ in its neighborhood is considered an anomaly.</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clustering_56_0.png" src="../_images/clustering_56_0.png" />
+<img alt="../_images/clustering_55_0.png" src="../_images/clustering_55_0.png" />
 </div>
 </div>
 </div>
@@ -1265,7 +1233,7 @@ clusters have very different sizes.</p></li>
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fd32247a5c0&gt;]
 </pre></div>
 </div>
-<img alt="../_images/clustering_60_1.png" src="../_images/clustering_60_1.png" />
+<img alt="../_images/clustering_59_1.png" src="../_images/clustering_59_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1281,7 +1249,7 @@ clusters have very different sizes.</p></li>
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fd32247af60&gt;]
 </pre></div>
 </div>
-<img alt="../_images/clustering_61_1.png" src="../_images/clustering_61_1.png" />
+<img alt="../_images/clustering_60_1.png" src="../_images/clustering_60_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1310,7 +1278,7 @@ clusters have very different sizes.</p></li>
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fd3224687f0&gt;]
 </pre></div>
 </div>
-<img alt="../_images/clustering_62_2.png" src="../_images/clustering_62_2.png" />
+<img alt="../_images/clustering_61_2.png" src="../_images/clustering_61_2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1334,7 +1302,7 @@ clusters have very different sizes.</p></li>
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fd3223737b8&gt;]
 </pre></div>
 </div>
-<img alt="../_images/clustering_63_2.png" src="../_images/clustering_63_2.png" />
+<img alt="../_images/clustering_62_2.png" src="../_images/clustering_62_2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1354,7 +1322,7 @@ clusters have very different sizes.</p></li>
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fd3223539b0&gt;]
 </pre></div>
 </div>
-<img alt="../_images/clustering_64_2.png" src="../_images/clustering_64_2.png" />
+<img alt="../_images/clustering_63_2.png" src="../_images/clustering_63_2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1393,7 +1361,7 @@ clusters have very different sizes.</p></li>
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fd3222d3b00&gt;]
 </pre></div>
 </div>
-<img alt="../_images/clustering_65_3.png" src="../_images/clustering_65_3.png" />
+<img alt="../_images/clustering_64_3.png" src="../_images/clustering_64_3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1409,7 +1377,7 @@ clusters have very different sizes.</p></li>
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fd3201b1160&gt;
 </pre></div>
 </div>
-<img alt="../_images/clustering_66_1.png" src="../_images/clustering_66_1.png" />
+<img alt="../_images/clustering_65_1.png" src="../_images/clustering_65_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1447,7 +1415,7 @@ clusters have very different sizes.</p></li>
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fd3284f96a0&gt;
 </pre></div>
 </div>
-<img alt="../_images/clustering_67_4.png" src="../_images/clustering_67_4.png" />
+<img alt="../_images/clustering_66_4.png" src="../_images/clustering_66_4.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1459,7 +1427,7 @@ clusters have very different sizes.</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clustering_68_0.png" src="../_images/clustering_68_0.png" />
+<img alt="../_images/clustering_67_0.png" src="../_images/clustering_67_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1476,7 +1444,7 @@ clusters have very different sizes.</p></li>
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fd328e38c18&gt;
 </pre></div>
 </div>
-<img alt="../_images/clustering_69_1.png" src="../_images/clustering_69_1.png" />
+<img alt="../_images/clustering_68_1.png" src="../_images/clustering_68_1.png" />
 </div>
 </div>
 </div>
@@ -1530,7 +1498,7 @@ Let’s see what these cluster centers look like:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clustering_75_0.png" src="../_images/clustering_75_0.png" />
+<img alt="../_images/clustering_74_0.png" src="../_images/clustering_74_0.png" />
 </div>
 </div>
 <p>We see that <em>even without the labels</em>, <code class="docutils literal notranslate"><span class="pre">KMeans</span></code> is able to find clusters whose centers are recognizable digits, with perhaps the exception of 1 and 8.</p>
@@ -1577,7 +1545,7 @@ Let’s check the confusion matrix for this:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clustering_81_0.png" src="../_images/clustering_81_0.png" />
+<img alt="../_images/clustering_80_0.png" src="../_images/clustering_80_0.png" />
 </div>
 </div>
 <p>As we might expect from the cluster centers we visualized before, the main point of confusion is between the eights and ones.

@@ -34,33 +34,6 @@
    "cell_type": "markdown",
    "metadata": {
     "colab_type": "text",
-    "id": "sk46zSAwil_a"
-   },
-   "source": [
-    "## Introduzione\n",
-    "\n",
-    "Cosa faremo oggi? Clustering!\n",
-    "\n",
-    "1. Overview clustering\n",
-    "2. Kmeans algoritmo\n",
-    "  * come funziona?\n",
-    "  * inizializzazione\n",
-    "  * hard clustering vs soft clustering\n",
-    "  * come si sceglie in il numero di clusters? Elbow method  vs silhouette coefficient\n",
-    "  * limiti\n",
-    "3. A cosa serve il clustering? Esempi utili\n",
-    "  * Clustering for Image Segmentation\n",
-    "  * Clustering for Preprocessing\n",
-    "  * Clustering for semi-supervised Learning\n",
-    "4. DBSCAN (Density-Based Spatial Clustering of Applications with Noise) algoritmo \n",
-    "5. Differenti opzioni disponibili di clustering (discussione)\n",
-    "6. Esempio pratico"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {
-    "colab_type": "text",
     "id": "Qq0e4wncn1IJ"
    },
    "source": [
@@ -982,7 +955,7 @@
     "id": "OIS_GI8axT-n"
    },
    "source": [
-    "## Clustering for Image Segmentation\n",
+    "## 3. Clustering for Image Segmentation\n",
     "Divide image into multiple segment (color segmentation). We will collect pixel having the same color. \n",
     "\n",
     "Importnat: K-Means prefers clusters of similar size"
@@ -1154,7 +1127,7 @@
     "id": "yZIItJHJyFlF"
    },
    "source": [
-    "## Clustering for Preprocessing\n",
+    "## 4. Clustering for Preprocessing\n",
     "We have seen PCA (dimensionality reduction).\n",
     "\n",
     "Although it is tempting to define the number of clusters to 10, since\n",
@@ -1326,7 +1299,7 @@
     "id": "6JCpy9kbzmw7"
    },
    "source": [
-    "## Clustering for semi-supervised Learning\n",
+    "## 5. Clustering for semi-supervised Learning\n",
     "Another use case for clustering is in semi-supervised learning, when\n",
     "we have plenty of unlabeled instances and very few labeled instances.\n",
     "\n",
@@ -1603,7 +1576,7 @@
     "id": "ze-UpWVF2Zxv"
    },
    "source": [
-    "## DBSCAN Algoritmo\n",
+    "## 6. DBSCAN Algoritmo\n",
     "local density estimation. It allows to identify clusters of arbitraty shapes. This algorithm defines clusters as continuous regions of high density.\n",
     "This algorithm works well if all the clusters are dense enough, and they\n",
     "are well separated by low-density regions.\n",
