@@ -6,6 +6,9 @@
     - file: docs/numpy
     - file: docs/matplotlib
     - file: docs/pandas
+    - file: docs/seaborn
     - file: docs/analisi_covid19_spiegazione
     - file: docs/analisi_covid19_esercizio
+    - file: docs/clustering
+    
     
