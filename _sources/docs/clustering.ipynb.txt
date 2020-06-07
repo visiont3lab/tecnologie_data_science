@@ -1663,7 +1663,7 @@
     "id": "wwfbrlwy5nE6"
    },
    "source": [
-    "## Other clustering algorithms\n",
+    "## 7. Other clustering algorithms\n",
     "\n",
     "* Agglomerative clustering: . It can scale nicely to large numbers of\n",
     "instances if you provide a connectivity matrix. This is a sparse\n",
@@ -1687,20 +1687,10 @@
    "cell_type": "markdown",
    "metadata": {
     "colab_type": "text",
-    "id": "n1rk56EnFxYT"
-   },
-   "source": [
-    "## Examples:"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {
-    "colab_type": "text",
     "id": "hLU-kICyGOib"
    },
    "source": [
-    "### Example: Electrocardiogram Analysis"
+    "## Example: Electrocardiogram Analysis"
    ]
   },
   {
@@ -2219,7 +2209,7 @@
     "id": "YZvPh7G_Xryv"
    },
    "source": [
-    "## Extra Example: k-means on digits\n",
+    "## Example: k-means on digits \n",
     "\n",
     "To start, let's take a look at applying *k*-means on the same simple digits data that we saw in [In-Depth: Decision Trees and Random Forests](05.08-Random-Forests.ipynb) and [In Depth: Principal Component Analysis](05.09-Principal-Component-Analysis.ipynb).\n",
     "Here we will attempt to use *k*-means to try to identify similar digits *without using the original label information*; this might be similar to a first step in extracting meaning from a new dataset about which you don't have any *a priori* label information.\n",
