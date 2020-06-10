@@ -9,6 +9,9 @@
     - file: docs/seaborn
     - file: docs/analisi_covid19_spiegazione
     - file: docs/analisi_covid19_esercizio
+    - file: docs/41_Iris
+    - file: docs/51_solut_tips
+    - file: docs/52_boston_housing
     - file: docs/clustering
     
     
