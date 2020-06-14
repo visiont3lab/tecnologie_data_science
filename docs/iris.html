@@ -31,7 +31,7 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="TIPS" href="51_solut_tips.html" />
+    <link rel="next" title="TIPS" href="solut_tips.html" />
     <link rel="prev" title="Analisi Covid19 dataset usando Pandas, Matplotlib, Plotly, Dash : (Soluzione)" href="analisi_covid19_esercizio.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -95,10 +95,16 @@
     <a href="analisi_covid19_esercizio.html">Analisi Covid19 dataset usando Pandas, Matplotlib, Plotly, Dash : (Soluzione)</a>
   </li>
   <li class="">
-    <a href="51_solut_tips.html">TIPS</a>
+    <a href="solut_tips.html">TIPS</a>
   </li>
   <li class="">
-    <a href="52_boston_housing.html">Boston Housing Dataset</a>
+    <a href="boston_housing.html">Boston Housing Dataset</a>
+  </li>
+  <li class="">
+    <a href="decision_tree.html">DECISION TREE</a>
+  </li>
+  <li class="">
+    <a href="regressore.html">Export coeff of regressor</a>
   </li>
   <li class="">
     <a href="clustering.html">Clustering (Kmeans, DBScan)</a>
@@ -136,7 +142,7 @@
                 <!-- ipynb file if we had a myst markdown file -->
                 
                 <!-- Download raw file -->
-                <a class="dropdown-buttons" href="../_sources/docs/41_Iris.ipynb"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.ipynb</button></a>
+                <a class="dropdown-buttons" href="../_sources/docs/iris.ipynb"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.ipynb</button></a>
                 <!-- Download PDF via print -->
                 <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
             </div>
@@ -168,7 +174,7 @@
         
               <div>
                 
-  <p><a href="https://colab.research.google.com/github/visiont3lab/tecnologie_data_science/blob/master/book/docs/41_Iris.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+  <p><a href="https://colab.research.google.com/github/visiont3lab/tecnologie_data_science/blob/master/book/docs/iris.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
@@ -662,7 +668,7 @@ memory usage: 6.0+ KB
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fc54b9cdf28&gt;
 </pre></div>
 </div>
-<img alt="../_images/41_Iris_10_1.png" src="../_images/41_Iris_10_1.png" />
+<img alt="../_images/iris_10_1.png" src="../_images/iris_10_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -672,7 +678,7 @@ memory usage: 6.0+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/41_Iris_11_0.png" src="../_images/41_Iris_11_0.png" />
+<img alt="../_images/iris_11_0.png" src="../_images/iris_11_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -701,7 +707,7 @@ memory usage: 6.0+ KB
       dtype=object)
 </pre></div>
 </div>
-<img alt="../_images/41_Iris_12_1.png" src="../_images/41_Iris_12_1.png" />
+<img alt="../_images/iris_12_1.png" src="../_images/iris_12_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -714,7 +720,7 @@ memory usage: 6.0+ KB
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fc5463bbe80&gt;
 </pre></div>
 </div>
-<img alt="../_images/41_Iris_13_1.png" src="../_images/41_Iris_13_1.png" />
+<img alt="../_images/iris_13_1.png" src="../_images/iris_13_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -724,7 +730,7 @@ memory usage: 6.0+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/41_Iris_14_0.png" src="../_images/41_Iris_14_0.png" />
+<img alt="../_images/iris_14_0.png" src="../_images/iris_14_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -744,7 +750,7 @@ memory usage: 6.0+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/41_Iris_15_0.png" src="../_images/41_Iris_15_0.png" />
+<img alt="../_images/iris_15_0.png" src="../_images/iris_15_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -769,7 +775,7 @@ memory usage: 6.0+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/41_Iris_17_0.png" src="../_images/41_Iris_17_0.png" />
+<img alt="../_images/iris_17_0.png" src="../_images/iris_17_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -779,7 +785,7 @@ memory usage: 6.0+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/41_Iris_18_0.png" src="../_images/41_Iris_18_0.png" />
+<img alt="../_images/iris_18_0.png" src="../_images/iris_18_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -797,7 +803,7 @@ memory usage: 6.0+ KB
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fc546085ba8&gt;
 </pre></div>
 </div>
-<img alt="../_images/41_Iris_19_2.png" src="../_images/41_Iris_19_2.png" />
+<img alt="../_images/iris_19_2.png" src="../_images/iris_19_2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -807,7 +813,7 @@ memory usage: 6.0+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/41_Iris_20_0.png" src="../_images/41_Iris_20_0.png" />
+<img alt="../_images/iris_20_0.png" src="../_images/iris_20_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -821,7 +827,7 @@ memory usage: 6.0+ KB
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fc545e1b898&gt;
 </pre></div>
 </div>
-<img alt="../_images/41_Iris_21_1.png" src="../_images/41_Iris_21_1.png" />
+<img alt="../_images/iris_21_1.png" src="../_images/iris_21_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -836,7 +842,7 @@ memory usage: 6.0+ KB
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fc5468415c0&gt;
 </pre></div>
 </div>
-<img alt="../_images/41_Iris_22_1.png" src="../_images/41_Iris_22_1.png" />
+<img alt="../_images/iris_22_1.png" src="../_images/iris_22_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -847,7 +853,7 @@ memory usage: 6.0+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/41_Iris_23_0.png" src="../_images/41_Iris_23_0.png" />
+<img alt="../_images/iris_23_0.png" src="../_images/iris_23_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -857,7 +863,7 @@ memory usage: 6.0+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/41_Iris_24_0.png" src="../_images/41_Iris_24_0.png" />
+<img alt="../_images/iris_24_0.png" src="../_images/iris_24_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -870,7 +876,7 @@ memory usage: 6.0+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/41_Iris_25_0.png" src="../_images/41_Iris_25_0.png" />
+<img alt="../_images/iris_25_0.png" src="../_images/iris_25_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -886,7 +892,7 @@ memory usage: 6.0+ KB
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fc5461b06a0&gt;
 </pre></div>
 </div>
-<img alt="../_images/41_Iris_26_1.png" src="../_images/41_Iris_26_1.png" />
+<img alt="../_images/iris_26_1.png" src="../_images/iris_26_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -928,7 +934,7 @@ memory usage: 6.0+ KB
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fc545b5ae48&gt;
 </pre></div>
 </div>
-<img alt="../_images/41_Iris_31_1.png" src="../_images/41_Iris_31_1.png" />
+<img alt="../_images/iris_31_1.png" src="../_images/iris_31_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1315,7 +1321,7 @@ memory usage: 6.0+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/41_Iris_50_0.png" src="../_images/41_Iris_50_0.png" />
+<img alt="../_images/iris_50_0.png" src="../_images/iris_50_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1938,7 +1944,7 @@ Name: class, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/41_Iris_69_0.png" src="../_images/41_Iris_69_0.png" />
+<img alt="../_images/iris_69_0.png" src="../_images/iris_69_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1983,7 +1989,7 @@ Name: class, dtype: object
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="analisi_covid19_esercizio.html" title="previous page">Analisi Covid19 dataset usando Pandas, Matplotlib, Plotly, Dash : (Soluzione)</a>
-    <a class='right-next' id="next-link" href="51_solut_tips.html" title="next page">TIPS</a>
+    <a class='right-next' id="next-link" href="solut_tips.html" title="next page">TIPS</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

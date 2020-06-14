@@ -31,7 +31,7 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Boston Housing Dataset" href="52_boston_housing.html" />
+    <link rel="prev" title="Export coeff of regressor" href="regressore.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -94,10 +94,16 @@
     <a href="analisi_covid19_esercizio.html">Analisi Covid19 dataset usando Pandas, Matplotlib, Plotly, Dash : (Soluzione)</a>
   </li>
   <li class="">
-    <a href="51_solut_tips.html">TIPS</a>
+    <a href="solut_tips.html">TIPS</a>
   </li>
   <li class="">
-    <a href="52_boston_housing.html">Boston Housing Dataset</a>
+    <a href="boston_housing.html">Boston Housing Dataset</a>
+  </li>
+  <li class="">
+    <a href="decision_tree.html">DECISION TREE</a>
+  </li>
+  <li class="">
+    <a href="regressore.html">Export coeff of regressor</a>
   </li>
   <li class="active">
     <a href="">Clustering (Kmeans, DBScan)</a>
@@ -1424,7 +1430,7 @@ clusters have very different sizes.</p></li>
 </div>
 <div class="section" id="example-k-means-on-digits">
 <h2>Example: k-means on digits<a class="headerlink" href="#example-k-means-on-digits" title="Permalink to this headline">¶</a></h2>
-<p>To start, let’s take a look at applying <em>k</em>-means on the same simple digits data that we saw in <code class="xref any docutils literal notranslate"><span class="pre">In-Depth:</span> <span class="pre">Decision</span> <span class="pre">Trees</span> <span class="pre">and</span> <span class="pre">Random</span> <span class="pre">Forests</span></code> and <code class="xref any docutils literal notranslate"><span class="pre">In</span> <span class="pre">Depth:</span> <span class="pre">Principal</span> <span class="pre">Component</span> <span class="pre">Analysis</span></code>.
+<p>To start, let’s take a look at applying <em>k</em>-means on the same simple digits data that we saw in <span class="xref myst">In-Depth: Decision Trees and Random Forests</span> and <span class="xref myst">In Depth: Principal Component Analysis</span>.
 Here we will attempt to use <em>k</em>-means to try to identify similar digits <em>without using the original label information</em>; this might be similar to a first step in extracting meaning from a new dataset about which you don’t have any <em>a priori</em> label information.</p>
 <p>We will start by loading the digits and then finding the <code class="docutils literal notranslate"><span class="pre">KMeans</span></code> clusters.
 Recall that the digits consist of 1,797 samples with 64 features, where each of the 64 features is the brightness of one pixel in an 8×8 image:</p>
@@ -1524,7 +1530,7 @@ Let’s check the confusion matrix for this:</p>
 <p>As we might expect from the cluster centers we visualized before, the main point of confusion is between the eights and ones.
 But this still shows that using <em>k</em>-means, we can essentially build a digit classifier <em>without reference to any known labels</em>!</p>
 <p>Just for fun, let’s try to push this even farther.
-We can use the t-distributed stochastic neighbor embedding (t-SNE) algorithm (mentioned in <code class="xref any docutils literal notranslate"><span class="pre">In-Depth:</span> <span class="pre">Manifold</span> <span class="pre">Learning</span></code>) to pre-process the data before performing <em>k</em>-means.
+We can use the t-distributed stochastic neighbor embedding (t-SNE) algorithm (mentioned in <span class="xref myst">In-Depth: Manifold Learning</span>) to pre-process the data before performing <em>k</em>-means.
 t-SNE is a nonlinear embedding algorithm that is particularly adept at preserving points within clusters.
 Let’s see how it does:</p>
 <div class="cell docutils container">
@@ -1570,7 +1576,7 @@ This is the power of unsupervised learning when used carefully: it can extract i
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="52_boston_housing.html" title="previous page">Boston Housing Dataset</a>
+    <a class='left-prev' id="prev-link" href="regressore.html" title="previous page">Export coeff of regressor</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
