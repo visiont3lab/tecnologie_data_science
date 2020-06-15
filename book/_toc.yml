@@ -15,5 +15,8 @@
     - file: docs/decision_tree
     - file: docs/regressore
     - file: docs/clustering
+    - file: docs/pca
+    - file: docs/binary_classifier
+    
     
     
