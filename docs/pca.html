@@ -1,0 +1,2486 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>PCA &#8212; Tecnologie &amp; Software di Data Science</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Clustering" href="clustering.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Tecnologie & Software di Data Science</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="introduzione_generale.html">Introduzione</a>
+  </li>
+  <li class="">
+    <a href="introduzione_programmazione.html">Introduzione programmazione</a>
+  </li>
+  <li class="">
+    <a href="google_colab.html">Google Colaboratory</a>
+  </li>
+  <li class="">
+    <a href="numpy.html">Numpy Array</a>
+  </li>
+  <li class="">
+    <a href="matplotlib.html">Intro Matplotlib</a>
+  </li>
+  <li class="">
+    <a href="pandas.html">Pandas</a>
+  </li>
+  <li class="">
+    <a href="seaborn.html">Seaborn</a>
+  </li>
+  <li class="">
+    <a href="analisi_covid19_spiegazione.html">Analisi Covid19 dataset usando Pandas, Matplotlib, Plotly, Dash : (Spiegazione)</a>
+  </li>
+  <li class="">
+    <a href="analisi_covid19_esercizio.html">Analisi Covid19 dataset usando Pandas, Matplotlib, Plotly, Dash : (Soluzione)</a>
+  </li>
+  <li class="">
+    <a href="solut_tips.html">TIPS</a>
+  </li>
+  <li class="">
+    <a href="boston_housing.html">Boston Housing Dataset</a>
+  </li>
+  <li class="">
+    <a href="decision_tree.html">DECISION TREE</a>
+  </li>
+  <li class="">
+    <a href="regressore.html">Export coeff of regressor</a>
+  </li>
+  <li class="">
+    <a href="clustering.html">Clustering</a>
+  </li>
+  <li class="active">
+    <a href="">PCA</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="../_sources/docs/pca.ipynb"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.ipynb</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Source interaction buttons -->
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><a href="https://colab.research.google.com/github/visiont3lab/tecnologie_data_science/blob/master/book/docs/pca.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<div class="section" id="pca">
+<h1>PCA<a class="headerlink" href="#pca" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="cosa-andremo-a-fare-oggi">
+<h1>Cosa andremo a fare oggi?<a class="headerlink" href="#cosa-andremo-a-fare-oggi" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Creazione di un dataset usando la libreria pandas. Come passare da numpy array to pandas dataframe</p></li>
+<li><p>Scikit-Learn datasets Spiegazione, nozioni su come scaricarli applicazione della regressione lineare a un dataset di scikit-learn (diabetes dataset)</p></li>
+<li><p>Cosa significa correlazione? Quando e perchè si utilizza</p></li>
+<li><p>Principal Component Analysis (PCA) dimensionality reduction</p>
+<ul>
+<li><p>Riduzione del numero di input a un numero fisso (es. 2)</p></li>
+<li><p>Come facciamo a riddure il numero degli input senza ridurre il contenuto di informazioni del nostro dataset iniziale?</p></li>
+</ul>
+</li>
+<li><p>Esempio pratico: Regressione lineare applicata a un dataset con e senza PCA.</p></li>
+</ul>
+</div>
+<div class="section" id="creazione-di-un-dataset-usando-la-libreria-pandas">
+<h1>Creazione di un dataset usando la libreria pandas<a class="headerlink" href="#creazione-di-un-dataset-usando-la-libreria-pandas" title="Permalink to this headline">¶</a></h1>
+<p>In questo paragrafo andiamo a vedere come creare una classe dataset usando sia numpy che pandas in modo che possiamo facilmente applicare le regressioni studiate a questo. Inoltre vedremo come utilizare i dataset di scikit-learn.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Y = Salario al mese in euro</span>
+<span class="sd">X1 = Età del lavoratore</span>
+<span class="sd">X2 = Numero di ore mensili di lavoro</span>
+<span class="sd">X3 = Indice di esperienza da 1 a 10</span>
+<span class="sd">Equazione = Y = w0 + w1*X1 + w2*X2 + w3*X3</span>
+<span class="sd">1) Marco:    Y=1100   X1=19   X2=150   X3=6    Y= w0*1 + w1*X1 + w2*X2 + w3*X3 --&gt; 1100 = w0*1 + w1*19 + w2*150 + w3*6</span>
+<span class="sd">2) Daniele:  Y=1150   X1=21   X2=135   X3=8    Y= w0*1 + w1*X1 + w2*X2 + w3*X3 --&gt; 1100 = w0*1 + w1*21 + w2*135 + w3*8</span>
+<span class="sd">3) Davide:   Y=1155   X1=22   X2=160   X3=5    Y= w0*1 + w1*X1 + w2*X2 + w3*X3 --&gt; 1100 = w0*1 + w1*22 + w2*160 + w3*5 </span>
+<span class="sd">4) Marta:    Y=1170   X1=23   X2=158   X3=7    Y= w0*1 + w1*X1 + w2*X2 + w3*X3 --&gt; 1100 = w0*1 + w1*23 + w2*158 + w3*7</span>
+<span class="sd">6) Alessia:  Y=1200   X1=26   X2=155   X3=7    Y= w0*1 + w1*X1 + w2*X2 + w3*X3 --&gt; 1100 = w0*1 + w1*26 + w2*155 + w3*7</span>
+<span class="sd">9) Stella:   Y=1750   X1=33   X2=120   X3=10   Y= w0*1 + w1*X1 + w2*X2 + w3*X3 --&gt; 1100 = w0*1 + w1*33 + w2*120 + w3*10</span>
+<span class="sd">10) Chiara   Y=1640   X1=29   X2=130   x3=9    Y= w0*1 + w1*X1 + w2*X2 + w3*X3 --&gt; 1100 = w0*1 + w1*29 + w2*130 + w3*9</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="k">class</span> <span class="nc">Dataset</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">19</span><span class="p">,</span><span class="mi">150</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">21</span><span class="p">,</span><span class="mi">135</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">22</span><span class="p">,</span><span class="mi">160</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">23</span><span class="p">,</span><span class="mi">158</span><span class="p">,</span><span class="mi">7</span><span class="p">],</span> <span class="p">[</span><span class="mi">26</span><span class="p">,</span><span class="mi">155</span><span class="p">,</span><span class="mi">7</span><span class="p">],</span> <span class="p">[</span><span class="mi">33</span><span class="p">,</span><span class="mi">120</span><span class="p">,</span><span class="mi">10</span><span class="p">],[</span><span class="mi">29</span><span class="p">,</span><span class="mi">130</span><span class="p">,</span><span class="mi">9</span><span class="p">]])</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1100</span><span class="p">],[</span><span class="mi">1150</span><span class="p">],[</span><span class="mi">1155</span><span class="p">],[</span><span class="mi">1170</span><span class="p">],[</span><span class="mi">1200</span><span class="p">],[</span><span class="mi">1750</span><span class="p">],[</span><span class="mi">1640</span><span class="p">]])</span>
+    <span class="k">def</span> <span class="nf">createPandasDataset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">df_X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span><span class="p">[</span><span class="s2">&quot;età&quot;</span><span class="p">,</span><span class="s2">&quot;ore mensili&quot;</span><span class="p">,</span> <span class="s2">&quot;esperienza&quot;</span><span class="p">])</span>
+        <span class="n">df_Y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span><span class="p">[</span><span class="s2">&quot;salario&quot;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">df_X</span><span class="p">,</span> <span class="n">df_Y</span>
+
+<span class="n">myDataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">()</span>
+<span class="n">df_X</span><span class="p">,</span> <span class="n">df_Y</span> <span class="o">=</span> <span class="n">myDataset</span><span class="o">.</span><span class="n">createPandasDataset</span><span class="p">()</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_X</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_Y</span><span class="p">)</span>
+
+      
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>età</th>
+      <th>ore mensili</th>
+      <th>esperienza</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>19</td>
+      <td>150</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>21</td>
+      <td>135</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>22</td>
+      <td>160</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>23</td>
+      <td>158</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>26</td>
+      <td>155</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>33</td>
+      <td>120</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>29</td>
+      <td>130</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>solario</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1100</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1150</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1155</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1170</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1200</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1750</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1640</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="scikit-learn-datasets-spiegazione-e-nozioni-su-come-scaricarli">
+<h1>Scikit-Learn datasets spiegazione e  nozioni su come scaricarli.<a class="headerlink" href="#scikit-learn-datasets-spiegazione-e-nozioni-su-come-scaricarli" title="Permalink to this headline">¶</a></h1>
+<p>Andremo a vedere quali dataset sono disponibili in scikit-learn, come scaricarli e capirne il contenuto.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/datasets/index.html#datasets">Sklearn dataset page</a></p></li>
+</ul>
+<p>I dataset disponibili sono i seguenti:</p>
+<ul class="simple">
+<li><p>Regressione:</p>
+<ul>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html#sklearn.datasets.load_boston">Boston houses price dataset</a></p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_diabetes.html#sklearn.datasets.load_diabetes">Diabetes dataset</a></p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_linnerud.html#sklearn.datasets.load_linnerud">Linnerrud Dataset</a></p></li>
+</ul>
+</li>
+<li><p>Classificazione:</p>
+<ul>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_iris.html#sklearn.datasets.load_iris">Iris plant dataset</a></p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html#sklearn.datasets.load_digits">Optical recognition of handwritten digits dataset</a></p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_wine.html#sklearn.datasets.load_wine">Wine Recognition dataset</a></p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html#sklearn.datasets.load_breast_cancer">Breast cancer wisconsin (diagnostic) dataset</a></p></li>
+</ul>
+</li>
+</ul>
+<p>Implementazione di una classe capace di scaricare i dati da scikit-learn, visualizzarli e analizzarli.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importare i datasets</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="k">class</span> <span class="nc">ScikitLearnDatasets</span><span class="p">:</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">):</span>
+    <span class="c1"># Load all scikit-learn dataset</span>
+    <span class="k">if</span> <span class="p">(</span><span class="s2">&quot;iris&quot;</span><span class="o">==</span><span class="n">dataset_name</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span> <span class="c1"># Classificazione iris dataset</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="s2">&quot;digits&quot;</span><span class="o">==</span><span class="n">dataset_name</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_digits</span><span class="p">()</span> <span class="c1"># Classificazione Load digits dataset</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="s2">&quot;wine&quot;</span><span class="o">==</span><span class="n">dataset_name</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_wine</span><span class="p">()</span> <span class="c1"># Classificazione Load wine dataset</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="s2">&quot;breast_cancer&quot;</span><span class="o">==</span><span class="n">dataset_name</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_breast_cancer</span><span class="p">()</span> <span class="c1"># Classificazione Load breast_cancer dataset</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="s2">&quot;boston&quot;</span><span class="o">==</span><span class="n">dataset_name</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_boston</span><span class="p">()</span> <span class="c1"># Regressione Load boston dataset</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span><span class="o">.</span><span class="n">update</span><span class="p">([</span> <span class="p">(</span><span class="s1">&#39;target_names&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Boston-House-Price&#39;</span><span class="p">])]</span> <span class="p">)</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="s2">&quot;diabetes&quot;</span><span class="o">==</span><span class="n">dataset_name</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_diabetes</span><span class="p">()</span> <span class="c1"># Regressione Load diabetes dataset</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span><span class="o">.</span><span class="n">update</span><span class="p">([</span> <span class="p">(</span><span class="s1">&#39;target_names&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Desease-Progression&#39;</span><span class="p">])]</span> <span class="p">)</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="s2">&quot;linnerud&quot;</span><span class="o">==</span><span class="n">dataset_name</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_linnerud</span><span class="p">()</span> <span class="c1"># Regressione Load linnerud dataset</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span> <span class="o">=</span> <span class="n">diabetes</span> <span class="c1"># Regressione default choice</span>
+    
+    <span class="c1"># Print dataset information</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">printDatasetInformation</span><span class="p">()</span>
+
+  <span class="k">def</span> <span class="nf">printDatasetInformation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c1">#print(dataset_scelto)</span>
+    <span class="n">parametri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+    <span class="n">valore</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">parametri</span><span class="p">)</span>
+    <span class="c1"># Print useful information</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">parametri</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------------------------------------------&quot;</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="n">name</span> <span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span><span class="p">[</span><span class="n">name</span><span class="p">])</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------------------------------------------&quot;</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">getXY</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c1"># Get Input (X) Data</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="c1"># or  data = iris.get(&#39;data&#39;)</span>
+    <span class="n">X_names</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span><span class="p">[</span><span class="s1">&#39;feature_names&#39;</span><span class="p">]</span>
+    
+    <span class="c1"># Get Output (Y) Target</span>
+    <span class="n">parametri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span>
+    <span class="n">Y_names</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span><span class="p">[</span><span class="s1">&#39;target_names&#39;</span><span class="p">]</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dataset Parameters: &quot;</span><span class="p">,</span> <span class="n">parametri</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Feature Names: &quot;</span><span class="p">,</span> <span class="n">X_names</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Output Names: &quot;</span><span class="p">,</span> <span class="n">Y_names</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Input X Shape: &quot;</span> <span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Output Y Shape: &quot;</span> <span class="p">,</span> <span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">X_names</span><span class="p">,</span><span class="n">Y_names</span>
+          
+  <span class="k">def</span> <span class="nf">createPandasDataFrame</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">X_names</span><span class="p">,</span><span class="n">Y_names</span><span class="p">,</span><span class="n">dataset_name</span><span class="p">):</span>
+    <span class="n">df_X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span><span class="n">X_names</span><span class="p">)</span>
+    <span class="n">df_Y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">Y</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span><span class="n">Y_names</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df_X</span><span class="p">,</span> <span class="n">df_Y</span>
+
+  <span class="k">def</span> <span class="nf">writeDataFrameToCsv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">df_X</span><span class="p">,</span><span class="n">df_Y</span><span class="p">):</span>
+    <span class="c1"># Create csv file</span>
+    <span class="n">df_X</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">dataset_name</span> <span class="o">+</span> <span class="s1">&#39;_X.csv&#39;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">df_Y</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">dataset_name</span> <span class="o">+</span> <span class="s1">&#39;_Y.csv&#39;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+    
+<span class="c1"># Choose the dataset</span>
+<span class="c1"># Regressione: &quot;boston&quot;, &quot;diabetes&quot;,</span>
+<span class="c1"># Classificazione: &quot;iris&quot;, &quot;digits&quot;, &quot;wine&quot;, &quot;breast_cancer &quot;</span>
+<span class="c1"># Regressione: &quot;diabetes&quot;, &quot;boston&quot;, &quot;linnerud&quot;</span>
+<span class="n">dataset_name</span> <span class="o">=</span> <span class="s2">&quot;diabetes&quot;</span>
+<span class="n">myScikitLearnDatasets</span><span class="o">=</span><span class="n">ScikitLearnDatasets</span><span class="p">(</span><span class="n">dataset_name</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">X_names</span><span class="p">,</span><span class="n">Y_names</span> <span class="o">=</span> <span class="n">myScikitLearnDatasets</span><span class="o">.</span><span class="n">getXY</span><span class="p">()</span>
+<span class="n">df_X</span><span class="p">,</span><span class="n">df_Y</span> <span class="o">=</span> <span class="n">myScikitLearnDatasets</span><span class="o">.</span><span class="n">createPandasDataFrame</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">X_names</span><span class="p">,</span><span class="n">Y_names</span><span class="p">,</span><span class="n">dataset_name</span><span class="p">)</span>
+<span class="n">myScikitLearnDatasets</span><span class="o">.</span><span class="n">writeDataFrameToCsv</span><span class="p">(</span><span class="n">df_X</span><span class="p">,</span><span class="n">df_Y</span><span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">df_X</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_Y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;data&#39;, &#39;target&#39;, &#39;DESCR&#39;, &#39;feature_names&#39;, &#39;data_filename&#39;, &#39;target_filename&#39;, &#39;target_names&#39;])
+------------------------------------------
+data [[ 0.03807591  0.05068012  0.06169621 ... -0.00259226  0.01990842
+  -0.01764613]
+ [-0.00188202 -0.04464164 -0.05147406 ... -0.03949338 -0.06832974
+  -0.09220405]
+ [ 0.08529891  0.05068012  0.04445121 ... -0.00259226  0.00286377
+  -0.02593034]
+ ...
+ [ 0.04170844  0.05068012 -0.01590626 ... -0.01107952 -0.04687948
+   0.01549073]
+ [-0.04547248 -0.04464164  0.03906215 ...  0.02655962  0.04452837
+  -0.02593034]
+ [-0.04547248 -0.04464164 -0.0730303  ... -0.03949338 -0.00421986
+   0.00306441]]
+------------------------------------------
+------------------------------------------
+target [151.  75. 141. 206. 135.  97. 138.  63. 110. 310. 101.  69. 179. 185.
+ 118. 171. 166. 144.  97. 168.  68.  49.  68. 245. 184. 202. 137.  85.
+ 131. 283. 129.  59. 341.  87.  65. 102. 265. 276. 252.  90. 100.  55.
+  61.  92. 259.  53. 190. 142.  75. 142. 155. 225.  59. 104. 182. 128.
+  52.  37. 170. 170.  61. 144.  52. 128.  71. 163. 150.  97. 160. 178.
+  48. 270. 202. 111.  85.  42. 170. 200. 252. 113. 143.  51.  52. 210.
+  65. 141.  55. 134.  42. 111.  98. 164.  48.  96.  90. 162. 150. 279.
+  92.  83. 128. 102. 302. 198.  95.  53. 134. 144. 232.  81. 104.  59.
+ 246. 297. 258. 229. 275. 281. 179. 200. 200. 173. 180.  84. 121. 161.
+  99. 109. 115. 268. 274. 158. 107.  83. 103. 272.  85. 280. 336. 281.
+ 118. 317. 235.  60. 174. 259. 178. 128.  96. 126. 288.  88. 292.  71.
+ 197. 186.  25.  84.  96. 195.  53. 217. 172. 131. 214.  59.  70. 220.
+ 268. 152.  47.  74. 295. 101. 151. 127. 237. 225.  81. 151. 107.  64.
+ 138. 185. 265. 101. 137. 143. 141.  79. 292. 178.  91. 116.  86. 122.
+  72. 129. 142.  90. 158.  39. 196. 222. 277.  99. 196. 202. 155.  77.
+ 191.  70.  73.  49.  65. 263. 248. 296. 214. 185.  78.  93. 252. 150.
+  77. 208.  77. 108. 160.  53. 220. 154. 259.  90. 246. 124.  67.  72.
+ 257. 262. 275. 177.  71.  47. 187. 125.  78.  51. 258. 215. 303. 243.
+  91. 150. 310. 153. 346.  63.  89.  50.  39. 103. 308. 116. 145.  74.
+  45. 115. 264.  87. 202. 127. 182. 241.  66.  94. 283.  64. 102. 200.
+ 265.  94. 230. 181. 156. 233.  60. 219.  80.  68. 332. 248.  84. 200.
+  55.  85.  89.  31. 129.  83. 275.  65. 198. 236. 253. 124.  44. 172.
+ 114. 142. 109. 180. 144. 163. 147.  97. 220. 190. 109. 191. 122. 230.
+ 242. 248. 249. 192. 131. 237.  78. 135. 244. 199. 270. 164.  72.  96.
+ 306.  91. 214.  95. 216. 263. 178. 113. 200. 139. 139.  88. 148.  88.
+ 243.  71.  77. 109. 272.  60.  54. 221.  90. 311. 281. 182. 321.  58.
+ 262. 206. 233. 242. 123. 167.  63. 197.  71. 168. 140. 217. 121. 235.
+ 245.  40.  52. 104. 132.  88.  69. 219.  72. 201. 110.  51. 277.  63.
+ 118.  69. 273. 258.  43. 198. 242. 232. 175.  93. 168. 275. 293. 281.
+  72. 140. 189. 181. 209. 136. 261. 113. 131. 174. 257.  55.  84.  42.
+ 146. 212. 233.  91. 111. 152. 120.  67. 310.  94. 183.  66. 173.  72.
+  49.  64.  48. 178. 104. 132. 220.  57.]
+------------------------------------------
+------------------------------------------
+DESCR .. _diabetes_dataset:
+
+Diabetes dataset
+----------------
+
+Ten baseline variables, age, sex, body mass index, average blood
+pressure, and six blood serum measurements were obtained for each of n =
+442 diabetes patients, as well as the response of interest, a
+quantitative measure of disease progression one year after baseline.
+
+**Data Set Characteristics:**
+
+  :Number of Instances: 442
+
+  :Number of Attributes: First 10 columns are numeric predictive values
+
+  :Target: Column 11 is a quantitative measure of disease progression one year after baseline
+
+  :Attribute Information:
+      - Age
+      - Sex
+      - Body mass index
+      - Average blood pressure
+      - S1
+      - S2
+      - S3
+      - S4
+      - S5
+      - S6
+
+Note: Each of these 10 feature variables have been mean centered and scaled by the standard deviation times `n_samples` (i.e. the sum of squares of each column totals 1).
+
+Source URL:
+https://www4.stat.ncsu.edu/~boos/var.select/diabetes.html
+
+For more information see:
+Bradley Efron, Trevor Hastie, Iain Johnstone and Robert Tibshirani (2004) &quot;Least Angle Regression,&quot; Annals of Statistics (with discussion), 407-499.
+(https://web.stanford.edu/~hastie/Papers/LARS/LeastAngle_2002.pdf)
+------------------------------------------
+------------------------------------------
+feature_names [&#39;age&#39;, &#39;sex&#39;, &#39;bmi&#39;, &#39;bp&#39;, &#39;s1&#39;, &#39;s2&#39;, &#39;s3&#39;, &#39;s4&#39;, &#39;s5&#39;, &#39;s6&#39;]
+------------------------------------------
+------------------------------------------
+data_filename /usr/local/lib/python3.6/dist-packages/sklearn/datasets/data/diabetes_data.csv.gz
+------------------------------------------
+------------------------------------------
+target_filename /usr/local/lib/python3.6/dist-packages/sklearn/datasets/data/diabetes_target.csv.gz
+------------------------------------------
+------------------------------------------
+target_names [&#39;Desease-Progression&#39;]
+------------------------------------------
+Dataset Parameters:  dict_keys([&#39;data&#39;, &#39;target&#39;, &#39;DESCR&#39;, &#39;feature_names&#39;, &#39;data_filename&#39;, &#39;target_filename&#39;, &#39;target_names&#39;])
+Feature Names:  [&#39;age&#39;, &#39;sex&#39;, &#39;bmi&#39;, &#39;bp&#39;, &#39;s1&#39;, &#39;s2&#39;, &#39;s3&#39;, &#39;s4&#39;, &#39;s5&#39;, &#39;s6&#39;]
+Output Names:  [&#39;Desease-Progression&#39;]
+Input X Shape:  (442, 10)
+Output Y Shape:  (442,)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>sex</th>
+      <th>bmi</th>
+      <th>bp</th>
+      <th>s1</th>
+      <th>s2</th>
+      <th>s3</th>
+      <th>s4</th>
+      <th>s5</th>
+      <th>s6</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.038076</td>
+      <td>0.050680</td>
+      <td>0.061696</td>
+      <td>0.021872</td>
+      <td>-0.044223</td>
+      <td>-0.034821</td>
+      <td>-0.043401</td>
+      <td>-0.002592</td>
+      <td>0.019908</td>
+      <td>-0.017646</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.001882</td>
+      <td>-0.044642</td>
+      <td>-0.051474</td>
+      <td>-0.026328</td>
+      <td>-0.008449</td>
+      <td>-0.019163</td>
+      <td>0.074412</td>
+      <td>-0.039493</td>
+      <td>-0.068330</td>
+      <td>-0.092204</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.085299</td>
+      <td>0.050680</td>
+      <td>0.044451</td>
+      <td>-0.005671</td>
+      <td>-0.045599</td>
+      <td>-0.034194</td>
+      <td>-0.032356</td>
+      <td>-0.002592</td>
+      <td>0.002864</td>
+      <td>-0.025930</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-0.089063</td>
+      <td>-0.044642</td>
+      <td>-0.011595</td>
+      <td>-0.036656</td>
+      <td>0.012191</td>
+      <td>0.024991</td>
+      <td>-0.036038</td>
+      <td>0.034309</td>
+      <td>0.022692</td>
+      <td>-0.009362</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.005383</td>
+      <td>-0.044642</td>
+      <td>-0.036385</td>
+      <td>0.021872</td>
+      <td>0.003935</td>
+      <td>0.015596</td>
+      <td>0.008142</td>
+      <td>-0.002592</td>
+      <td>-0.031991</td>
+      <td>-0.046641</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>437</th>
+      <td>0.041708</td>
+      <td>0.050680</td>
+      <td>0.019662</td>
+      <td>0.059744</td>
+      <td>-0.005697</td>
+      <td>-0.002566</td>
+      <td>-0.028674</td>
+      <td>-0.002592</td>
+      <td>0.031193</td>
+      <td>0.007207</td>
+    </tr>
+    <tr>
+      <th>438</th>
+      <td>-0.005515</td>
+      <td>0.050680</td>
+      <td>-0.015906</td>
+      <td>-0.067642</td>
+      <td>0.049341</td>
+      <td>0.079165</td>
+      <td>-0.028674</td>
+      <td>0.034309</td>
+      <td>-0.018118</td>
+      <td>0.044485</td>
+    </tr>
+    <tr>
+      <th>439</th>
+      <td>0.041708</td>
+      <td>0.050680</td>
+      <td>-0.015906</td>
+      <td>0.017282</td>
+      <td>-0.037344</td>
+      <td>-0.013840</td>
+      <td>-0.024993</td>
+      <td>-0.011080</td>
+      <td>-0.046879</td>
+      <td>0.015491</td>
+    </tr>
+    <tr>
+      <th>440</th>
+      <td>-0.045472</td>
+      <td>-0.044642</td>
+      <td>0.039062</td>
+      <td>0.001215</td>
+      <td>0.016318</td>
+      <td>0.015283</td>
+      <td>-0.028674</td>
+      <td>0.026560</td>
+      <td>0.044528</td>
+      <td>-0.025930</td>
+    </tr>
+    <tr>
+      <th>441</th>
+      <td>-0.045472</td>
+      <td>-0.044642</td>
+      <td>-0.073030</td>
+      <td>-0.081414</td>
+      <td>0.083740</td>
+      <td>0.027809</td>
+      <td>0.173816</td>
+      <td>-0.039493</td>
+      <td>-0.004220</td>
+      <td>0.003064</td>
+    </tr>
+  </tbody>
+</table>
+<p>442 rows × 10 columns</p>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Desease-Progression</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>151.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>75.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>141.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>206.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>135.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>437</th>
+      <td>178.0</td>
+    </tr>
+    <tr>
+      <th>438</th>
+      <td>104.0</td>
+    </tr>
+    <tr>
+      <th>439</th>
+      <td>132.0</td>
+    </tr>
+    <tr>
+      <th>440</th>
+      <td>220.0</td>
+    </tr>
+    <tr>
+      <th>441</th>
+      <td>57.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>442 rows × 1 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="cosa-significa-correlazione">
+<h1>Cosa significa correlazione?<a class="headerlink" href="#cosa-significa-correlazione" title="Permalink to this headline">¶</a></h1>
+<p>Andiamo a vedere come si interpreta la matrice di correlazione.
+Rispondiamo alla domanda:</p>
+<center><h3> Come deve essere la matrice di correlazione?</h3> <center>
+La correlazione esprime quanto due feature (esempio età e sesso) sono simili tra loro. Al fine di avere un dataset utile alla nostra regressione lineare è necessario che non vi sia troppa correlazione tra i dati. Se ciò accadesse significherebbe che stiamo usando diverse volte informazioni molto simili per risolvere un problema.<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="c1"># Correlation Matrix</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">matshow</span><span class="p">(</span><span class="n">df_X</span><span class="o">.</span><span class="n">corr</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df_X</span><span class="o">.</span><span class="n">columns</span><span class="p">)),</span> <span class="n">df_X</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df_X</span><span class="o">.</span><span class="n">columns</span><span class="p">)),</span> <span class="n">df_X</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/pca_8_0.png" src="../_images/pca_8_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df_X</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">background_gradient</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_precision</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style  type="text/css" >
+    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row0_col0 {
+            background-color:  #b40426;
+            color:  #f1f1f1;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row0_col1 {
+            background-color:  #c0d4f5;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row0_col2 {
+            background-color:  #c1d4f4;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row0_col3 {
+            background-color:  #cbd8ee;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row0_col4 {
+            background-color:  #86a9fc;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row0_col5 {
+            background-color:  #aec9fc;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row0_col6 {
+            background-color:  #bad0f8;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row0_col7 {
+            background-color:  #e7d7ce;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row0_col8 {
+            background-color:  #d7dce3;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row0_col9 {
+            background-color:  #cfdaea;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row1_col0 {
+            background-color:  #86a9fc;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row1_col1 {
+            background-color:  #b40426;
+            color:  #f1f1f1;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row1_col2 {
+            background-color:  #aac7fd;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row1_col3 {
+            background-color:  #b2ccfb;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row1_col4 {
+            background-color:  #3b4cc0;
+            color:  #f1f1f1;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row1_col5 {
+            background-color:  #98b9ff;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row1_col6 {
+            background-color:  #7da0f9;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row1_col7 {
+            background-color:  #f3c7b1;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row1_col8 {
+            background-color:  #bed2f6;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row1_col9 {
+            background-color:  #b9d0f9;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row2_col0 {
+            background-color:  #89acfd;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row2_col1 {
+            background-color:  #abc8fd;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row2_col2 {
+            background-color:  #b40426;
+            color:  #f1f1f1;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row2_col3 {
+            background-color:  #d9dce1;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row2_col4 {
+            background-color:  #82a6fb;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row2_col5 {
+            background-color:  #bad0f8;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row2_col6 {
+            background-color:  #80a3fa;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row2_col7 {
+            background-color:  #f7b99e;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row2_col8 {
+            background-color:  #f2cab5;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row2_col9 {
+            background-color:  #e2dad5;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row3_col0 {
+            background-color:  #bad0f8;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row3_col1 {
+            background-color:  #cfdaea;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row3_col2 {
+            background-color:  #ead4c8;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row3_col3 {
+            background-color:  #b40426;
+            color:  #f1f1f1;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row3_col4 {
+            background-color:  #80a3fa;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row3_col5 {
+            background-color:  #a5c3fe;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row3_col6 {
+            background-color:  #a6c4fe;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row3_col7 {
+            background-color:  #edd1c2;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row3_col8 {
+            background-color:  #ecd3c5;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row3_col9 {
+            background-color:  #e2dad5;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row4_col0 {
+            background-color:  #a2c1ff;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row4_col1 {
+            background-color:  #9ebeff;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row4_col2 {
+            background-color:  #cfdaea;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row4_col3 {
+            background-color:  #b2ccfb;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row4_col4 {
+            background-color:  #b40426;
+            color:  #f1f1f1;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row4_col5 {
+            background-color:  #d24b40;
+            color:  #f1f1f1;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row4_col6 {
+            background-color:  #d1dae9;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row4_col7 {
+            background-color:  #f59f80;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row4_col8 {
+            background-color:  #f7bca1;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row4_col9 {
+            background-color:  #d5dbe5;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row5_col0 {
+            background-color:  #96b7ff;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row5_col1 {
+            background-color:  #b9d0f9;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row5_col2 {
+            background-color:  #d2dbe8;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row5_col3 {
+            background-color:  #a2c1ff;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row5_col4 {
+            background-color:  #d85646;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row5_col5 {
+            background-color:  #b40426;
+            color:  #f1f1f1;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row5_col6 {
+            background-color:  #a2c1ff;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row5_col7 {
+            background-color:  #ed8366;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row5_col8 {
+            background-color:  #e0dbd8;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row5_col9 {
+            background-color:  #cdd9ec;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row6_col0 {
+            background-color:  #3b4cc0;
+            color:  #f1f1f1;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row6_col1 {
+            background-color:  #3b4cc0;
+            color:  #f1f1f1;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row6_col2 {
+            background-color:  #3b4cc0;
+            color:  #f1f1f1;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row6_col3 {
+            background-color:  #3b4cc0;
+            color:  #f1f1f1;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row6_col4 {
+            background-color:  #3f53c6;
+            color:  #f1f1f1;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row6_col5 {
+            background-color:  #3b4cc0;
+            color:  #f1f1f1;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row6_col6 {
+            background-color:  #b40426;
+            color:  #f1f1f1;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row6_col7 {
+            background-color:  #3b4cc0;
+            color:  #f1f1f1;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row6_col8 {
+            background-color:  #3b4cc0;
+            color:  #f1f1f1;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row6_col9 {
+            background-color:  #3b4cc0;
+            color:  #f1f1f1;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row7_col0 {
+            background-color:  #90b2fe;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row7_col1 {
+            background-color:  #e1dad6;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row7_col2 {
+            background-color:  #edd1c2;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row7_col3 {
+            background-color:  #b6cefa;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row7_col4 {
+            background-color:  #e3d9d3;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row7_col5 {
+            background-color:  #f7a688;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row7_col6 {
+            background-color:  #3b4cc0;
+            color:  #f1f1f1;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row7_col7 {
+            background-color:  #b40426;
+            color:  #f1f1f1;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row7_col8 {
+            background-color:  #f6a283;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row7_col9 {
+            background-color:  #e7d7ce;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row8_col0 {
+            background-color:  #a6c4fe;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row8_col1 {
+            background-color:  #bbd1f8;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row8_col2 {
+            background-color:  #f1ccb8;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row8_col3 {
+            background-color:  #d9dce1;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row8_col4 {
+            background-color:  #dcdddd;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row8_col5 {
+            background-color:  #cad8ef;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row8_col6 {
+            background-color:  #7a9df8;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row8_col7 {
+            background-color:  #f18d6f;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row8_col8 {
+            background-color:  #b40426;
+            color:  #f1f1f1;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row8_col9 {
+            background-color:  #efcfbf;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row9_col0 {
+            background-color:  #afcafc;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row9_col1 {
+            background-color:  #c9d7f0;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row9_col2 {
+            background-color:  #ead5c9;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row9_col3 {
+            background-color:  #d8dce2;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row9_col4 {
+            background-color:  #9fbfff;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row9_col5 {
+            background-color:  #c3d5f4;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row9_col6 {
+            background-color:  #93b5fe;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row9_col7 {
+            background-color:  #f7b89c;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row9_col8 {
+            background-color:  #f4c6af;
+            color:  #000000;
+        }    #T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row9_col9 {
+            background-color:  #b40426;
+            color:  #f1f1f1;
+        }</style><table id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >age</th>        <th class="col_heading level0 col1" >sex</th>        <th class="col_heading level0 col2" >bmi</th>        <th class="col_heading level0 col3" >bp</th>        <th class="col_heading level0 col4" >s1</th>        <th class="col_heading level0 col5" >s2</th>        <th class="col_heading level0 col6" >s3</th>        <th class="col_heading level0 col7" >s4</th>        <th class="col_heading level0 col8" >s5</th>        <th class="col_heading level0 col9" >s6</th>    </tr></thead><tbody>
+                <tr>
+                        <th id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002level0_row0" class="row_heading level0 row0" >age</th>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row0_col0" class="data row0 col0" >1</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row0_col1" class="data row0 col1" >0.17</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row0_col2" class="data row0 col2" >0.19</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row0_col3" class="data row0 col3" >0.34</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row0_col4" class="data row0 col4" >0.26</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row0_col5" class="data row0 col5" >0.22</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row0_col6" class="data row0 col6" >-0.075</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row0_col7" class="data row0 col7" >0.2</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row0_col8" class="data row0 col8" >0.27</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row0_col9" class="data row0 col9" >0.3</td>
+            </tr>
+            <tr>
+                        <th id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002level0_row1" class="row_heading level0 row1" >sex</th>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row1_col0" class="data row1 col0" >0.17</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row1_col1" class="data row1 col1" >1</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row1_col2" class="data row1 col2" >0.088</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row1_col3" class="data row1 col3" >0.24</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row1_col4" class="data row1 col4" >0.035</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row1_col5" class="data row1 col5" >0.14</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row1_col6" class="data row1 col6" >-0.38</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row1_col7" class="data row1 col7" >0.33</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row1_col8" class="data row1 col8" >0.15</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row1_col9" class="data row1 col9" >0.21</td>
+            </tr>
+            <tr>
+                        <th id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002level0_row2" class="row_heading level0 row2" >bmi</th>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row2_col0" class="data row2 col0" >0.19</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row2_col1" class="data row2 col1" >0.088</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row2_col2" class="data row2 col2" >1</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row2_col3" class="data row2 col3" >0.4</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row2_col4" class="data row2 col4" >0.25</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row2_col5" class="data row2 col5" >0.26</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row2_col6" class="data row2 col6" >-0.37</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row2_col7" class="data row2 col7" >0.41</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row2_col8" class="data row2 col8" >0.45</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row2_col9" class="data row2 col9" >0.39</td>
+            </tr>
+            <tr>
+                        <th id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002level0_row3" class="row_heading level0 row3" >bp</th>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row3_col0" class="data row3 col0" >0.34</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row3_col1" class="data row3 col1" >0.24</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row3_col2" class="data row3 col2" >0.4</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row3_col3" class="data row3 col3" >1</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row3_col4" class="data row3 col4" >0.24</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row3_col5" class="data row3 col5" >0.19</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row3_col6" class="data row3 col6" >-0.18</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row3_col7" class="data row3 col7" >0.26</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row3_col8" class="data row3 col8" >0.39</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row3_col9" class="data row3 col9" >0.39</td>
+            </tr>
+            <tr>
+                        <th id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002level0_row4" class="row_heading level0 row4" >s1</th>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row4_col0" class="data row4 col0" >0.26</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row4_col1" class="data row4 col1" >0.035</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row4_col2" class="data row4 col2" >0.25</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row4_col3" class="data row4 col3" >0.24</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row4_col4" class="data row4 col4" >1</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row4_col5" class="data row4 col5" >0.9</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row4_col6" class="data row4 col6" >0.052</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row4_col7" class="data row4 col7" >0.54</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row4_col8" class="data row4 col8" >0.52</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row4_col9" class="data row4 col9" >0.33</td>
+            </tr>
+            <tr>
+                        <th id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002level0_row5" class="row_heading level0 row5" >s2</th>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row5_col0" class="data row5 col0" >0.22</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row5_col1" class="data row5 col1" >0.14</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row5_col2" class="data row5 col2" >0.26</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row5_col3" class="data row5 col3" >0.19</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row5_col4" class="data row5 col4" >0.9</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row5_col5" class="data row5 col5" >1</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row5_col6" class="data row5 col6" >-0.2</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row5_col7" class="data row5 col7" >0.66</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row5_col8" class="data row5 col8" >0.32</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row5_col9" class="data row5 col9" >0.29</td>
+            </tr>
+            <tr>
+                        <th id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002level0_row6" class="row_heading level0 row6" >s3</th>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row6_col0" class="data row6 col0" >-0.075</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row6_col1" class="data row6 col1" >-0.38</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row6_col2" class="data row6 col2" >-0.37</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row6_col3" class="data row6 col3" >-0.18</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row6_col4" class="data row6 col4" >0.052</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row6_col5" class="data row6 col5" >-0.2</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row6_col6" class="data row6 col6" >1</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row6_col7" class="data row6 col7" >-0.74</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row6_col8" class="data row6 col8" >-0.4</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row6_col9" class="data row6 col9" >-0.27</td>
+            </tr>
+            <tr>
+                        <th id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002level0_row7" class="row_heading level0 row7" >s4</th>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row7_col0" class="data row7 col0" >0.2</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row7_col1" class="data row7 col1" >0.33</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row7_col2" class="data row7 col2" >0.41</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row7_col3" class="data row7 col3" >0.26</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row7_col4" class="data row7 col4" >0.54</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row7_col5" class="data row7 col5" >0.66</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row7_col6" class="data row7 col6" >-0.74</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row7_col7" class="data row7 col7" >1</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row7_col8" class="data row7 col8" >0.62</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row7_col9" class="data row7 col9" >0.42</td>
+            </tr>
+            <tr>
+                        <th id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002level0_row8" class="row_heading level0 row8" >s5</th>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row8_col0" class="data row8 col0" >0.27</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row8_col1" class="data row8 col1" >0.15</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row8_col2" class="data row8 col2" >0.45</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row8_col3" class="data row8 col3" >0.39</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row8_col4" class="data row8 col4" >0.52</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row8_col5" class="data row8 col5" >0.32</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row8_col6" class="data row8 col6" >-0.4</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row8_col7" class="data row8 col7" >0.62</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row8_col8" class="data row8 col8" >1</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row8_col9" class="data row8 col9" >0.46</td>
+            </tr>
+            <tr>
+                        <th id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002level0_row9" class="row_heading level0 row9" >s6</th>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row9_col0" class="data row9 col0" >0.3</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row9_col1" class="data row9 col1" >0.21</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row9_col2" class="data row9 col2" >0.39</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row9_col3" class="data row9 col3" >0.39</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row9_col4" class="data row9 col4" >0.33</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row9_col5" class="data row9 col5" >0.29</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row9_col6" class="data row9 col6" >-0.27</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row9_col7" class="data row9 col7" >0.42</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row9_col8" class="data row9 col8" >0.46</td>
+                        <td id="T_c9d8c402_1e82_11ea_bd4e_0242ac1c0002row9_col9" class="data row9 col9" >1</td>
+            </tr>
+    </tbody></table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">corr</span> <span class="o">=</span> <span class="n">df_X</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span>  <span class="n">xticklabels</span><span class="o">=</span><span class="n">corr</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">corr</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3407ea9320&gt;
+</pre></div>
+</div>
+<img alt="../_images/pca_10_1.png" src="../_images/pca_10_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="dimensionality-reduction-principal-component-analysis-pca">
+<h1>Dimensionality Reduction (Principal Component Analysis PCA)<a class="headerlink" href="#dimensionality-reduction-principal-component-analysis-pca" title="Permalink to this headline">¶</a></h1>
+<p>Nel caso vi sia una situazione in cui la correlazione tra le features è molto alta possiamo sia manualmente rimuovere le feature che consideriamo superflue oppure utilizzare la PCA. Quest’ultima si occupa di creare nuove features (se prima ne avevamo 10 adesso ne avremo un numero minore) che non hanno un significato fisico ma che sono sufficienti a rappresentare il nostro dataset. In poche parole semplichiamo gli input (features) al minimo numero necessario. Questò fara si che tra gli input vi sia pochissima correlazione in quanto ogni input features avrà un valore diverso dalle altre.</p>
+<p>IMPORTANTE: Il calcolo della principal componet analysis (PCA) è fortemente influenzato dalla scala. Quindi è necesseria avere per tutti gli input (features ) una scala comune.</p>
+<p>Standardizzare i dati significarli ricondurli a una scala il cui mean=0 e la variance=1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="n">features</span> <span class="o">=</span> <span class="n">X_names</span>
+<span class="c1"># Separating out the features</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">df_X</span>
+<span class="c1"># Separating out the target</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df_Y</span>
+<span class="c1"># Standardizing the features</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">df_X_Standard</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">x</span> <span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">X_names</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_X</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_X_Standard</span><span class="p">)</span>
+<span class="n">df_X</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>sex</th>
+      <th>bmi</th>
+      <th>bp</th>
+      <th>s1</th>
+      <th>s2</th>
+      <th>s3</th>
+      <th>s4</th>
+      <th>s5</th>
+      <th>s6</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.038076</td>
+      <td>0.050680</td>
+      <td>0.061696</td>
+      <td>0.021872</td>
+      <td>-0.044223</td>
+      <td>-0.034821</td>
+      <td>-0.043401</td>
+      <td>-0.002592</td>
+      <td>0.019908</td>
+      <td>-0.017646</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.001882</td>
+      <td>-0.044642</td>
+      <td>-0.051474</td>
+      <td>-0.026328</td>
+      <td>-0.008449</td>
+      <td>-0.019163</td>
+      <td>0.074412</td>
+      <td>-0.039493</td>
+      <td>-0.068330</td>
+      <td>-0.092204</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.085299</td>
+      <td>0.050680</td>
+      <td>0.044451</td>
+      <td>-0.005671</td>
+      <td>-0.045599</td>
+      <td>-0.034194</td>
+      <td>-0.032356</td>
+      <td>-0.002592</td>
+      <td>0.002864</td>
+      <td>-0.025930</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-0.089063</td>
+      <td>-0.044642</td>
+      <td>-0.011595</td>
+      <td>-0.036656</td>
+      <td>0.012191</td>
+      <td>0.024991</td>
+      <td>-0.036038</td>
+      <td>0.034309</td>
+      <td>0.022692</td>
+      <td>-0.009362</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.005383</td>
+      <td>-0.044642</td>
+      <td>-0.036385</td>
+      <td>0.021872</td>
+      <td>0.003935</td>
+      <td>0.015596</td>
+      <td>0.008142</td>
+      <td>-0.002592</td>
+      <td>-0.031991</td>
+      <td>-0.046641</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>437</th>
+      <td>0.041708</td>
+      <td>0.050680</td>
+      <td>0.019662</td>
+      <td>0.059744</td>
+      <td>-0.005697</td>
+      <td>-0.002566</td>
+      <td>-0.028674</td>
+      <td>-0.002592</td>
+      <td>0.031193</td>
+      <td>0.007207</td>
+    </tr>
+    <tr>
+      <th>438</th>
+      <td>-0.005515</td>
+      <td>0.050680</td>
+      <td>-0.015906</td>
+      <td>-0.067642</td>
+      <td>0.049341</td>
+      <td>0.079165</td>
+      <td>-0.028674</td>
+      <td>0.034309</td>
+      <td>-0.018118</td>
+      <td>0.044485</td>
+    </tr>
+    <tr>
+      <th>439</th>
+      <td>0.041708</td>
+      <td>0.050680</td>
+      <td>-0.015906</td>
+      <td>0.017282</td>
+      <td>-0.037344</td>
+      <td>-0.013840</td>
+      <td>-0.024993</td>
+      <td>-0.011080</td>
+      <td>-0.046879</td>
+      <td>0.015491</td>
+    </tr>
+    <tr>
+      <th>440</th>
+      <td>-0.045472</td>
+      <td>-0.044642</td>
+      <td>0.039062</td>
+      <td>0.001215</td>
+      <td>0.016318</td>
+      <td>0.015283</td>
+      <td>-0.028674</td>
+      <td>0.026560</td>
+      <td>0.044528</td>
+      <td>-0.025930</td>
+    </tr>
+    <tr>
+      <th>441</th>
+      <td>-0.045472</td>
+      <td>-0.044642</td>
+      <td>-0.073030</td>
+      <td>-0.081414</td>
+      <td>0.083740</td>
+      <td>0.027809</td>
+      <td>0.173816</td>
+      <td>-0.039493</td>
+      <td>-0.004220</td>
+      <td>0.003064</td>
+    </tr>
+  </tbody>
+</table>
+<p>442 rows × 10 columns</p>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>sex</th>
+      <th>bmi</th>
+      <th>bp</th>
+      <th>s1</th>
+      <th>s2</th>
+      <th>s3</th>
+      <th>s4</th>
+      <th>s5</th>
+      <th>s6</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.800500</td>
+      <td>1.065488</td>
+      <td>1.297088</td>
+      <td>0.459840</td>
+      <td>-0.929746</td>
+      <td>-0.732065</td>
+      <td>-0.912451</td>
+      <td>-0.054499</td>
+      <td>0.418551</td>
+      <td>-0.370989</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.039567</td>
+      <td>-0.938537</td>
+      <td>-1.082180</td>
+      <td>-0.553511</td>
+      <td>-0.177624</td>
+      <td>-0.402886</td>
+      <td>1.564414</td>
+      <td>-0.830301</td>
+      <td>-1.436551</td>
+      <td>-1.938479</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.793307</td>
+      <td>1.065488</td>
+      <td>0.934533</td>
+      <td>-0.119218</td>
+      <td>-0.958674</td>
+      <td>-0.718897</td>
+      <td>-0.680245</td>
+      <td>-0.054499</td>
+      <td>0.060207</td>
+      <td>-0.545154</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-1.872441</td>
+      <td>-0.938537</td>
+      <td>-0.243771</td>
+      <td>-0.770658</td>
+      <td>0.256292</td>
+      <td>0.525397</td>
+      <td>-0.757647</td>
+      <td>0.721302</td>
+      <td>0.477072</td>
+      <td>-0.196823</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.113172</td>
+      <td>-0.938537</td>
+      <td>-0.764944</td>
+      <td>0.459840</td>
+      <td>0.082726</td>
+      <td>0.327890</td>
+      <td>0.171178</td>
+      <td>-0.054499</td>
+      <td>-0.672582</td>
+      <td>-0.980568</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>437</th>
+      <td>0.876870</td>
+      <td>1.065488</td>
+      <td>0.413360</td>
+      <td>1.256044</td>
+      <td>-0.119769</td>
+      <td>-0.053957</td>
+      <td>-0.602843</td>
+      <td>-0.054499</td>
+      <td>0.655795</td>
+      <td>0.151508</td>
+    </tr>
+    <tr>
+      <th>438</th>
+      <td>-0.115937</td>
+      <td>1.065488</td>
+      <td>-0.334410</td>
+      <td>-1.422098</td>
+      <td>1.037341</td>
+      <td>1.664355</td>
+      <td>-0.602843</td>
+      <td>0.721302</td>
+      <td>-0.380915</td>
+      <td>0.935254</td>
+    </tr>
+    <tr>
+      <th>439</th>
+      <td>0.876870</td>
+      <td>1.065488</td>
+      <td>-0.334410</td>
+      <td>0.363330</td>
+      <td>-0.785107</td>
+      <td>-0.290965</td>
+      <td>-0.525441</td>
+      <td>-0.232934</td>
+      <td>-0.985585</td>
+      <td>0.325674</td>
+    </tr>
+    <tr>
+      <th>440</th>
+      <td>-0.956004</td>
+      <td>-0.938537</td>
+      <td>0.821235</td>
+      <td>0.025547</td>
+      <td>0.343075</td>
+      <td>0.321306</td>
+      <td>-0.602843</td>
+      <td>0.558384</td>
+      <td>0.936155</td>
+      <td>-0.545154</td>
+    </tr>
+    <tr>
+      <th>441</th>
+      <td>-0.956004</td>
+      <td>-0.938537</td>
+      <td>-1.535374</td>
+      <td>-1.711626</td>
+      <td>1.760535</td>
+      <td>0.584649</td>
+      <td>3.654268</td>
+      <td>-0.830301</td>
+      <td>-0.088717</td>
+      <td>0.064426</td>
+    </tr>
+  </tbody>
+</table>
+<p>442 rows × 10 columns</p>
+</div></div><div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>Index([&#39;age&#39;, &#39;sex&#39;, &#39;bmi&#39;, &#39;bp&#39;, &#39;s1&#39;, &#39;s2&#39;, &#39;s3&#39;, &#39;s4&#39;, &#39;s5&#39;, &#39;s6&#39;], dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="riduciamo-il-numero-delle-features-input-a-2-usando-la-pca">
+<h2>Riduciamo il numero delle features (input) a 2 usando la PCA<a class="headerlink" href="#riduciamo-il-numero-delle-features-input-a-2-usando-la-pca" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">principalComponents</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">principalDf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">principalComponents</span> <span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;principal component 1&#39;</span><span class="p">,</span> <span class="s1">&#39;principal component 2&#39;</span><span class="p">])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">principalDf</span><span class="p">)</span>
+
+<span class="c1"># Varianza associata ad ogni componente</span>
+<span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>principal component 1</th>
+      <th>principal component 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.587208</td>
+      <td>-1.946828</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-2.831612</td>
+      <td>1.372085</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.272148</td>
+      <td>-1.634898</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.049310</td>
+      <td>0.382253</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-0.756451</td>
+      <td>0.811968</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>437</th>
+      <td>1.239531</td>
+      <td>-1.035955</td>
+    </tr>
+    <tr>
+      <th>438</th>
+      <td>1.264676</td>
+      <td>0.761301</td>
+    </tr>
+    <tr>
+      <th>439</th>
+      <td>-0.205246</td>
+      <td>-1.205446</td>
+    </tr>
+    <tr>
+      <th>440</th>
+      <td>0.692866</td>
+      <td>0.210117</td>
+    </tr>
+    <tr>
+      <th>441</th>
+      <td>-1.903934</td>
+      <td>3.975771</td>
+    </tr>
+  </tbody>
+</table>
+<p>442 rows × 2 columns</p>
+</div></div><div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([0.40242142, 0.14923182])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dobbiamo capire il levello di informazione di ogni singola componente trovata. Quando riduciamo la dimensionalità perdiamo delle informazioni in quanto il numero di input è stato ridotto. Vogliamo chiederci adesso le componenti 1 e 2 quanta informazione contengono? La compomente 1 contiene il 40% della varianza mentre la componete 2 il 14 %. Insieme essi contengono il 54% della varianza. Cioè significa che rispetto alle informazioni iniziali abbiamo perso il 46%.</p>
+</div>
+<div class="section" id="come-facciamo-a-riddure-il-numero-degli-input-senza-ridurre-il-contenuto-di-informazioni-del-nostro-dataset-iniziale">
+<h2>Come facciamo a riddure il numero degli input senza ridurre il contenuto di informazioni del nostro dataset iniziale?<a class="headerlink" href="#come-facciamo-a-riddure-il-numero-degli-input-senza-ridurre-il-contenuto-di-informazioni-del-nostro-dataset-iniziale" title="Permalink to this headline">¶</a></h2>
+<p>Mantenere esattamente il 100 % delle informazioni è impossibile. Pertanto ridurremo di poco il contenuto delle informazioni (es. 90%). Questo ci permetterà di ridurre il numero di input ed avere allo stesso tempo un predizione ottima.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="c1"># If 0 &lt; n_components &lt; 1 and svd_solver == &#39;full&#39;, select the number of </span>
+<span class="c1"># components such that the amount of variance that needs to be explained </span>
+<span class="c1"># is greater than the percentage specified by n_components.</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mf">0.90</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">df_X</span><span class="o">.</span><span class="n">values</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">principalComponents</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">row_number</span> <span class="o">=</span> <span class="n">principalComponents</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">X_names_new</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">row_number</span><span class="p">):</span> 
+  <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;component_&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+  <span class="n">X_names_new</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+
+<span class="n">principalDf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">principalComponents</span> <span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">X_names_new</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">principalDf</span><span class="p">)</span>
+
+<span class="c1"># Varianza associata ad ogni componente</span>
+<span class="n">variance_arr</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span>
+<span class="n">tot_variance</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">variance</span> <span class="ow">in</span> <span class="n">variance_arr</span><span class="p">:</span>
+  <span class="n">temp_variance</span> <span class="o">=</span> <span class="n">variance</span><span class="o">*</span><span class="mi">100</span>
+  <span class="n">tot_variance</span> <span class="o">+=</span> <span class="n">temp_variance</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tot_variance</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>component_0</th>
+      <th>component_1</th>
+      <th>component_2</th>
+      <th>component_3</th>
+      <th>component_4</th>
+      <th>component_5</th>
+      <th>component_6</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.587208</td>
+      <td>-1.946828</td>
+      <td>0.589233</td>
+      <td>-0.082812</td>
+      <td>-0.256630</td>
+      <td>-1.011214</td>
+      <td>-0.179807</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-2.831612</td>
+      <td>1.372085</td>
+      <td>0.027915</td>
+      <td>-0.469999</td>
+      <td>-0.143229</td>
+      <td>-1.013015</td>
+      <td>0.224414</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.272148</td>
+      <td>-1.634898</td>
+      <td>0.739270</td>
+      <td>-0.791475</td>
+      <td>-1.163821</td>
+      <td>-1.112806</td>
+      <td>-0.462406</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.049310</td>
+      <td>0.382253</td>
+      <td>-2.013037</td>
+      <td>1.373239</td>
+      <td>0.255528</td>
+      <td>0.445315</td>
+      <td>0.482147</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-0.756451</td>
+      <td>0.811968</td>
+      <td>-0.057259</td>
+      <td>-0.137520</td>
+      <td>-0.133344</td>
+      <td>-0.814591</td>
+      <td>0.436451</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>437</th>
+      <td>1.239531</td>
+      <td>-1.035955</td>
+      <td>0.928691</td>
+      <td>-0.656266</td>
+      <td>0.204315</td>
+      <td>-0.479371</td>
+      <td>0.394431</td>
+    </tr>
+    <tr>
+      <th>438</th>
+      <td>1.264676</td>
+      <td>0.761301</td>
+      <td>-1.750210</td>
+      <td>-1.133482</td>
+      <td>-0.094014</td>
+      <td>0.973430</td>
+      <td>-1.173570</td>
+    </tr>
+    <tr>
+      <th>439</th>
+      <td>-0.205246</td>
+      <td>-1.205446</td>
+      <td>0.496078</td>
+      <td>-1.353349</td>
+      <td>-0.141686</td>
+      <td>-0.045289</td>
+      <td>-0.635451</td>
+    </tr>
+    <tr>
+      <th>440</th>
+      <td>0.692866</td>
+      <td>0.210117</td>
+      <td>-0.868730</td>
+      <td>1.616790</td>
+      <td>0.119649</td>
+      <td>-0.556900</td>
+      <td>0.545703</td>
+    </tr>
+    <tr>
+      <th>441</th>
+      <td>-1.903934</td>
+      <td>3.975771</td>
+      <td>-0.048381</td>
+      <td>-0.220612</td>
+      <td>0.599824</td>
+      <td>1.647108</td>
+      <td>0.245265</td>
+    </tr>
+  </tbody>
+</table>
+<p>442 rows × 7 columns</p>
+</div></div><div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>94.79436357350414
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="esempio-pratico">
+<h1>Esempio Pratico<a class="headerlink" href="#esempio-pratico" title="Permalink to this headline">¶</a></h1>
+<ol class="simple">
+<li><p>Scarichiamo il boston dataset</p></li>
+<li><p>Dividiamo i dati in training e test</p></li>
+<li><p>Applichiamo la PCA</p></li>
+<li><p>Compariamo la predizione di un Regressore Lineare con e senza pca</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+  <span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+  <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+  <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+  <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+  <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+  <span class="kn">import</span> <span class="nn">os</span>
+  <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
+  <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+  <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+
+  <span class="c1"># FUNCTION: Standard data with 0 mean and unit variance (Gaussian)</span>
+  <span class="k">def</span> <span class="nf">standardScaler</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+      <span class="c1"># Input pandas dataframe Output pandas dataframe scaled</span>
+      <span class="n">names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+      <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">values</span>
+      <span class="n">data_scaled</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+      <span class="n">df_scaled</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">data_scaled</span> <span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">names</span><span class="p">)</span>
+      <span class="c1">#print(df)</span>
+      <span class="c1">#print(df_scaled)</span>
+      <span class="k">return</span> <span class="n">df_scaled</span>
+
+  <span class="c1"># FUNCTION: Create pandas dataframe from numpy array</span>
+  <span class="k">def</span> <span class="nf">createPandasDataFrame</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">X_names</span><span class="p">,</span><span class="n">Y_names</span><span class="p">):</span>
+    <span class="n">df_X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span><span class="n">X_names</span><span class="p">)</span>
+    <span class="n">df_Y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">Y</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span><span class="n">Y_names</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df_X</span><span class="p">,</span> <span class="n">df_Y</span>
+
+  <span class="c1"># FUNCTION: Write pandas dataframe to csv file</span>
+  <span class="k">def</span> <span class="nf">writeDataFrameToCsv</span><span class="p">(</span><span class="n">df_X</span><span class="p">,</span><span class="n">df_Y</span><span class="p">,</span><span class="n">directory_path</span><span class="p">,</span><span class="n">dataset_name</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">directory_path</span><span class="p">):</span>
+      <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">directory_path</span><span class="p">)</span>
+    
+    <span class="c1"># Create csv file</span>
+    <span class="n">path_write</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory_path</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">)</span>
+    <span class="n">df_X</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">path_write</span> <span class="o">+</span> <span class="s1">&#39;_X.csv&#39;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">df_Y</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">path_write</span> <span class="o">+</span> <span class="s1">&#39;_Y.csv&#39;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+
+  <span class="c1"># FUNCTION: Read from csv file a dataset</span>
+  <span class="k">def</span> <span class="nf">readDataFrameFromCsv</span><span class="p">(</span><span class="n">directory_path</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">):</span>
+    <span class="n">path_read</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory_path</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">directory_path</span><span class="p">):</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Directory path does not exist&quot;</span><span class="p">)</span>
+    <span class="n">df_X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path_read</span> <span class="o">+</span> <span class="s1">&#39;_X.csv&#39;</span><span class="p">)</span> 
+    <span class="n">df_Y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path_read</span> <span class="o">+</span> <span class="s1">&#39;_Y.csv&#39;</span><span class="p">)</span> 
+    <span class="k">return</span> <span class="n">df_X</span><span class="p">,</span> <span class="n">df_Y</span>  
+
+  <span class="c1"># CLASS: PCA class to do input dimensionality reduction</span>
+  <span class="k">class</span> <span class="nc">dimensionalityReduction</span><span class="p">():</span>
+
+      <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">n_components</span><span class="p">):</span> 
+          <span class="c1"># define pca</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="p">)</span>
+          
+      <span class="k">def</span> <span class="nf">create_names</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">col_number</span><span class="p">):</span>
+          <span class="n">names</span> <span class="o">=</span> <span class="p">[]</span>
+          <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">col_number</span><span class="p">):</span> 
+              <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;component_&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+              <span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+          <span class="k">return</span> <span class="n">names</span>
+
+      <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">df</span><span class="p">):</span>
+          <span class="n">df_scaled</span> <span class="o">=</span> <span class="n">standardScaler</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+          <span class="n">model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pca</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df_scaled</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+          <span class="n">information_array</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">explained_variance_ratio_</span> <span class="o">*</span><span class="mf">100.00</span>
+          <span class="n">total_information</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">information_array</span><span class="p">)</span>
+          <span class="k">return</span> <span class="n">model</span><span class="p">,</span><span class="n">information_array</span><span class="p">,</span> <span class="n">total_information</span>
+
+      <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span><span class="n">df</span><span class="p">):</span>  
+          <span class="c1"># Input dataframe</span>
+          <span class="n">principalComponents</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+          <span class="n">names</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_names</span><span class="p">(</span><span class="n">col_number</span><span class="o">=</span><span class="n">principalComponents</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+          <span class="n">df_scaled</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">principalComponents</span> <span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">names</span><span class="p">)</span>
+          <span class="k">return</span> <span class="n">df_scaled</span>
+
+  <span class="c1"># CLASS: Easily import different datasets</span>
+  <span class="k">class</span> <span class="nc">ScikitLearnDatasets</span><span class="p">():</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">):</span>
+      <span class="c1"># Load all scikit-learn dataset</span>
+      <span class="k">if</span> <span class="p">(</span><span class="s2">&quot;iris&quot;</span><span class="o">==</span><span class="n">dataset_name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span> <span class="c1"># Classificazione iris dataset</span>
+      <span class="k">elif</span> <span class="p">(</span><span class="s2">&quot;digits&quot;</span><span class="o">==</span><span class="n">dataset_name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_digits</span><span class="p">()</span> <span class="c1"># Classificazione Load digits dataset</span>
+      <span class="k">elif</span> <span class="p">(</span><span class="s2">&quot;wine&quot;</span><span class="o">==</span><span class="n">dataset_name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_wine</span><span class="p">()</span> <span class="c1"># Classificazione Load wine dataset</span>
+      <span class="k">elif</span> <span class="p">(</span><span class="s2">&quot;breast_cancer&quot;</span><span class="o">==</span><span class="n">dataset_name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_breast_cancer</span><span class="p">()</span> <span class="c1"># Classificazione Load breast_cancer dataset</span>
+      <span class="k">elif</span> <span class="p">(</span><span class="s2">&quot;boston&quot;</span><span class="o">==</span><span class="n">dataset_name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_boston</span><span class="p">()</span> <span class="c1"># Regressione Load boston dataset</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span><span class="o">.</span><span class="n">update</span><span class="p">([</span> <span class="p">(</span><span class="s1">&#39;target_names&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Boston-House-Price&#39;</span><span class="p">])]</span> <span class="p">)</span>
+      <span class="k">elif</span> <span class="p">(</span><span class="s2">&quot;diabetes&quot;</span><span class="o">==</span><span class="n">dataset_name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_diabetes</span><span class="p">()</span> <span class="c1"># Regressione Load diabetes dataset</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span><span class="o">.</span><span class="n">update</span><span class="p">([</span> <span class="p">(</span><span class="s1">&#39;target_names&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Desease-Progression&#39;</span><span class="p">])]</span> <span class="p">)</span>
+      <span class="k">elif</span> <span class="p">(</span><span class="s2">&quot;linnerud&quot;</span><span class="o">==</span><span class="n">dataset_name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_linnerud</span><span class="p">()</span> <span class="c1"># Regressione Load linnerud dataset</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span> <span class="o">=</span> <span class="s2">&quot;diabetes&quot;</span> <span class="c1"># Regressione default choice</span>
+      
+      <span class="c1"># Print dataset information</span>
+      <span class="c1">#self.printDatasetInformation()</span>
+
+    <span class="k">def</span> <span class="nf">printDatasetInformation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="c1">#print(dataset_scelto)</span>
+      <span class="n">parameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+      <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+      <span class="c1">#print(parameters)</span>
+      <span class="c1"># Print useful information</span>
+      <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------------------------------------------&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">name</span> <span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span><span class="p">[</span><span class="n">name</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------------------------------------------&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">getXY</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="c1"># Get Input (X) Data</span>
+      <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="c1"># or  data = iris.get(&#39;data&#39;)</span>
+      <span class="n">X_names</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span><span class="p">[</span><span class="s1">&#39;feature_names&#39;</span><span class="p">]</span>
+      
+      <span class="c1"># Get Output (Y) Target</span>
+      <span class="n">parameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+      <span class="n">Y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span>
+      <span class="n">Y_names</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset_scelto</span><span class="p">[</span><span class="s1">&#39;target_names&#39;</span><span class="p">]</span>
+      
+      <span class="k">return</span> <span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">X_names</span><span class="p">,</span><span class="n">Y_names</span>
+            
+  <span class="c1"># CLASS: Linar Regression          </span>
+  <span class="k">class</span> <span class="nc">LinearRegression</span><span class="p">():</span> 
+
+      <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Inizializzazione</span>
+        <span class="c1"># https://scikit-learn.org/stable/modules/linear_model.html#ridge-regression-and-classification</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LinearRegression</span><span class="p">(</span><span class="n">fit_intercept</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        
+      <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">):</span>
+        <span class="c1"># Stimare w0, w1 .. wN</span>
+        <span class="n">trained_model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
+        <span class="c1">#print(&quot;w1,w2 .. wN : &quot;,self.model.coef_)</span>
+        <span class="c1">#print(&quot;w0 : &quot;, self.model.intercept_) </span>
+        <span class="k">return</span> <span class="n">trained_model</span>
+      
+      <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">X_test</span><span class="p">,</span><span class="n">trained_model</span><span class="p">):</span>
+        <span class="n">Y_pred</span> <span class="o">=</span> <span class="n">trained_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Y_pred</span>
+      
+      <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">X_test</span><span class="p">,</span> <span class="n">Y_test</span><span class="p">,</span> <span class="n">trained_model</span><span class="p">):</span>
+        <span class="c1"># R2 score</span>
+        <span class="n">Y_pred</span> <span class="o">=</span> <span class="n">trained_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+        <span class="n">R2_score</span> <span class="o">=</span> <span class="n">trained_model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">Y_test</span><span class="p">)</span>
+        <span class="n">RMSE_score</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">Y_test</span><span class="p">,</span> <span class="n">Y_pred</span><span class="p">)))</span>
+        <span class="k">return</span> <span class="n">Y_pred</span><span class="p">,</span><span class="n">R2_score</span><span class="p">,</span> <span class="n">RMSE_score</span>
+
+      <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">Y_test</span><span class="p">,</span><span class="n">Y_pred</span><span class="p">):</span>
+          <span class="n">length</span> <span class="o">=</span> <span class="n">Y_pred</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># 20</span>
+          <span class="n">index_bar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">length</span><span class="p">,</span><span class="n">length</span><span class="p">)</span>
+          <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">index_bar</span><span class="p">,</span> <span class="n">Y_test</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Test&#39;</span><span class="p">)</span>
+          <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">index_bar</span><span class="p">,</span> <span class="n">Y_pred</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Prediction&#39;</span><span class="p">)</span>
+          <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+          <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+
+    <span class="c1"># ----------- SKLEARN DATASET LOADING ------------ #</span>
+    <span class="c1"># Load sklearn dataset</span>
+    <span class="c1"># Classificazione: &quot;iris&quot;, &quot;digits&quot;, &quot;wine&quot;, &quot;breast_cancer &quot;</span>
+    <span class="c1"># Regressione: &quot;diabetes&quot;, &quot;boston&quot;, &quot;linnerud&quot;</span>
+    <span class="c1"># 1. Select dataset </span>
+    <span class="n">dataset_name</span> <span class="o">=</span> <span class="s2">&quot;diabetes&quot;</span>
+    <span class="c1"># 2. Create class object ScikitLearnDatasets </span>
+    <span class="n">myScikitLearnDatasets</span><span class="o">=</span><span class="n">ScikitLearnDatasets</span><span class="p">(</span><span class="n">dataset_name</span><span class="p">)</span>
+    <span class="c1"># 3. Print dataset information</span>
+    <span class="c1">#myScikitLearnDatasets.printDatasetInformation()</span>
+    <span class="c1"># 4. Get dataset data as numpy array X=input, Y=output and X_names=input_names, Y_names=output_names</span>
+    <span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">X_names</span><span class="p">,</span><span class="n">Y_names</span> <span class="o">=</span> <span class="n">myScikitLearnDatasets</span><span class="o">.</span><span class="n">getXY</span><span class="p">()</span>
+    <span class="c1"># 5. Convert numpy array data to Pandas Dataframe</span>
+    <span class="n">df_X</span><span class="p">,</span><span class="n">df_Y</span> <span class="o">=</span> <span class="n">createPandasDataFrame</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">X_names</span><span class="p">,</span><span class="n">Y_names</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;#---------- DATASET INFORMATION ------------#&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X Input or feature_names: &quot;</span><span class="p">,</span> <span class="n">X_names</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Y Output or target_names: &quot;</span><span class="p">,</span> <span class="n">Y_names</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Input X Shape: &quot;</span> <span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Output Y Shape: &quot;</span> <span class="p">,</span> <span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dataframe df_X Input Describe: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">df_X</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dataframe df_Y Output Describe: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">df_Y</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;#-------------------------------------------#&quot;</span><span class="p">)</span>
+    <span class="c1"># 6. Write Pandas dataframe df_X, df_Y to csv file</span>
+    <span class="n">directory_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s2">&quot;ScikitLearnDatasets&quot;</span><span class="p">)</span>
+    <span class="n">writeDataFrameToCsv</span><span class="p">(</span><span class="n">df_X</span><span class="p">,</span><span class="n">df_Y</span><span class="p">,</span><span class="n">directory_path</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">)</span>
+    <span class="c1"># ------------------------------------------------ #</span>
+
+    <span class="c1"># ----------- READ DATASET FROM CSV -------------- #</span>
+    <span class="c1"># Read previously saved dataset</span>
+    <span class="c1"># 1. Read csv dataset (examvle boston_X.csv and boston_Y.csv) and transform to pandas daframe</span>
+    <span class="c1">#dataset_name = &quot;boston&quot; # desired dataset name </span>
+    <span class="c1">#directory_path = os.path.join(os.getcwd(), &quot;ScikitLearnDatasets&quot;) # dataset folder</span>
+    <span class="n">df_X</span><span class="p">,</span><span class="n">df_Y</span> <span class="o">=</span> <span class="n">readDataFrameFromCsv</span><span class="p">(</span><span class="n">directory_path</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">)</span>
+    <span class="c1"># ------------------------------------------------ #</span>
+
+    <span class="c1"># -------- Split data into train and test -------- #</span>
+    <span class="c1"># Split dataset into training and test set</span>
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span> <span class="n">Y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">df_X</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">df_Y</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.20</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+    <span class="c1"># ------------------------------------------------ #</span>
+
+    <span class="c1"># -------------------- PCA ----------------------- #</span>
+    <span class="c1"># Principal component analysis (PCA) or dimensionality reduction</span>
+    <span class="c1"># Number of input is reduced while keeping overall dataset information</span>
+    <span class="c1"># 1. Covert numpy array to pandas dataframe</span>
+    <span class="n">df_X_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">X_train</span> <span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">df_X</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="n">df_X_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">X_test</span> <span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">df_X</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="c1"># 2. Initialize PCA (Principal Component Analysis)</span>
+    <span class="n">n_components</span> <span class="o">=</span> <span class="mf">0.95</span> <span class="c1"># 90% of the variance</span>
+    <span class="n">mydimensionalityReduction</span> <span class="o">=</span> <span class="n">dimensionalityReduction</span><span class="p">(</span><span class="n">n_components</span><span class="p">)</span>
+    <span class="c1"># 3. Create PCA model (using input training data)</span>
+    <span class="n">pcaModel</span><span class="p">,</span><span class="n">information_array</span><span class="p">,</span> <span class="n">total_information</span> <span class="o">=</span> <span class="n">mydimensionalityReduction</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df_X_train</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;#-------------- PCA ANALYSIS ---------------#&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Information for each new component: &quot;</span><span class="p">,</span> <span class="n">information_array</span><span class="p">,</span> <span class="s2">&quot;%&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total Information of the reduced dataset: &quot;</span><span class="p">,</span> <span class="n">total_information</span><span class="p">,</span> <span class="s2">&quot; %&quot;</span><span class="p">)</span>
+    <span class="c1"># 4. Apply created PCA model to both training and test dataset</span>
+    <span class="n">df_X_train_scaled</span> <span class="o">=</span> <span class="n">mydimensionalityReduction</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">pcaModel</span><span class="p">,</span><span class="n">df_X_train</span><span class="p">)</span>
+    <span class="n">df_X_test_scaled</span> <span class="o">=</span> <span class="n">mydimensionalityReduction</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">pcaModel</span><span class="p">,</span><span class="n">df_X_test</span><span class="p">)</span>
+    <span class="n">X_train_scaled</span> <span class="o">=</span> <span class="n">df_X_train_scaled</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">X_test_scaled</span> <span class="o">=</span> <span class="n">df_X_test_scaled</span><span class="o">.</span><span class="n">values</span>
+    <span class="c1">#print(&quot;Dataset X_train: &quot;, X_train)</span>
+    <span class="c1">#print(&quot;Dataset X_train Reduced: &quot;, X_train_scaled)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of inputs with PCA: &quot;</span><span class="p">,</span><span class="n">X_train_scaled</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of inputs without PCA: &quot;</span><span class="p">,</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;#-------------------------------------------#&quot;</span><span class="p">)</span>
+    <span class="c1"># --------------------------------------------------#</span>
+    
+    <span class="c1"># -------- LINEAR REGRESSION WITH PCA DATA -------- #</span>
+    <span class="c1"># we use reduce input data</span>
+    <span class="n">myModelPCA</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+    <span class="n">trained_modelPCA</span> <span class="o">=</span> <span class="n">myModelPCA</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">)</span>
+    <span class="n">Y_predPCA</span><span class="p">,</span><span class="n">R2_scorePCA</span><span class="p">,</span> <span class="n">RMSE_scorePCA</span> <span class="o">=</span> <span class="n">myModelPCA</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">,</span><span class="n">Y_test</span><span class="p">,</span><span class="n">trained_modelPCA</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;#----- LINEAR REGRESSION PCA RESULTS -------#&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;w1,w2 .. wN : &quot;</span><span class="p">,</span><span class="n">trained_modelPCA</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;w0 : &quot;</span><span class="p">,</span> <span class="n">trained_modelPCA</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span> 
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Score Linear Regression PCA: &quot;</span><span class="p">,</span> <span class="s2">&quot;R2 Score: &quot;</span><span class="p">,</span> <span class="n">R2_scorePCA</span><span class="p">,</span> <span class="s2">&quot; RMSE Score: &quot;</span><span class="p">,</span> <span class="n">RMSE_scorePCA</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;#-------------------------------------------#&quot;</span><span class="p">)</span>
+    <span class="c1">#myModelPCA.plot(Y_test,Y_pred)</span>
+    <span class="c1"># ------------------------------------------------ #</span>
+
+    <span class="c1"># -------------- LINEAR REGRESSOR ---------------- #</span>
+    <span class="c1"># We use initial data </span>
+    <span class="n">myModel</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+    <span class="n">trained_model</span> <span class="o">=</span> <span class="n">myModel</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">)</span>
+    <span class="n">Y_pred</span><span class="p">,</span><span class="n">R2_score</span><span class="p">,</span> <span class="n">RMSE_score</span> <span class="o">=</span> <span class="n">myModel</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="n">Y_test</span><span class="p">,</span><span class="n">trained_model</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;#------- LINEAR REGRESSION RESULTS ---------#&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;w1,w2 .. wN : &quot;</span><span class="p">,</span><span class="n">trained_modelPCA</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;w0 : &quot;</span><span class="p">,</span> <span class="n">trained_modelPCA</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span> 
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Score Linear regression without PCA: &quot;</span><span class="p">,</span> <span class="s2">&quot;R2 Score: &quot;</span><span class="p">,</span> <span class="n">R2_score</span><span class="p">,</span> <span class="s2">&quot; RMSE Score: &quot;</span><span class="p">,</span> <span class="n">RMSE_score</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;#-------------------------------------------#&quot;</span><span class="p">)</span>
+    <span class="c1">#myModel.plot(Y_test,Y_pred)</span>
+    <span class="c1"># ------------------------------------------------ #</span>
+
+    <span class="c1">#----------------- COMPARISON -------------------- #    </span>
+    <span class="n">length</span> <span class="o">=</span> <span class="n">Y_pred</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># 20</span>
+    <span class="n">index_bar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">length</span><span class="p">,</span><span class="n">length</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">index_bar</span><span class="p">,</span> <span class="n">Y_test</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Test&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">index_bar</span><span class="p">,</span> <span class="n">Y_predPCA</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;PredictionPCA&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">index_bar</span><span class="p">,</span> <span class="n">Y_pred</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Prediction&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="c1"># ------------------------------------------------ #</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>#---------- DATASET INFORMATION ------------#
+X Input or feature_names:  [&#39;age&#39;, &#39;sex&#39;, &#39;bmi&#39;, &#39;bp&#39;, &#39;s1&#39;, &#39;s2&#39;, &#39;s3&#39;, &#39;s4&#39;, &#39;s5&#39;, &#39;s6&#39;]
+Y Output or target_names:  [&#39;Desease-Progression&#39;]
+Input X Shape:  (442, 10)
+Output Y Shape:  (442,)
+Dataframe df_X Input Describe: 
+                 age           sex  ...            s5            s6
+count  4.420000e+02  4.420000e+02  ...  4.420000e+02  4.420000e+02
+mean  -3.634285e-16  1.308343e-16  ... -3.830854e-16 -3.412882e-16
+std    4.761905e-02  4.761905e-02  ...  4.761905e-02  4.761905e-02
+min   -1.072256e-01 -4.464164e-02  ... -1.260974e-01 -1.377672e-01
+25%   -3.729927e-02 -4.464164e-02  ... -3.324879e-02 -3.317903e-02
+50%    5.383060e-03 -4.464164e-02  ... -1.947634e-03 -1.077698e-03
+75%    3.807591e-02  5.068012e-02  ...  3.243323e-02  2.791705e-02
+max    1.107267e-01  5.068012e-02  ...  1.335990e-01  1.356118e-01
+
+[8 rows x 10 columns]
+Dataframe df_Y Output Describe: 
+        Desease-Progression
+count           442.000000
+mean            152.133484
+std              77.093005
+min              25.000000
+25%              87.000000
+50%             140.500000
+75%             211.500000
+max             346.000000
+#-------------------------------------------#
+#-------------- PCA ANALYSIS ---------------#
+Information for each new component:  [39.68814054 14.77973436 12.51654914 10.10869693  6.58293305  5.93511774
+  5.2036642   4.33649442] %
+Total Information of the reduced dataset:  99.15133037867369  %
+Number of inputs with PCA:  8
+Number of inputs without PCA:  10
+#-------------------------------------------#
+#----- LINEAR REGRESSION PCA RESULTS -------#
+w1,w2 .. wN :  [[ 453.41998089 -244.95319406  372.8080337   524.14406459  -30.20353053
+  -252.44550156  125.2975691    34.12174383]]
+w0 :  [151.30071414]
+Score Linear Regression PCA:  R2 Score:  0.4557153915064335  RMSE Score:  53.7001159233466
+#-------------------------------------------#
+#------- LINEAR REGRESSION RESULTS ---------#
+w1,w2 .. wN :  [[ 453.41998089 -244.95319406  372.8080337   524.14406459  -30.20353053
+  -252.44550156  125.2975691    34.12174383]]
+w0 :  [151.30071414]
+Score Linear regression without PCA:  R2 Score:  0.45260660216173787  RMSE Score:  53.8532569849144
+#-------------------------------------------#
+</pre></div>
+</div>
+<img alt="../_images/pca_20_1.png" src="../_images/pca_20_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="referenze-utili">
+<h1>Referenze utili<a class="headerlink" href="#referenze-utili" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="https://towardsdatascience.com/pca-using-python-scikit-learn-e653f8989e60">PCA SPiegazione ed esempio</a></p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/supervised_learning.html">Scikit-Learn Regressione</a></p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/auto_examples/preprocessing/plot_scaling_importance.html#sphx-glr-auto-examples-preprocessing-plot-scaling-importance-py">L’importanza di Standardizzare i dati</a></p></li>
+</ul>
+</div>
+<div class="section" id="extra-come-funzionano-i-dizionari-in-python">
+<h1>Extra : Come funzionano i dizionari in python<a class="headerlink" href="#extra-come-funzionano-i-dizionari-in-python" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#---------------------------------------------------------------------</span>
+<span class="c1">#---------------- Trasformare dizionari in Array --------- -----------</span>
+<span class="c1">#---------------------------------------------------------------------</span>
+<span class="c1"># Usiamo Le funzioni</span>
+<span class="c1"># Importare i datasets</span>
+
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span> <span class="c1"># Load iris dataset</span>
+<span class="n">digits</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_digits</span><span class="p">()</span> <span class="c1"># Load digits dataset</span>
+<span class="n">boston</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_boston</span><span class="p">()</span> <span class="c1"># Load boston dataset</span>
+<span class="n">diabetes</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_diabetes</span><span class="p">()</span> <span class="c1"># Load diabetes dataset</span>
+<span class="n">linnerud</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_linnerud</span><span class="p">()</span> <span class="c1"># Load linnerud dataset</span>
+<span class="n">wine</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_wine</span><span class="p">()</span> <span class="c1"># Load wine dataset</span>
+<span class="n">breast_cancer</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_breast_cancer</span><span class="p">()</span> <span class="c1"># Load breast_cancer dataset</span>
+
+<span class="n">dataset_scelto</span> <span class="o">=</span> <span class="n">iris</span>
+
+<span class="k">def</span> <span class="nf">approccio_1</span><span class="p">(</span><span class="n">dataset_scelto</span><span class="p">):</span>
+  <span class="c1"># --------------------- Approccio 1</span>
+  <span class="c1"># Get dictionar keys, value</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">dataset_scelto</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+  <span class="n">list_keys</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="n">list_values</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">dataset_scelto</span><span class="p">:</span>
+    <span class="n">list_keys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">dataset_scelto</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+    <span class="n">list_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All keys inside array &quot;</span><span class="p">,</span> <span class="n">list_keys</span><span class="p">)</span> 
+  <span class="c1">#print(&quot;All values inside array &quot;, list_values) </span>
+
+  <span class="c1"># Convert list to numpy array</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----------------------------------&quot;</span><span class="p">)</span>
+  <span class="n">array_keys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">list_keys</span><span class="p">)</span>
+  <span class="n">array_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">list_values</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">array_keys</span><span class="p">),</span> <span class="n">array_keys</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">array_keys</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">array_values</span><span class="p">),</span> <span class="n">array_values</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">array_values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+  <span class="c1"># Going deeper inside data shape</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----------------------------------&quot;</span><span class="p">)</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">array_keys</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">array_values</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+      <span class="nb">print</span><span class="p">(</span><span class="n">array_keys</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="nb">type</span><span class="p">(</span><span class="n">array_values</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="n">array_values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span> <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="n">array_keys</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="nb">type</span><span class="p">(</span><span class="n">array_values</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    
+  <span class="c1"># Other Useful Solutions</span>
+  <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">  for value in diabetes.values():</span>
+<span class="sd">    print(value) </span>
+
+<span class="sd">  for key, value in diabetes.items():</span>
+<span class="sd">    print(key, value)</span>
+<span class="sd">  &#39;&#39;&#39;</span>
+
+<span class="k">def</span> <span class="nf">approccio_2</span><span class="p">(</span><span class="n">dataset_scelto</span><span class="p">):</span>
+  <span class="c1">#--------------------- Approccio 2</span>
+  <span class="c1"># Convert a dictionary to an array of string</span>
+  <span class="n">list_keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">dataset_scelto</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+  <span class="n">list_values</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">dataset_scelto</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+  <span class="c1">#print(list_keys)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">list_keys</span><span class="p">))</span>
+  <span class="c1">#print(list_values)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">list_values</span><span class="p">))</span>
+  <span class="c1"># Convert list as numpy narray</span>
+  <span class="n">array_keys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">list_keys</span><span class="p">)</span>
+  <span class="n">array_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">list_values</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">array_keys</span><span class="p">))</span>
+  <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">array_values</span><span class="p">))</span>
+  <span class="c1"># Covert back numpy ndarray to list</span>
+  <span class="n">new_list_keys</span> <span class="o">=</span> <span class="n">array_keys</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+  <span class="n">new_list_values</span> <span class="o">=</span> <span class="n">array_values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+  <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">new_list_keys</span><span class="p">))</span>
+  <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">new_list_values</span><span class="p">))</span>
+  <span class="c1"># Check if the list are equal</span>
+  <span class="k">if</span> <span class="n">list_keys</span> <span class="o">==</span> <span class="n">new_list_keys</span> <span class="ow">and</span> <span class="n">list_values</span><span class="o">==</span><span class="n">new_list_values</span><span class="p">:</span> 
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;The lists are identical&quot;</span><span class="p">)</span> 
+  <span class="k">else</span> <span class="p">:</span> 
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;The lists are not identical&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----------------------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-------- Approach 1 ---------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----------------------------&quot;</span><span class="p">)</span>
+<span class="n">approccio_1</span><span class="p">(</span><span class="n">dataset_scelto</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----------------------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-------- Approach 2 ---------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----------------------------&quot;</span><span class="p">)</span>
+<span class="n">approccio_2</span><span class="p">(</span><span class="n">dataset_scelto</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>-----------------------------
+-------- Approach 1 ---------
+-----------------------------
+dict_keys([&#39;data&#39;, &#39;target&#39;, &#39;target_names&#39;, &#39;DESCR&#39;, &#39;feature_names&#39;, &#39;filename&#39;])
+data
+target
+target_names
+DESCR
+feature_names
+filename
+All keys inside array  [&#39;data&#39;, &#39;target&#39;, &#39;target_names&#39;, &#39;DESCR&#39;, &#39;feature_names&#39;, &#39;filename&#39;]
+----------------------------------
+&lt;class &#39;numpy.ndarray&#39;&gt; (6,) ()
+&lt;class &#39;numpy.ndarray&#39;&gt; (6,) (150, 4)
+----------------------------------
+data &lt;class &#39;numpy.ndarray&#39;&gt; (150, 4)
+target &lt;class &#39;numpy.ndarray&#39;&gt; (150,)
+target_names &lt;class &#39;numpy.ndarray&#39;&gt; (3,)
+DESCR &lt;class &#39;str&#39;&gt;
+feature_names &lt;class &#39;list&#39;&gt;
+filename &lt;class &#39;str&#39;&gt;
+-----------------------------
+-------- Approach 2 ---------
+-----------------------------
+&lt;class &#39;list&#39;&gt;
+&lt;class &#39;list&#39;&gt;
+&lt;class &#39;numpy.ndarray&#39;&gt;
+&lt;class &#39;numpy.ndarray&#39;&gt;
+&lt;class &#39;list&#39;&gt;
+&lt;class &#39;list&#39;&gt;
+The lists are identical
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="clustering.html" title="previous page">Clustering</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Manuel Rucci / Daniele Grotti<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

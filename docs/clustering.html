@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Clustering (Kmeans, DBScan) &#8212; Tecnologie &amp; Software di Data Science</title>
+    <title>Clustering &#8212; Tecnologie &amp; Software di Data Science</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="../_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
@@ -31,6 +31,7 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="PCA" href="pca.html" />
     <link rel="prev" title="Export coeff of regressor" href="regressore.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -106,7 +107,10 @@
     <a href="regressore.html">Export coeff of regressor</a>
   </li>
   <li class="active">
-    <a href="">Clustering (Kmeans, DBScan)</a>
+    <a href="">Clustering</a>
+  </li>
+  <li class="">
+    <a href="pca.html">PCA</a>
   </li>
 </ul>
 </nav>
@@ -207,11 +211,25 @@
         </li>
     
         <li class="nav-item toc-entry toc-h3">
+            <a href="#kmeans-plot-usando-plotly" class="nav-link">KMeans plot usando Plotly</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
             <a href="#come-scegliamo-il-numero-giusto-di-clusters" class="nav-link">Come scegliamo il numero giusto di clusters?</a>
         </li>
     
         <li class="nav-item toc-entry toc-h3">
-            <a href="#elbow-method" class="nav-link">Elbow method</a>
+            <a href="#elbow-method" class="nav-link">Elbow method</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#distorsione-implementazione" class="nav-link">Distorsione implementazione</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#inertia-implementazione" class="nav-link">Inertia implementazione</a>
+        </li>
+    
+            </ul>
         </li>
     
         <li class="nav-item toc-entry toc-h3">
@@ -230,19 +248,11 @@
         </li>
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#clustering-for-preprocessing" class="nav-link">4. Clustering for Preprocessing</a>
+            <a href="#dbscan-algoritmo" class="nav-link">4. DBSCAN Algoritmo</a>
         </li>
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#clustering-for-semi-supervised-learning" class="nav-link">5. Clustering for semi-supervised Learning</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#dbscan-algoritmo" class="nav-link">6. DBSCAN Algoritmo</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#other-clustering-algorithms" class="nav-link">7. Other clustering algorithms</a>
+            <a href="#other-clustering-algorithms" class="nav-link">5. Other clustering algorithms</a>
         </li>
     
         <li class="nav-item toc-entry toc-h2">
@@ -250,7 +260,21 @@
         </li>
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#example-k-means-on-digits" class="nav-link">Example: k-means on digits</a>
+            <a href="#example-k-means-on-digits" class="nav-link">Example: k-means on digits</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#classificazione-usando-logisticregression-e-randomforest" class="nav-link">Classificazione usando LogisticRegression e RandomForest</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#classificazione-usando-kmeans" class="nav-link">Classificazione usando Kmeans</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#classificazione-usando-tsne" class="nav-link">Classificazione usando TSNE</a>
+        </li>
+    
+            </ul>
         </li>
     
     </ul>
@@ -265,8 +289,8 @@
               <div>
                 
   <p><a href="https://colab.research.google.com/github/visiont3lab/tecnologie_data_science/blob/master/book/docs/clustering.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
-<div class="section" id="clustering-kmeans-dbscan">
-<h1>Clustering (Kmeans, DBScan)<a class="headerlink" href="#clustering-kmeans-dbscan" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="clustering">
+<h1>Clustering<a class="headerlink" href="#clustering" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><p><strong>Importante</strong>: Il contenuto di questo notebook proviene dal noteook <a class="reference external" href="https://colab.research.google.com/github/jakevdp/PythonDataScienceHandbook/blob/master/notebooks/05.11-K-Means.ipynb">Kmeans Python Data science Handbook</a> .</p>
 </div></blockquote>
@@ -378,8 +402,7 @@ these types of elliptical clusters, Gaussian mixture models work great.</p>
         <span class="n">labels</span> <span class="o">=</span> <span class="n">pairwise_distances_argmin</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">centers</span><span class="p">)</span>
 
         <span class="c1"># 2b. Find new centers from means of points</span>
-        <span class="n">new_centers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">X</span><span class="p">[</span><span class="n">labels</span> <span class="o">==</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-                                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_clusters</span><span class="p">)])</span>
+        <span class="n">new_centers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">X</span><span class="p">[</span><span class="n">labels</span> <span class="o">==</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_clusters</span><span class="p">)])</span>
         
         <span class="c1"># 2c. Check for convergence</span>
         <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">centers</span> <span class="o">==</span> <span class="n">new_centers</span><span class="p">):</span>
@@ -401,7 +424,7 @@ these types of elliptical clusters, Gaussian mixture models work great.</p>
  [-0.6149071   3.94963585]]
 </pre></div>
 </div>
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fd33104aa90&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fe031ef7e80&gt;
 </pre></div>
 </div>
 <img alt="../_images/clustering_9_2.png" src="../_images/clustering_9_2.png" />
@@ -422,7 +445,7 @@ these types of elliptical clusters, Gaussian mixture models work great.</p>
  [2.5270643  0.6178122 ]]
 </pre></div>
 </div>
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fd3308f73c8&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fe031fa1860&gt;
 </pre></div>
 </div>
 <img alt="../_images/clustering_10_2.png" src="../_images/clustering_10_2.png" />
@@ -448,7 +471,7 @@ these types of elliptical clusters, Gaussian mixture models work great.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fd3294e0f28&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fe032a88550&gt;
 </pre></div>
 </div>
 <img alt="../_images/clustering_13_1.png" src="../_images/clustering_13_1.png" />
@@ -469,12 +492,107 @@ these types of elliptical clusters, Gaussian mixture models work great.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fd3295eac50&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fe031e63d68&gt;
 </pre></div>
 </div>
 <img alt="../_images/clustering_15_1.png" src="../_images/clustering_15_1.png" />
 </div>
 </div>
+</div>
+</div>
+<div class="section" id="kmeans-plot-usando-plotly">
+<h3>KMeans plot usando Plotly<a class="headerlink" href="#kmeans-plot-usando-plotly" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
+
+<span class="c1"># Apply Kmeans</span>
+<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">kmeans</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="c1">#hard clustering</span>
+<span class="n">centers</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span>
+
+<span class="c1"># Plot using Plotly Library</span>
+<span class="n">xx</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">yy</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">centers</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span><span class="n">y</span><span class="o">=</span><span class="n">centers</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;markers&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;centri&quot;</span><span class="p">,</span>
+        <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+            <span class="n">size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span> <span class="c1">#labels.astype(np.float), #&quot;red&quot;, </span>
+        <span class="p">)))</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">xx</span><span class="p">,</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">yy</span><span class="p">,</span> 
+    <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;markers&quot;</span><span class="p">,</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">labels</span><span class="p">,</span> 
+    <span class="n">hovertemplate</span> <span class="o">=</span> <span class="s1">&#39;X: %</span><span class="si">{x:.2f}</span><span class="s1"> &lt;br&gt;&#39;</span> <span class="o">+</span>
+    <span class="s1">&#39;Y: %</span><span class="si">{y}</span><span class="s1">  &lt;br&gt;&#39;</span> <span class="o">+</span>
+    <span class="s1">&#39;Labels: %</span><span class="si">{text:.2f}</span><span class="s1"> &lt;br&gt;&#39;</span><span class="p">,</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;punti&quot;</span><span class="p">,</span>
+    <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="n">labels</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">),</span> <span class="c1">#&quot;red&quot;, #df_train[&quot;T&quot;],             # set color to an array/list of desired values</span>
+        <span class="c1">#colorscale=&#39;Viridis&#39;,   # choose a colorscale</span>
+        <span class="n">opacity</span><span class="o">=</span><span class="mf">0.8</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">hovermode</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1">#centers = kmeans.cluster_centers_</span>
+<span class="c1">#plt.scatter(X[:, 0], X[:, 1], c=labels,cmap=&#39;viridis&#39;) #, s=50, cmap=&#39;viridis&#39;);</span>
+<span class="c1">#plt.scatter(centers[:, 0], centers[:, 1], c=&#39;black&#39;, s=200, alpha=1)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+
+
+            <div id="3f69b8eb-99f8-4f3b-9d37-2b1f9bc54b3b" class="plotly-graph-div" style="height:525px; width:100%;"></div>
+            <script type="text/javascript">
+                require(["plotly"], function(Plotly) {
+                    window.PLOTLYENV=window.PLOTLYENV || {};
+
+                if (document.getElementById("3f69b8eb-99f8-4f3b-9d37-2b1f9bc54b3b")) {
+                    Plotly.newPlot(
+                        '3f69b8eb-99f8-4f3b-9d37-2b1f9bc54b3b',
+                        [{"marker": {"color": "black", "size": 50}, "mode": "markers", "name": "centri", "type": "scatter", "x": [-0.8581804066912794, 1.4603952137197334, 0.373904056328429, -1.8988375589095472, -1.7361296779835458, 2.578127251493426, 1.339845344506443, -1.2437273729394098, 1.174094225326177, 1.7971631053873578], "y": [8.16999589205146, 1.4299626767201046, 4.6263590724533294, 2.497882891577043, 7.460381376198614, 1.041859286939145, 4.858327368357275, 3.191486513827278, 3.7817994830719464, 0.36069511509962116]}, {"hovertemplate": "X: %{x:.2f} <br>Y: %{y}  <br>Labels: %{text:.2f} <br>", "marker": {"color": [1.0, 4.0, 6.0, 0.0, 1.0, 5.0, 3.0, 6.0, 0.0, 0.0, 3.0, 4.0, 6.0, 4.0, 9.0, 2.0, 6.0, 5.0, 7.0, 3.0, 5.0, 1.0, 2.0, 3.0, 3.0, 2.0, 9.0, 2.0, 3.0, 2.0, 0.0, 4.0, 8.0, 4.0, 4.0, 4.0, 4.0, 4.0, 3.0, 9.0, 8.0, 3.0, 2.0, 8.0, 3.0, 7.0, 0.0, 3.0, 4.0, 1.0, 7.0, 5.0, 0.0, 9.0, 1.0, 7.0, 0.0, 3.0, 4.0, 1.0, 4.0, 2.0, 0.0, 7.0, 3.0, 7.0, 4.0, 5.0, 4.0, 7.0, 8.0, 7.0, 0.0, 7.0, 3.0, 0.0, 3.0, 6.0, 9.0, 0.0, 9.0, 2.0, 1.0, 1.0, 0.0, 6.0, 5.0, 2.0, 4.0, 4.0, 8.0, 9.0, 4.0, 7.0, 7.0, 8.0, 1.0, 5.0, 2.0, 3.0, 0.0, 9.0, 0.0, 5.0, 6.0, 5.0, 9.0, 6.0, 4.0, 6.0, 3.0, 7.0, 9.0, 4.0, 9.0, 8.0, 4.0, 1.0, 1.0, 2.0, 7.0, 9.0, 7.0, 9.0, 1.0, 5.0, 9.0, 3.0, 1.0, 3.0, 0.0, 3.0, 3.0, 9.0, 4.0, 3.0, 3.0, 4.0, 8.0, 0.0, 4.0, 7.0, 8.0, 7.0, 6.0, 3.0, 4.0, 2.0, 4.0, 4.0, 4.0, 6.0, 4.0, 2.0, 9.0, 7.0, 0.0, 3.0, 9.0, 6.0, 4.0, 8.0, 8.0, 1.0, 2.0, 3.0, 3.0, 2.0, 1.0, 8.0, 8.0, 0.0, 9.0, 6.0, 7.0, 0.0, 5.0, 5.0, 2.0, 7.0, 5.0, 8.0, 3.0, 7.0, 2.0, 6.0, 6.0, 2.0, 5.0, 4.0, 8.0, 7.0, 6.0, 2.0, 3.0, 3.0, 3.0, 8.0, 3.0, 4.0, 8.0, 7.0, 9.0, 3.0, 8.0, 4.0, 7.0, 0.0, 6.0, 4.0, 6.0, 3.0, 2.0, 6.0, 4.0, 7.0, 7.0, 9.0, 9.0, 2.0, 4.0, 5.0, 9.0, 3.0, 9.0, 3.0, 8.0, 0.0, 0.0, 6.0, 8.0, 0.0, 8.0, 1.0, 7.0, 2.0, 9.0, 7.0, 0.0, 3.0, 5.0, 2.0, 5.0, 4.0, 4.0, 4.0, 4.0, 7.0, 7.0, 4.0, 6.0, 7.0, 9.0, 2.0, 7.0, 7.0, 7.0, 9.0, 5.0, 4.0, 6.0, 2.0, 7.0, 9.0, 0.0, 7.0, 8.0, 0.0, 6.0, 5.0, 9.0, 3.0, 3.0, 8.0, 5.0, 9.0, 1.0, 6.0, 0.0, 4.0, 5.0, 5.0, 8.0, 5.0, 5.0, 5.0, 4.0, 7.0, 0.0, 8.0, 9.0, 1.0, 4.0, 0.0, 0.0, 1.0, 5.0, 2.0, 0.0, 3.0], "opacity": 0.8, "size": 15}, "mode": "markers", "name": "punti", "text": [1.0, 4.0, 6.0, 0.0, 1.0, 5.0, 3.0, 6.0, 0.0, 0.0, 3.0, 4.0, 6.0, 4.0, 9.0, 2.0, 6.0, 5.0, 7.0, 3.0, 5.0, 1.0, 2.0, 3.0, 3.0, 2.0, 9.0, 2.0, 3.0, 2.0, 0.0, 4.0, 8.0, 4.0, 4.0, 4.0, 4.0, 4.0, 3.0, 9.0, 8.0, 3.0, 2.0, 8.0, 3.0, 7.0, 0.0, 3.0, 4.0, 1.0, 7.0, 5.0, 0.0, 9.0, 1.0, 7.0, 0.0, 3.0, 4.0, 1.0, 4.0, 2.0, 0.0, 7.0, 3.0, 7.0, 4.0, 5.0, 4.0, 7.0, 8.0, 7.0, 0.0, 7.0, 3.0, 0.0, 3.0, 6.0, 9.0, 0.0, 9.0, 2.0, 1.0, 1.0, 0.0, 6.0, 5.0, 2.0, 4.0, 4.0, 8.0, 9.0, 4.0, 7.0, 7.0, 8.0, 1.0, 5.0, 2.0, 3.0, 0.0, 9.0, 0.0, 5.0, 6.0, 5.0, 9.0, 6.0, 4.0, 6.0, 3.0, 7.0, 9.0, 4.0, 9.0, 8.0, 4.0, 1.0, 1.0, 2.0, 7.0, 9.0, 7.0, 9.0, 1.0, 5.0, 9.0, 3.0, 1.0, 3.0, 0.0, 3.0, 3.0, 9.0, 4.0, 3.0, 3.0, 4.0, 8.0, 0.0, 4.0, 7.0, 8.0, 7.0, 6.0, 3.0, 4.0, 2.0, 4.0, 4.0, 4.0, 6.0, 4.0, 2.0, 9.0, 7.0, 0.0, 3.0, 9.0, 6.0, 4.0, 8.0, 8.0, 1.0, 2.0, 3.0, 3.0, 2.0, 1.0, 8.0, 8.0, 0.0, 9.0, 6.0, 7.0, 0.0, 5.0, 5.0, 2.0, 7.0, 5.0, 8.0, 3.0, 7.0, 2.0, 6.0, 6.0, 2.0, 5.0, 4.0, 8.0, 7.0, 6.0, 2.0, 3.0, 3.0, 3.0, 8.0, 3.0, 4.0, 8.0, 7.0, 9.0, 3.0, 8.0, 4.0, 7.0, 0.0, 6.0, 4.0, 6.0, 3.0, 2.0, 6.0, 4.0, 7.0, 7.0, 9.0, 9.0, 2.0, 4.0, 5.0, 9.0, 3.0, 9.0, 3.0, 8.0, 0.0, 0.0, 6.0, 8.0, 0.0, 8.0, 1.0, 7.0, 2.0, 9.0, 7.0, 0.0, 3.0, 5.0, 2.0, 5.0, 4.0, 4.0, 4.0, 4.0, 7.0, 7.0, 4.0, 6.0, 7.0, 9.0, 2.0, 7.0, 7.0, 7.0, 9.0, 5.0, 4.0, 6.0, 2.0, 7.0, 9.0, 0.0, 7.0, 8.0, 0.0, 6.0, 5.0, 9.0, 3.0, 3.0, 8.0, 5.0, 9.0, 1.0, 6.0, 0.0, 4.0, 5.0, 5.0, 8.0, 5.0, 5.0, 5.0, 4.0, 7.0, 0.0, 8.0, 9.0, 1.0, 4.0, 0.0, 0.0, 1.0, 5.0, 2.0, 0.0, 3.0], "type": "scatter", "x": [0.8368568407639814, -1.4136580954824844, 1.1552129830701285, -1.0186163167387894, 1.2713514103916879, 3.437617540043243, -1.8082225260019826, 1.4137244158530171, -0.20493216827344374, -0.7110996110121923, -1.7123726800849306, -2.6700079178821117, 1.2425880181937505, -2.2278364904868475, 1.455138312999139, 0.45379178903736606, 1.0692385339646449, 2.5693658885744926, -1.0669061042348538, -1.0785910126991263, 2.715063278965146, 1.7771099366452214, 0.7343639103625873, -1.9964815067184205, -1.9182801731829169, -0.5555238109539522, 1.6974790983625732, 0.5947624315191664, -2.880242550863219, 0.18672563223958238, -0.5133334362299544, -2.0570110283236227, 1.8727175224410586, -1.1312139564553216, -1.6442895668266, -2.419338235635111, -2.016069278668694, -2.6214277987548673, -2.2029994984759513, 1.663822372000666, 0.6697869960051712, -1.9853903675657711, -0.04749203582851247, 1.5446212592107438, -1.702006430870623, -1.0219252547777236, -1.3784255167081396, -1.5522068839962528, -1.479043028631661, 1.9889431270933944, -1.9497241787356456, 2.4550973706520267, -0.8943278823054386, 1.6968778800536604, 1.756448051017495, -1.1106401216078259, -0.04150176586826815, -1.1409153341841487, -1.806349676260743, 1.3926375177758077, -2.25698670404281, 0.5716704821520695, -1.549945795131673, -1.0381921197291857, -2.109566755488596, -1.1865298465103038, -2.4580997514260066, 2.3696021357334014, -2.666760065030858, -1.497207024231851, 1.3222245685154597, -0.4872713010704255, -1.0371877083373353, -1.6049681857381277, -1.5037256821177925, -0.785412205540043, -1.7578318987306707, 1.1900899168511363, 2.1404394194253458, -1.0354011588782195, 1.254712438591226, 0.595676822337917, 1.2795533755988089, 1.7295506358228474, -0.9490416098002538, 0.9353251153517164, 2.36923351775193, 0.42857674327999995, -2.0475827675028513, -1.4567261662452882, 0.5294171853174312, 1.781948019322472, -1.955750533128763, -1.7457201398569167, -1.1797911145845783, 1.1641106995370358, 1.3615580623397303, 2.601374866288433, 0.2723960354779992, -3.12240735601995, -0.588085171813926, 1.6690964797331436, -0.682774903213914, 2.367906447304533, 1.0524173341686671, 2.2270737347682457, 2.4393464370914333, 1.3447177007541433, -1.3145494177857069, 0.9825700909789874, -1.0629522267803457, -1.6071249490229689, 1.5732217229285732, -2.1785133817962388, 1.8337584186674118, 2.1061604967802476, -1.6433875548291526, 1.1055044830318288, 1.6115297235980899, 0.45953466751367356, -0.5380230538973697, 1.6784149856479307, -1.0121496586465035, 1.3419519667624606, 1.4281155017447051, 2.0450552731160134, 1.6728053061015404, -1.3586389900321278, 1.130789312766103, -1.738963062476225, -0.3402589252022272, -1.6379362158275104, -1.6875441353582852, 2.4304063920491905, -1.379980391744878, -1.252454649489311, -2.394824832959938, -2.0918335245068898, 0.4883823093198226, -0.5394286139731788, -2.592018209943192, -1.0465651311633073, 1.255667542384771, -1.621504222920195, 1.869221394823855, -1.764041402814518, -1.3818191833151425, 0.00793137001172417, -1.1029849981550766, -1.793513722321582, -1.511769487827439, 0.9593607415433021, -0.6013373925176075, 0.22459286251653932, 1.5672489659103563, -1.033952585992028, -0.9222686399136384, -1.886096375375697, 1.868735818413795, 1.1012350653926113, -1.9321372480022148, 0.670478769495503, 0.7438739881017237, 1.6400376127622431, 0.8154680559756669, -2.6327457433158945, -0.9610763608283948, 0.2139790794550549, 1.4347218163621993, 1.2138741061434821, 1.0827257638987469, -1.2260523416000606, 1.4817005211372116, 1.8959376071615694, -1.3235615380923387, -1.1498986312745982, 2.469158420153751, 2.3110227598997386, 0.5727938098809244, -0.9677949887533233, 2.6249200055883346, 1.6835378212422856, -2.2213171687364177, -1.5784624734048731, 0.0815155229231318, 1.4328927136346912, 1.0626962212430218, 0.7675227889508035, 2.47019077207499, -1.7316316792697708, 0.34713829950623953, -1.0014043562695067, 1.0161804119763957, 0.5595293627076758, -2.1182104558323958, -1.3621941985875416, -2.7836658559455922, 1.6522516318103992, -1.9396065798391149, -1.8148768692407264, 1.2021253972398727, -0.9692009463341885, 1.8698597400046046, -1.8070113408535629, 1.2176750632530244, -1.4836891736359323, -1.5638798544792938, -0.686210296624996, 1.0762741757700125, -0.9759866271647398, 1.3796469327539564, -1.641296109370745, -0.0018489296331316574, 1.7144444869831275, -1.4052430421726907, -0.7081849043604226, -0.8857983736323, 1.9843690943557362, 2.951958248127699, 0.43189105991654975, -1.8662169447315362, 2.5270642986982637, 2.0406718467935168, -2.5804383632845367, 1.6199090943547274, -2.588027083628124, 0.44359862996842747, -0.4567736489652049, -1.1286756566082712, 2.130035294434726, 1.0037251889273626, -1.393467672668282, 0.7280986900906466, 0.8934996379249738, -1.1078297237575039, 0.7893385592700715, 1.9755391748807045, -1.2490258156307412, -1.0776879722618216, -1.8684912453040163, 2.768085396844259, 0.2771801740764812, 3.410852891847389, -1.5808415506889308, -1.5302755043666751, -1.824558403726039, -1.6856825700229676, -1.6510462189202884, -1.3044090124532441, -0.7306981679490796, 2.40615694346486, -1.5363132801834383, 1.4885997678819276, 0.5143204338793053, -1.814697501626674, -1.9373105518642353, -0.6149070967624418, 2.0316978304963804, 2.1491714442121035, -1.3699938792061506, 0.9143387674703604, 0.33381850564016957, -2.1596810916129137, 1.3667863299862164, -0.5710993360374091, -1.0055259210838283, 1.4949317978621983, -0.5904476673466711, 0.7151779475135126, 2.113902502061791, 1.2008309760433589, -2.5457675048812582, -1.9586666463529812, 2.3381228529390596, 3.3532090910012915, 1.8428711746807875, 1.3200062101347771, 2.096805454802437, -1.2430790353956045, -1.859080899918569, 2.74666646030275, 2.6077828157013694, 1.6599104892724754, 2.351512587842391, 2.223222280858821, 3.2288149063832945, -1.5587672002523922, -0.6469567838773989, -1.3268881816709976, 0.9171985638912357, 2.294695328816956, 1.815598103875153, -1.120167745400049, -1.6550712436848205, -1.2756781511422912, 1.9736977010258854, 2.518341852161078, 0.4389901418302897, 0.36947865679199743, -1.7914575925974603], "y": [2.1363593767535285, 7.409623236133461, 5.0996188654606085, 7.814914647322421, 1.8925420677088496, 0.2616541663050085, 1.597017490032788, 4.381177073902836, 8.432096650430893, 8.660438455477388, 2.7778022644069074, 8.353891395940183, 4.50399192387295, 6.894799381056522, -0.029198998128630027, 3.956477528589741, 4.530684839209695, 0.5070483039578487, 3.131657951816496, 2.204515288210881, 1.2908218983714956, 1.1865525442020142, 5.0372543696778465, 2.85164868191699, 2.6051686739524564, 4.695958484712606, 0.866123282176209, 4.70964730441629, 2.3043781551517606, 4.026836564559565, 7.87437367944774, 7.3785159826876585, 4.180692369188909, 6.766522302218239, 7.940951387619211, 7.439524977803895, 7.48420129307493, 7.986350664654516, 2.479475609614228, 0.6630916348253761, 3.5954080169749427, 2.0552073770521755, 5.474252564587464, 4.2107812715938895, 2.460986934246149, 2.7682071132365533, 8.102695966178473, 2.745749945899178, 7.569158359748475, 1.5097672869674166, 3.4838386963148196, 0.6212317875048049, 7.61714472965912, 0.7549106220963326, 2.0553828922281285, 2.8221381984453626, 7.80870275976808, 1.975508216153051, 7.728306560389196, 0.9289627074945215, 7.302077200784324, 4.322885662413, 9.282932223367844, 2.953237614842101, 3.1067725840426172, 2.78427720102403, 7.511787235616893, 0.9507169121647336, 7.84766052466474, 3.2141843271016968, 4.178808074101593, 3.328582925448637, 8.063001335762946, 2.974254198964464, 1.9238531999399506, 8.453123312911254, 2.9744932149233674, 4.727731228363559, 0.7060666096508798, 8.205591948277561, 0.08963315645940362, 4.086142627856107, 1.0578941815474465, 1.1472936876947921, 8.464243309222425, 5.33179296043801, 0.794735861204588, 4.973997100305902, 6.654285201769982, 7.486698929525399, 3.8079242042529815, 0.9081511553529709, 8.61631685864045, 3.0119045744965414, 3.127674935529027, 3.791329883867355, 1.3663825209639329, 1.087994589052718, 5.469960038837965, 3.281673975948751, 8.614273199037326, -0.43637823139671905, 7.674903167900386, 0.5521908780500973, 4.544980945515211, 1.2629699606232072, -0.0725099666485638, 4.857111330388306, 6.839040128520036, 5.375309623791891, 2.207553877217132, 3.5645285449188804, 0.48393379328781655, 8.085851308260695, 0.754036153392381, 3.4951318907629223, 7.526919636077601, 1.2638912874022599, 1.8234724171819783, 5.44982629930781, 3.016418914625523, 0.6090473888614643, 3.602543381327667, 0.5935738473587243, 1.6243508337475574, 1.125154701270986, 0.6593005713406582, 2.3220080947753745, 0.9356208564581359, 1.9479977481425033, 8.167339254166144, 2.4332931687633095, 2.2410754624511187, -0.06357093342611164, 7.185038043238434, 2.3391150530928857, 3.3980610309371393, 7.48142542811987, 3.268017766049384, 7.456317760838494, 8.076359448695767, 2.9648383664301194, 3.382041115682056, 4.271916359712049, 5.44132083306674, 2.222229951493175, 7.287612484816516, 4.1761431593200085, 7.302227861229416, 7.580869443054853, 7.944263073172287, 4.56078644976664, 6.299949215835136, 4.770281540947536, 0.017809063256428503, 2.9210578491127395, 8.09888579024482, 2.248344069756886, 0.9561037596992069, 4.889770749338617, 8.306434528385894, 4.0409427464816785, 4.122405677103188, 1.8194898924854155, 4.785261164926227, 2.6310978589088307, 1.274075961019389, 4.885425352343197, 1.306620370906913, 3.6479504222100867, 4.0627187657234325, 8.296201460281216, 0.690074594518305, 5.185402589388561, 4.130508398224001, 7.893252829194312, 1.6787713976769358, 1.3038084809560841, 4.088055430524065, 3.12186125161388, 0.9501944047690514, 4.19583242596098, 2.7305069106577067, 3.034458024160586, 4.567422348207112, 4.376792337344087, 5.176351431626175, 4.397596708910778, 1.3145131461315405, 7.164472861048615, 3.451776565141005, 2.8488177802407866, 4.485270466092259, 4.2140066032517876, 2.034781256854971, 2.383333211535806, 2.9921154098732266, 3.655828422430336, 2.1894358194766506, 7.978321904340981, 3.6441468530978733, 3.267217016171877, -0.10793862386004904, 2.067738593457367, 3.892901272884202, 6.007774182761638, 2.853499095558418, 8.68285663926406, 4.684806189583654, 6.737615769038875, 4.548264429193056, 2.680972552913053, 4.581456680763854, 5.025215236719037, 7.726113145367628, 2.5042127506031604, 2.64585077902229, 0.48955673753982665, -0.34432735507018264, 4.334954564926074, 7.625493996888132, 0.617812201896371, 0.45484511441452363, 3.1884429384166717, 0.06764528670090364, 3.131171336979384, 3.1153094465140336, 7.306008724511643, 7.8050978910645945, 5.1920962023090445, 4.19147701743289, 8.746416717855018, 3.8553144405839355, 1.010930818014234, 2.920144794784884, 4.3374865327862375, 0.7189891322968999, 3.085339719968595, 8.881061284034972, 3.0798248742975796, 1.0878292270928467, 4.844283219620902, 0.8723093689415512, 7.5530774207487195, 7.705421133296271, 7.359589598016991, 7.953394456078865, 3.445989608581592, 3.003119344445464, 6.242088559856635, 4.8704750196426385, 3.0144391623120566, 0.6516338440164078, 4.62733684222348, 3.29009724033923, 3.913612739047046, 3.9496358457828395, 0.1968075612932184, 1.0369722816581022, 7.769530348056006, 4.550146428611414, 4.936458363607072, 3.4100309637279316, 0.6349716330912765, 8.133060583447971, 3.0840054048407994, 3.858488315204525, 7.694930534834872, 5.413345564535995, 1.247435867789913, 0.6016717299206205, 3.150250546570161, 2.4300864682006766, 3.431167922689131, 1.6995804295997718, 0.07269288388712558, 1.404281445778865, 4.847414122413621, 8.15166254071439, 7.788747162077084, 1.5454348151600295, 1.0889002517037496, 3.5628918352361985, 0.8280012965173169, 0.8387734261521621, 1.1317196535506926, 7.248162100026332, 3.429413425009862, 8.515307943377428, 3.9057003556311254, -0.7658919939180533, 1.119697192646448, 7.1103158234016615, 8.614167490032253, 7.967764609095898, 1.579798477499554, 1.3917661523161757, 4.535928826163947, 7.791105215873345, 2.7496689642224172]}],
+                        {"hovermode": "x", "template": {"data": {"bar": [{"error_x": {"color": "#2a3f5f"}, "error_y": {"color": "#2a3f5f"}, "marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "bar"}], "barpolar": [{"marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "barpolar"}], "carpet": [{"aaxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "baxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "type": "carpet"}], "choropleth": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "choropleth"}], "contour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "contour"}], "contourcarpet": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "contourcarpet"}], "heatmap": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmap"}], "heatmapgl": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmapgl"}], "histogram": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "histogram"}], "histogram2d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2d"}], "histogram2dcontour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2dcontour"}], "mesh3d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "mesh3d"}], "parcoords": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "parcoords"}], "pie": [{"automargin": true, "type": "pie"}], "scatter": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter"}], "scatter3d": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter3d"}], "scattercarpet": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattercarpet"}], "scattergeo": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergeo"}], "scattergl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergl"}], "scattermapbox": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattermapbox"}], "scatterpolar": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolar"}], "scatterpolargl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolargl"}], "scatterternary": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterternary"}], "surface": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "surface"}], "table": [{"cells": {"fill": {"color": "#EBF0F8"}, "line": {"color": "white"}}, "header": {"fill": {"color": "#C8D4E3"}, "line": {"color": "white"}}, "type": "table"}]}, "layout": {"annotationdefaults": {"arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1}, "coloraxis": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "colorscale": {"diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]], "sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}, "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"], "font": {"color": "#2a3f5f"}, "geo": {"bgcolor": "white", "lakecolor": "white", "landcolor": "#E5ECF6", "showlakes": true, "showland": true, "subunitcolor": "white"}, "hoverlabel": {"align": "left"}, "hovermode": "closest", "mapbox": {"style": "light"}, "paper_bgcolor": "white", "plot_bgcolor": "#E5ECF6", "polar": {"angularaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "radialaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "scene": {"xaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "yaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "zaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}}, "shapedefaults": {"line": {"color": "#2a3f5f"}}, "ternary": {"aaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "baxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "caxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "title": {"x": 0.05}, "xaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "zerolinewidth": 2}, "yaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "zerolinewidth": 2}}}},
+                        {"responsive": true}
+                    ).then(function(){
+
+var gd = document.getElementById('3f69b8eb-99f8-4f3b-9d37-2b1f9bc54b3b');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })
+                };
+                });
+            </script>
+        </div></div></div>
 </div>
 </div>
 <div class="section" id="come-scegliamo-il-numero-giusto-di-clusters">
@@ -486,19 +604,52 @@ these types of elliptical clusters, Gaussian mixture models work great.</p>
 <li><p><strong>Distortion</strong>: È la media delle distanze al quadrato tra i centri dei clusters. Come metrica si utilizza la distance euclidea.</p></li>
 <li><p><strong>Inertia</strong>: Per ogni campione mi calcolo la distanza euclidea (mean square distance) che esso ha da un cluster center. Ripeto l’operazione per ogni cluster e sommo i risultati.</p></li>
 </ul>
+<div class="section" id="distorsione-implementazione">
+<h4>Distorsione implementazione<a class="headerlink" href="#distorsione-implementazione" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sum of squared distance (Inertia)</span>
-<span class="n">sqd</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">centers</span><span class="p">)):</span>
-    <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">X</span> <span class="o">-</span> <span class="n">centers</span><span class="p">[</span><span class="n">i</span><span class="p">,:],</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># Euclidean distance</span>
-    <span class="n">sqd</span> <span class="o">=</span> <span class="n">dist</span> <span class="o">+</span> <span class="n">sqd</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sqd</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">centers</span><span class="p">))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.paired_euclidean_distances.html</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">pairwise_distances</span>
+<span class="n">n_clusters</span> <span class="o">=</span> <span class="n">centers</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">distortion</span> <span class="o">=</span><span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n_clusters</span><span class="p">):</span>
+    <span class="n">cluster_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">labels</span><span class="o">==</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">center</span> <span class="o">=</span> <span class="n">centers</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">pairwise_distances</span><span class="p">(</span><span class="n">cluster_data</span><span class="p">,</span><span class="n">center</span><span class="p">,</span><span class="n">metric</span><span class="o">=</span><span class="s1">&#39;euclidean&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">/</span><span class="n">cluster_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">distortion</span> <span class="o">=</span> <span class="n">distortion</span> <span class="o">+</span> <span class="n">dist</span>
+<span class="n">distortion</span> <span class="o">=</span> <span class="n">distortion</span> <span class="o">/</span><span class="n">n_clusters</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Distorsione: &quot;</span><span class="p">,</span> <span class="s2">&quot;Cluster: &quot;</span><span class="p">,</span> <span class="n">n_clusters</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">distortion</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>66.42093081518416
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Distorsione:  Cluster:  10 = [0.52226331]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="inertia-implementazione">
+<h4>Inertia implementazione<a class="headerlink" href="#inertia-implementazione" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#from sklearn.metrics.pairwise import euclidean_distances</span>
+<span class="n">n_clusters</span> <span class="o">=</span> <span class="n">centers</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">inertia</span> <span class="o">=</span><span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n_clusters</span><span class="p">):</span>
+    <span class="n">cluster_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">labels</span><span class="o">==</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">center</span> <span class="o">=</span> <span class="n">centers</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">cluster_data</span> <span class="o">-</span> <span class="n">center</span><span class="p">)</span> <span class="c1"># Euclidean distance</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">dist</span><span class="o">**</span><span class="mi">2</span>
+    <span class="c1">#dist = pairwise_distances(cluster_data,center,metric=&#39;euclidean&#39;)</span>
+    <span class="n">inertia</span> <span class="o">=</span> <span class="n">inertia</span> <span class="o">+</span> <span class="n">dist</span>
+<span class="n">inertia</span> <span class="o">=</span> <span class="n">inertia</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Inertia: &quot;</span><span class="p">,</span> <span class="s2">&quot;Cluster: &quot;</span><span class="p">,</span> <span class="n">n_clusters</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">inertia</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Inertia:  Cluster:  10 = 112.41639656079565
 </pre></div>
 </div>
 </div>
@@ -510,7 +661,7 @@ these types of elliptical clusters, Gaussian mixture models work great.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>170.7293030313498
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>112.41639656079562
 </pre></div>
 </div>
 </div>
@@ -523,7 +674,7 @@ these types of elliptical clusters, Gaussian mixture models work great.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>-170.72930303134987
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>-112.41639656079565
 </pre></div>
 </div>
 </div>
@@ -542,12 +693,10 @@ these types of elliptical clusters, Gaussian mixture models work great.</p>
     <span class="n">kmeanModel</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">k</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> 
     <span class="n">kmeanModel</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>     
     
-    <span class="n">distortions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">pairwise_distances</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">kmeanModel</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">,</span> 
-                      <span class="s1">&#39;euclidean&#39;</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> 
+    <span class="n">distortions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">pairwise_distances</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">kmeanModel</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">,</span> <span class="s1">&#39;euclidean&#39;</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> 
     <span class="n">inertias</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kmeanModel</span><span class="o">.</span><span class="n">inertia_</span><span class="p">)</span> 
   
-    <span class="n">mapping1</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">pairwise_distances</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">kmeanModel</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">,</span> 
-                 <span class="s1">&#39;euclidean&#39;</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> 
+    <span class="n">mapping1</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">pairwise_distances</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">kmeanModel</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">,</span> <span class="s1">&#39;euclidean&#39;</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> 
     <span class="n">mapping2</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">kmeanModel</span><span class="o">.</span><span class="n">inertia_</span> 
 </pre></div>
 </div>
@@ -564,7 +713,7 @@ these types of elliptical clusters, Gaussian mixture models work great.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clustering_22_0.png" src="../_images/clustering_22_0.png" />
+<img alt="../_images/clustering_27_0.png" src="../_images/clustering_27_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -578,7 +727,8 @@ these types of elliptical clusters, Gaussian mixture models work great.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clustering_23_0.png" src="../_images/clustering_23_0.png" />
+<img alt="../_images/clustering_28_0.png" src="../_images/clustering_28_0.png" />
+</div>
 </div>
 </div>
 </div>
@@ -717,11 +867,11 @@ For n_clusters = 5 The average silhouette_score is : 0.5745566973301872
 For n_clusters = 6 The average silhouette_score is : 0.4387644975296138
 </pre></div>
 </div>
-<img alt="../_images/clustering_26_1.png" src="../_images/clustering_26_1.png" />
-<img alt="../_images/clustering_26_2.png" src="../_images/clustering_26_2.png" />
-<img alt="../_images/clustering_26_3.png" src="../_images/clustering_26_3.png" />
-<img alt="../_images/clustering_26_4.png" src="../_images/clustering_26_4.png" />
-<img alt="../_images/clustering_26_5.png" src="../_images/clustering_26_5.png" />
+<img alt="../_images/clustering_31_1.png" src="../_images/clustering_31_1.png" />
+<img alt="../_images/clustering_31_2.png" src="../_images/clustering_31_2.png" />
+<img alt="../_images/clustering_31_3.png" src="../_images/clustering_31_3.png" />
+<img alt="../_images/clustering_31_4.png" src="../_images/clustering_31_4.png" />
+<img alt="../_images/clustering_31_5.png" src="../_images/clustering_31_5.png" />
 </div>
 </div>
 </div>
@@ -756,11 +906,13 @@ For n_clusters = 6 The average silhouette_score is : 0.4387644975296138
 </div>
 <div class="cell_output docutils container">
 <div class="stderr docutils container">
-<pre class="stderr literal-block">/home/manuel/visiont3lab-github/public/tecnologie_data_science/env/lib/python3.6/site-packages/sklearn/manifold/_spectral_embedding.py:236: UserWarning: Graph is not fully connected, spectral embedding may not work as expected.
-  warnings.warn(&quot;Graph is not fully connected, spectral embedding&quot;
+<pre class="stderr literal-block">/home/manuel/visiont3lab-github/public/tecnologie_data_science/env/lib/python3.6/site-packages/sklearn/manifold/_spectral_embedding.py:236: UserWarning:
+
+Graph is not fully connected, spectral embedding may not work as expected.
+
 </pre>
 </div>
-<img alt="../_images/clustering_30_1.png" src="../_images/clustering_30_1.png" />
+<img alt="../_images/clustering_35_1.png" src="../_images/clustering_35_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -772,7 +924,7 @@ For n_clusters = 6 The average silhouette_score is : 0.4387644975296138
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clustering_31_0.png" src="../_images/clustering_31_0.png" />
+<img alt="../_images/clustering_36_0.png" src="../_images/clustering_36_0.png" />
 </div>
 </div>
 </div>
@@ -863,274 +1015,13 @@ For n_clusters = 6 The average silhouette_score is : 0.4387644975296138
 (1707200, 3)
 </pre></div>
 </div>
-<img alt="../_images/clustering_35_1.png" src="../_images/clustering_35_1.png" />
-<img alt="../_images/clustering_35_2.png" src="../_images/clustering_35_2.png" />
+<img alt="../_images/clustering_40_1.png" src="../_images/clustering_40_1.png" />
+<img alt="../_images/clustering_40_2.png" src="../_images/clustering_40_2.png" />
 </div>
 </div>
-</div>
-<div class="section" id="clustering-for-preprocessing">
-<h2>4. Clustering for Preprocessing<a class="headerlink" href="#clustering-for-preprocessing" title="Permalink to this headline">¶</a></h2>
-<p>We have seen PCA (dimensionality reduction).</p>
-<p>Although it is tempting to define the number of clusters to 10, since
-there are 10 different digits, it is unlikely to perform well, because there
-are several different ways to write each digit</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_digits</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
-
-<span class="n">X_digits</span><span class="p">,</span> <span class="n">y_digits</span> <span class="o">=</span> <span class="n">load_digits</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span><span class="n">train_test_split</span><span class="p">(</span><span class="n">X_digits</span><span class="p">,</span> <span class="n">y_digits</span><span class="p">)</span>
-<span class="n">log_reg</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-<span class="n">log_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="n">log_reg</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>                
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="stderr docutils container">
-<pre class="stderr literal-block">/usr/local/lib/python3.6/dist-packages/sklearn/linear_model/_logistic.py:940: ConvergenceWarning: lbfgs failed to converge (status=1):
-STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
-
-Increase the number of iterations (max_iter) or scale the data as shown in:
-    https://scikit-learn.org/stable/modules/preprocessing.html
-Please also refer to the documentation for alternative solver options:
-    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
-  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
-</pre>
-</div>
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.9666666666666667
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
-<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
-  <span class="p">(</span><span class="s2">&quot;kmeans&quot;</span><span class="p">,</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">50</span><span class="p">)),</span>
-  <span class="p">(</span><span class="s2">&quot;log_reg&quot;</span><span class="p">,</span> <span class="n">LogisticRegression</span><span class="p">()),</span>
-  <span class="p">])</span>
-<span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="n">pipeline</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="stderr docutils container">
-<pre class="stderr literal-block">/usr/local/lib/python3.6/dist-packages/sklearn/linear_model/_logistic.py:940: ConvergenceWarning: lbfgs failed to converge (status=1):
-STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
-
-Increase the number of iterations (max_iter) or scale the data as shown in:
-    https://scikit-learn.org/stable/modules/preprocessing.html
-Please also refer to the documentation for alternative solver options:
-    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
-  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
-</pre>
-</div>
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.9555555555555556
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
-<span class="n">param_grid</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">kmeans__n_clusters</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
-<span class="n">grid_clf</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">grid_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">grid_clf</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
-<span class="n">grid_clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>{&#39;kmeans__n_clusters&#39;: 58}
-</pre></div>
-</div>
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.9577777777777777
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="clustering-for-semi-supervised-learning">
-<h2>5. Clustering for semi-supervised Learning<a class="headerlink" href="#clustering-for-semi-supervised-learning" title="Permalink to this headline">¶</a></h2>
-<p>Another use case for clustering is in semi-supervised learning, when
-we have plenty of unlabeled instances and very few labeled instances.</p>
-<p>Since it is often costly and
-painful to label instances, especially when it has to be done manually
-by experts, it is a good idea to label representative instances rather than
-just random instances</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">n_labeled</span> <span class="o">=</span> <span class="mi">50</span>
-<span class="n">log_reg</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
-<span class="n">log_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">[:</span><span class="n">n_labeled</span><span class="p">],</span> <span class="n">y_train</span><span class="p">[:</span><span class="n">n_labeled</span><span class="p">])</span>
-<span class="n">log_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">[:</span><span class="n">n_labeled</span><span class="p">],</span> <span class="n">y_train</span><span class="p">[:</span><span class="n">n_labeled</span><span class="p">])</span>
-<span class="n">log_reg</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="stderr docutils container">
-<pre class="stderr literal-block">/usr/local/lib/python3.6/dist-packages/sklearn/linear_model/_logistic.py:940: ConvergenceWarning: lbfgs failed to converge (status=1):
-STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
-
-Increase the number of iterations (max_iter) or scale the data as shown in:
-    https://scikit-learn.org/stable/modules/preprocessing.html
-Please also refer to the documentation for alternative solver options:
-    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
-  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
-/usr/local/lib/python3.6/dist-packages/sklearn/linear_model/_logistic.py:940: ConvergenceWarning: lbfgs failed to converge (status=1):
-STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
-
-Increase the number of iterations (max_iter) or scale the data as shown in:
-    https://scikit-learn.org/stable/modules/preprocessing.html
-Please also refer to the documentation for alternative solver options:
-    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
-  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
-</pre>
-</div>
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.8622222222222222
-</pre></div>
-</div>
-</div>
-</div>
-<p>First, let’s cluster the training set
-into 50 clusters, then for each cluster let’s find the image closest to the
-centroid. We will call these images the representative images.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">k</span> <span class="o">=</span> <span class="mi">50</span>
-<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
-<span class="n">X_digits_dist</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
-<span class="n">representative_digit_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">X_digits_dist</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">X_representative_digits</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="n">representative_digit_idx</span><span class="p">]</span>
-
-<span class="c1"># Code to manually label the image (we need to implement it.)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Now let’s look at each image and manually label it:
-y_representative_digits = np.array([4, 8, 0, 6, 8, 3, .. 7, 6, 2, 3, 1, 1]).</p>
-<p>After having manually label them let’s train a classifier.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X_digits</span><span class="p">,</span> <span class="n">y_digits</span> <span class="o">=</span> <span class="n">load_digits</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span><span class="n">train_test_split</span><span class="p">(</span><span class="n">X_representative_digits</span><span class="p">,</span> <span class="n">y_digits</span><span class="p">)</span>
-<span class="n">log_reg</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-<span class="n">log_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="n">log_reg</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>                
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="stderr docutils container">
-<pre class="stderr literal-block">/usr/local/lib/python3.6/dist-packages/sklearn/linear_model/_logistic.py:940: ConvergenceWarning: lbfgs failed to converge (status=1):
-STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
-
-Increase the number of iterations (max_iter) or scale the data as shown in:
-    https://scikit-learn.org/stable/modules/preprocessing.html
-Please also refer to the documentation for alternative solver options:
-    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
-  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
-</pre>
-</div>
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.9666666666666667
-</pre></div>
-</div>
-</div>
-</div>
-<p>label propagation</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y_train_propagated</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">),</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
-    <span class="n">y_train_propagated</span><span class="p">[</span><span class="n">kmeans</span><span class="o">.</span><span class="n">labels_</span><span class="o">==</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_representative_digits</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>We got a tiny little accuracy boost. Better than nothing, but not
-astounding. The problem is that we propagated each representative
-instance’s label to all the instances in the same cluster, including the
-instances located close to the cluster boundaries, which are more likely
-to be mislabeled. Let’s see what happens if we only propagate the
-labels to the 20% of the instances that are closest to the centroids:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">percentile_closest</span> <span class="o">=</span> <span class="mi">20</span>
-<span class="n">X_cluster_dist</span> <span class="o">=</span> <span class="n">X_digits_dist</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">)),</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">labels_</span><span class="p">]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
-    <span class="n">in_cluster</span> <span class="o">=</span> <span class="p">(</span><span class="n">kmeans</span><span class="o">.</span><span class="n">labels_</span> <span class="o">==</span> <span class="n">i</span><span class="p">)</span>
-    <span class="n">cluster_dist</span> <span class="o">=</span> <span class="n">X_cluster_dist</span><span class="p">[</span><span class="n">in_cluster</span><span class="p">]</span>
-    <span class="n">cutoff_distance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">cluster_dist</span><span class="p">,</span> <span class="n">percentile_closest</span><span class="p">)</span>
-    <span class="n">above_cutoff</span> <span class="o">=</span> <span class="p">(</span><span class="n">X_cluster_dist</span> <span class="o">&gt;</span> <span class="n">cutoff_distance</span><span class="p">)</span>
-    <span class="n">X_cluster_dist</span><span class="p">[</span><span class="n">in_cluster</span> <span class="o">&amp;</span> <span class="n">above_cutoff</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-
-<span class="n">partially_propagated</span> <span class="o">=</span> <span class="p">(</span><span class="n">X_cluster_dist</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">X_train_partially_propagated</span> <span class="o">=</span>
-<span class="n">X_train</span><span class="p">[</span><span class="n">partially_propagated</span><span class="p">]</span>
-<span class="n">y_train_partially_propagated</span> <span class="o">=</span>
-<span class="n">y_train_propagated</span><span class="p">[</span><span class="n">partially_propagated</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>log_reg = LogisticRegression()</p>
-<blockquote>
-<div><blockquote>
-<div><blockquote>
-<div><p>log_reg.fit(X_train_partially_propagated,
-y_train_partially_propagated)</p>
-</div></blockquote>
-</div></blockquote>
-<blockquote>
-<div><blockquote>
-<div><p>log_reg.score(X_test, y_test)
-0.9422222222222222
-Nice! With just 50 labeled instances (only 5 examples per class on
-average!), we got 94.2% performance, which is pretty close to the
-performance of logistic regression on the fully labeled digits dataset
-(which was 96.7%). This is because the propagated labels are actually
-pretty good, their accuracy is very close to 99%:</p>
-</div></blockquote>
-</div></blockquote>
-<blockquote>
-<div><blockquote>
-<div><p>np.mean(y_train_partially_propagated ==
-y_train[partially_propagated])
-0.9896907216494846</p>
-</div></blockquote>
-</div></blockquote>
-</div></blockquote>
-<p>To continue improving your model and your training set, the next step could be to do a few rounds of
-active learning: this is when a human expert interacts with the learning algorithm, providing labels
-when the algorithm needs them. There are many different strategies for active learning, but one of the
-most common ones is called uncertainty sampling:
-The model is trained on the labeled instances gathered so far, and this model is used to
-make predictions on all the unlabeled instances.
-The instances for which the model is most uncertain (i.e., when its estimated probability is
-lowest) must be labeled by the expert.
-Then you just iterate this process again and again, until the performance improvement stops
-being worth the labeling effort.
-Other strategies include labeling the instances that would result in the largest model change, or the
-largest drop in the model’s validation error, or the instances that different models disagree on (e.g., an
-SVM, a Random Forest, and so on).</p>
 </div>
 <div class="section" id="dbscan-algoritmo">
-<h2>6. DBSCAN Algoritmo<a class="headerlink" href="#dbscan-algoritmo" title="Permalink to this headline">¶</a></h2>
+<h2>4. DBSCAN Algoritmo<a class="headerlink" href="#dbscan-algoritmo" title="Permalink to this headline">¶</a></h2>
 <p>local density estimation. It allows to identify clusters of arbitraty shapes. This algorithm defines clusters as continuous regions of high density.
 This algorithm works well if all the clusters are dense enough, and they
 are well separated by low-density regions.</p>
@@ -1168,12 +1059,12 @@ in its neighborhood is considered an anomaly.</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clustering_55_0.png" src="../_images/clustering_55_0.png" />
+<img alt="../_images/clustering_43_0.png" src="../_images/clustering_43_0.png" />
 </div>
 </div>
 </div>
 <div class="section" id="other-clustering-algorithms">
-<h2>7. Other clustering algorithms<a class="headerlink" href="#other-clustering-algorithms" title="Permalink to this headline">¶</a></h2>
+<h2>5. Other clustering algorithms<a class="headerlink" href="#other-clustering-algorithms" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Agglomerative clustering: . It can scale nicely to large numbers of
 instances if you provide a connectivity matrix. This is a sparse
@@ -1213,7 +1104,7 @@ clusters have very different sizes.</p></li>
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fd32247a5c0&gt;]
 </pre></div>
 </div>
-<img alt="../_images/clustering_58_1.png" src="../_images/clustering_58_1.png" />
+<img alt="../_images/clustering_46_1.png" src="../_images/clustering_46_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1229,7 +1120,7 @@ clusters have very different sizes.</p></li>
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fd32247af60&gt;]
 </pre></div>
 </div>
-<img alt="../_images/clustering_59_1.png" src="../_images/clustering_59_1.png" />
+<img alt="../_images/clustering_47_1.png" src="../_images/clustering_47_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1258,7 +1149,7 @@ clusters have very different sizes.</p></li>
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fd3224687f0&gt;]
 </pre></div>
 </div>
-<img alt="../_images/clustering_60_2.png" src="../_images/clustering_60_2.png" />
+<img alt="../_images/clustering_48_2.png" src="../_images/clustering_48_2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1282,7 +1173,7 @@ clusters have very different sizes.</p></li>
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fd3223737b8&gt;]
 </pre></div>
 </div>
-<img alt="../_images/clustering_61_2.png" src="../_images/clustering_61_2.png" />
+<img alt="../_images/clustering_49_2.png" src="../_images/clustering_49_2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1302,7 +1193,7 @@ clusters have very different sizes.</p></li>
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fd3223539b0&gt;]
 </pre></div>
 </div>
-<img alt="../_images/clustering_62_2.png" src="../_images/clustering_62_2.png" />
+<img alt="../_images/clustering_50_2.png" src="../_images/clustering_50_2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1341,7 +1232,7 @@ clusters have very different sizes.</p></li>
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fd3222d3b00&gt;]
 </pre></div>
 </div>
-<img alt="../_images/clustering_63_3.png" src="../_images/clustering_63_3.png" />
+<img alt="../_images/clustering_51_3.png" src="../_images/clustering_51_3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1357,7 +1248,7 @@ clusters have very different sizes.</p></li>
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fd3201b1160&gt;
 </pre></div>
 </div>
-<img alt="../_images/clustering_64_1.png" src="../_images/clustering_64_1.png" />
+<img alt="../_images/clustering_52_1.png" src="../_images/clustering_52_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1395,7 +1286,7 @@ clusters have very different sizes.</p></li>
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fd3284f96a0&gt;
 </pre></div>
 </div>
-<img alt="../_images/clustering_65_4.png" src="../_images/clustering_65_4.png" />
+<img alt="../_images/clustering_53_4.png" src="../_images/clustering_53_4.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1407,7 +1298,7 @@ clusters have very different sizes.</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clustering_66_0.png" src="../_images/clustering_66_0.png" />
+<img alt="../_images/clustering_54_0.png" src="../_images/clustering_54_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1424,16 +1315,66 @@ clusters have very different sizes.</p></li>
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fd328e38c18&gt;
 </pre></div>
 </div>
-<img alt="../_images/clustering_67_1.png" src="../_images/clustering_67_1.png" />
+<img alt="../_images/clustering_55_1.png" src="../_images/clustering_55_1.png" />
 </div>
 </div>
 </div>
 <div class="section" id="example-k-means-on-digits">
 <h2>Example: k-means on digits<a class="headerlink" href="#example-k-means-on-digits" title="Permalink to this headline">¶</a></h2>
-<p>To start, let’s take a look at applying <em>k</em>-means on the same simple digits data that we saw in <span class="xref myst">In-Depth: Decision Trees and Random Forests</span> and <span class="xref myst">In Depth: Principal Component Analysis</span>.
-Here we will attempt to use <em>k</em>-means to try to identify similar digits <em>without using the original label information</em>; this might be similar to a first step in extracting meaning from a new dataset about which you don’t have any <em>a priori</em> label information.</p>
-<p>We will start by loading the digits and then finding the <code class="docutils literal notranslate"><span class="pre">KMeans</span></code> clusters.
-Recall that the digits consist of 1,797 samples with 64 features, where each of the 64 features is the brightness of one pixel in an 8×8 image:</p>
+<div class="section" id="classificazione-usando-logisticregression-e-randomforest">
+<h3>Classificazione usando LogisticRegression e RandomForest<a class="headerlink" href="#classificazione-usando-logisticregression-e-randomforest" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_digits</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">preprocessing</span>
+
+<span class="c1"># Quando usiamo LogisticRegression è importante applicate Standard Scaling come preprocessing</span>
+<span class="n">X_digits</span><span class="p">,</span> <span class="n">y_digits</span> <span class="o">=</span> <span class="n">load_digits</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span><span class="n">train_test_split</span><span class="p">(</span><span class="n">X_digits</span><span class="p">,</span> <span class="n">y_digits</span><span class="p">)</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span> <span class="c1"># mean 0 , std=1</span>
+<span class="n">X_train_sc</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_test_sc</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1">#clf = LogisticRegression(random_state=42)</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span> <span class="c1">#max_depth=10, random_state=0)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_sc</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test_sc</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.9733333333333334
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Logistic Regression</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+  <span class="p">(</span><span class="s2">&quot;standard_scaling&quot;</span><span class="p">,</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">StandardScaler</span><span class="p">()),</span>
+  <span class="p">(</span><span class="s2">&quot;log_reg&quot;</span><span class="p">,</span> <span class="n">LogisticRegression</span><span class="p">()),</span>
+  <span class="p">])</span>
+<span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">pipeline</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.9733333333333334
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="classificazione-usando-kmeans">
+<h3>Classificazione usando Kmeans<a class="headerlink" href="#classificazione-usando-kmeans" title="Permalink to this headline">¶</a></h3>
+<p>Qui tenteremo di usare KMeans per  identificare cifre simili.Questo potrebbe essere simile a un primo passo per estrarre significato da un nuovo set di dati per il quale non si dispone di informazoni sul numero associato alle immagini. Ricordiamoci che il dataset digits è costituito da 1.797 immagini di dimensione  8 × 8=64</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_digits</span>
@@ -1477,7 +1418,7 @@ Let’s see what these cluster centers look like:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clustering_73_0.png" src="../_images/clustering_73_0.png" />
+<img alt="../_images/clustering_66_0.png" src="../_images/clustering_66_0.png" />
 </div>
 </div>
 <p>We see that <em>even without the labels</em>, <code class="docutils literal notranslate"><span class="pre">KMeans</span></code> is able to find clusters whose centers are recognizable digits, with perhaps the exception of 1 and 8.</p>
@@ -1524,13 +1465,16 @@ Let’s check the confusion matrix for this:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clustering_79_0.png" src="../_images/clustering_79_0.png" />
+<img alt="../_images/clustering_72_0.png" src="../_images/clustering_72_0.png" />
 </div>
 </div>
 <p>As we might expect from the cluster centers we visualized before, the main point of confusion is between the eights and ones.
 But this still shows that using <em>k</em>-means, we can essentially build a digit classifier <em>without reference to any known labels</em>!</p>
+</div>
+<div class="section" id="classificazione-usando-tsne">
+<h3>Classificazione usando TSNE<a class="headerlink" href="#classificazione-usando-tsne" title="Permalink to this headline">¶</a></h3>
 <p>Just for fun, let’s try to push this even farther.
-We can use the t-distributed stochastic neighbor embedding (t-SNE) algorithm (mentioned in <span class="xref myst">In-Depth: Manifold Learning</span>) to pre-process the data before performing <em>k</em>-means.
+We can use the t-distributed stochastic neighbor embedding (t-SNE) algorithm (mentioned in <a class="reference external" href="https://github.com/jakevdp/PythonDataScienceHandbook/blob/master/notebooks/05.10-Manifold-Learning.ipynb">In-Depth: Manifold Learning</a> to pre-process the data before performing <em>k</em>-means.
 t-SNE is a nonlinear embedding algorithm that is particularly adept at preserving points within clusters.
 Let’s see how it does:</p>
 <div class="cell docutils container">
@@ -1566,6 +1510,7 @@ Let’s see how it does:</p>
 This is the power of unsupervised learning when used carefully: it can extract information from the dataset that it might be difficult to do by hand or by eye.</p>
 </div>
 </div>
+</div>
 
 
               </div>
@@ -1577,6 +1522,7 @@ This is the power of unsupervised learning when used carefully: it can extract i
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="regressore.html" title="previous page">Export coeff of regressor</a>
+    <a class='right-next' id="next-link" href="pca.html" title="next page">PCA</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
