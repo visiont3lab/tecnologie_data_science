@@ -16,6 +16,7 @@
     - file: docs/regressore
     - file: docs/clustering
     - file: docs/pca
+    - file: docs/pca_regressione
     - file: docs/binary_classifier
     
     
