@@ -1,0 +1,1247 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Pyspark &#8212; Tecnologie &amp; Software di Data Science</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/mystnb.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Tecnologie & Software di Data Science</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="../introduzione_generale.html">Introduzione</a>
+  </li>
+  <li class="">
+    <a href="../introduzione_programmazione.html">Introduzione programmazione</a>
+  </li>
+  <li class="">
+    <a href="../google_colab.html">Google Colaboratory</a>
+  </li>
+  <li class="">
+    <a href="../numpy.html">Numpy Array</a>
+  </li>
+  <li class="">
+    <a href="../matplotlib.html">Intro Matplotlib</a>
+  </li>
+  <li class="">
+    <a href="../pandas.html">Pandas</a>
+  </li>
+  <li class="">
+    <a href="../seaborn.html">Seaborn</a>
+  </li>
+  <li class="">
+    <a href="../analisi_covid19_spiegazione.html">Analisi Covid19 dataset usando Pandas, Matplotlib, Plotly, Dash : (Spiegazione)</a>
+  </li>
+  <li class="">
+    <a href="../analisi_covid19_esercizio.html">Analisi Covid19 dataset usando Pandas, Matplotlib, Plotly, Dash : (Soluzione)</a>
+  </li>
+  <li class="">
+    <a href="../solut_tips.html">TIPS</a>
+  </li>
+  <li class="">
+    <a href="../boston_housing.html">Boston Housing Dataset</a>
+  </li>
+  <li class="">
+    <a href="../decision_tree.html">DECISION TREE</a>
+  </li>
+  <li class="">
+    <a href="../regressore.html">Export coeff of regressor</a>
+  </li>
+  <li class="">
+    <a href="../clustering.html">Clustering</a>
+  </li>
+  <li class="">
+    <a href="../pca.html">PCA</a>
+  </li>
+  <li class="">
+    <a href="../pca_regressione.html">PCA: Regressione</a>
+  </li>
+  <li class="">
+    <a href="../binary_classifier.html">Binary classifier 5 or not 5 ?</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="../../_sources/docs/pyspark/movies_rev.ipynb"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.ipynb</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Source interaction buttons -->
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#analisi-recensioni-film" class="nav-link">Analisi recensioni film</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#importiamo-il-dataset-in-un-dataframe" class="nav-link">Importiamo il dataset in un Dataframe</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#correggiamo-lo-schema" class="nav-link">Correggiamo lo schema</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#contiamo-le-recensioni-nel-dataset" class="nav-link">Contiamo le recensioni nel dataset</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#contare-il-numero-medio-di-recensioni-per-utente" class="nav-link">Contare il numero medio di recensioni per utente</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#trovare-l-utente-che-ha-scritto-piu-recensioni" class="nav-link">Trovare l’utente che ha scritto più recensioni</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#trovare-i-10-film-che-hanno-ricevuto-piu-recensioni" class="nav-link">Trovare i 10 film che hanno ricevuto più recensioni</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#trovare-i-10-film-con-la-valutazione-piu-alta" class="nav-link">Trovare i 10 film con la valutazione più alta</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#trovare-i-10-film-con-la-valutazione-piu-bassa" class="nav-link">Trovare i 10 film con la valutazione più bassa</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#trovare-le-10-valutazioni-piu-recenti" class="nav-link">Trovare le 10 valutazioni più recenti</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#trovare-i-film-piu-visti-per-anno" class="nav-link">Trovare i film più visti per anno</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#aggiungiamo-titolo-e-genere-alla-lista-dei-film-piu-visti-per-anno" class="nav-link">Aggiungiamo titolo e genere alla lista dei film più visti per anno</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#sql" class="nav-link">SQL</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><a href="https://colab.research.google.com/github/visiont3lab/tecnologie_data_science/blob/master/book/docs/pyspark/movies_rev.ipynb
+" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<div class="section" id="pyspark">
+<h1>Pyspark<a class="headerlink" href="#pyspark" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">################ template to run PySpark on Colab #######################</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!apt-get install openjdk-8-jdk-headless -qq &gt; /dev/null
+!wget -q https://www-us.apache.org/dist/spark/spark-2.4.5/spark-2.4.5-bin-hadoop2.7.tgz
+!tar xf spark-2.4.5-bin-hadoop2.7.tgz
+!pip install -q findspark
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;JAVA_HOME&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;/usr/lib/jvm/java-8-openjdk-amd64&quot;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;SPARK_HOME&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;/content/spark-2.4.5-bin-hadoop2.7&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">findspark</span>
+<span class="n">findspark</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+
+<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+<span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">master</span><span class="p">(</span><span class="s2">&quot;local[*]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+<span class="n">spark1</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s1">&#39;basic&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+<span class="c1">#Test must give no error</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyspark</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark</span> <span class="kn">import</span> <span class="n">SparkConf</span><span class="p">,</span> <span class="n">SparkContext</span>
+<span class="n">conf</span> <span class="o">=</span> <span class="n">SparkConf</span><span class="p">()</span><span class="o">.</span><span class="n">setAppName</span><span class="p">(</span><span class="s2">&quot;basic&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">setMaster</span><span class="p">(</span><span class="s2">&quot;local&quot;</span><span class="p">)</span>
+<span class="c1">#sc = SparkContext(conf=conf)  ## for jupyter and Databricks</span>
+<span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>   <span class="c1">## for Colab</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.types</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="analisi-recensioni-film">
+<h2>Analisi recensioni film<a class="headerlink" href="#analisi-recensioni-film" title="Permalink to this headline">¶</a></h2>
+<p>In questo notebook utilizzeremo Spark con il modulo SparkSQL ed un Dataframe per analizzare oltre 28 milioni di recensioni di film. Nello specifico le domande alla quale cerchermo di dare una risposta sono le seguenti:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!wget http://files.grouplens.org/datasets/movielens/ml-latest.zip
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>--2020-06-18 09:04:19--  http://files.grouplens.org/datasets/movielens/ml-latest.zip
+Resolving files.grouplens.org (files.grouplens.org)... 128.101.65.152
+Connecting to files.grouplens.org (files.grouplens.org)|128.101.65.152|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 277113433 (264M) [application/zip]
+Saving to: ‘ml-latest.zip’
+
+ml-latest.zip       100%[===================&gt;] 264.28M  54.8MB/s    in 5.1s    
+
+2020-06-18 09:04:24 (51.6 MB/s) - ‘ml-latest.zip’ saved [277113433/277113433]
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!unzip ml-latest.zip
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Archive:  ml-latest.zip
+   creating: ml-latest/
+  inflating: ml-latest/links.csv     
+  inflating: ml-latest/tags.csv      
+  inflating: ml-latest/genome-tags.csv  
+  inflating: ml-latest/ratings.csv   
+  inflating: ml-latest/README.txt    
+  inflating: ml-latest/genome-scores.csv  
+  inflating: ml-latest/movies.csv    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!ls ml-latest
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>genome-scores.csv  links.csv   ratings.csv  tags.csv
+genome-tags.csv    movies.csv  README.txt
+</pre></div>
+</div>
+</div>
+</div>
+<p>I file che ci interessano sono:</p>
+<ul class="simple">
+<li><p>ratings.csv: che contiene, per ogni riga, id dell’utente, id del film, valutazione da 1.0 a 5.0 e timestamp.</p></li>
+<li><p>movies.csv: che contiene nome e genere dei film associati agli id.</p></li>
+</ul>
+</div>
+<div class="section" id="importiamo-il-dataset-in-un-dataframe">
+<h2>Importiamo il dataset in un Dataframe<a class="headerlink" href="#importiamo-il-dataset-in-un-dataframe" title="Permalink to this headline">¶</a></h2>
+<p>Per caricare un csv all’interno di un Dataframe possiamo utilizzare il metodo <em>.load(filepath, type)</em>, i principali formati supportati sono csv, json e orc.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;ml-latest/ratings.csv&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;csv&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+------+-------+------+----------+
+|   _c0|    _c1|   _c2|       _c3|
++------+-------+------+----------+
+|userId|movieId|rating| timestamp|
+|     1|    307|   3.5|1256677221|
+|     1|    481|   3.5|1256677456|
+|     1|   1091|   1.5|1256677471|
+|     1|   1257|   4.5|1256677460|
++------+-------+------+----------+
+only showing top 5 rows
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s2">&quot;ml-latest/ratings.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+------+-------+------+----------+
+|   _c0|    _c1|   _c2|       _c3|
++------+-------+------+----------+
+|userId|movieId|rating| timestamp|
+|     1|    307|   3.5|1256677221|
+|     1|    481|   3.5|1256677456|
+|     1|   1091|   1.5|1256677471|
+|     1|   1257|   4.5|1256677460|
++------+-------+------+----------+
+only showing top 5 rows
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>root
+ |-- _c0: string (nullable = true)
+ |-- _c1: string (nullable = true)
+ |-- _c2: string (nullable = true)
+ |-- _c3: string (nullable = true)
+
+</pre></div>
+</div>
+</div>
+</div>
+<p>I nomi delle colonne, presenti alla prima riga del file, non sono stati riconosciuti, inoltre anche il tipo delle colonne è totalmente sbagliato, per risolvere questi due problemi ci basta utilizzare due parametri:</p>
+<ul class="simple">
+<li><p><strong>header</strong>: se impostato a True indica al metodo che la prima riga del file contiene i nomi delle colonne.</p></li>
+<li><p><strong>inferSchema</strong>: impostandolo a True il tipo delle colonne verrà rilevato automaticamente.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s2">&quot;ml-latest/ratings.csv&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inferSchema</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[Row(userId=1, movieId=307, rating=3.5, timestamp=1256677221),
+ Row(userId=1, movieId=481, rating=3.5, timestamp=1256677456),
+ Row(userId=1, movieId=1091, rating=1.5, timestamp=1256677471),
+ Row(userId=1, movieId=1257, rating=4.5, timestamp=1256677460),
+ Row(userId=1, movieId=1449, rating=4.5, timestamp=1256677264)]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="correggiamo-lo-schema">
+<h2>Correggiamo lo schema<a class="headerlink" href="#correggiamo-lo-schema" title="Permalink to this headline">¶</a></h2>
+<p>Piuttosto che utilizzare numeri per gli id, usiamo delle stringhe, quindi definiamo uno schema manualmente.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data_schema</span> <span class="o">=</span> <span class="p">[</span><span class="n">StructField</span><span class="p">(</span><span class="s1">&#39;userID&#39;</span><span class="p">,</span> <span class="n">StringType</span><span class="p">(),</span> <span class="kc">True</span><span class="p">),</span>
+                <span class="n">StructField</span><span class="p">(</span><span class="s1">&#39;movieID&#39;</span><span class="p">,</span> <span class="n">StringType</span><span class="p">(),</span> <span class="kc">True</span><span class="p">),</span>
+                <span class="n">StructField</span><span class="p">(</span><span class="s1">&#39;rating&#39;</span><span class="p">,</span> <span class="n">FloatType</span><span class="p">(),</span> <span class="kc">True</span><span class="p">),</span>
+                <span class="n">StructField</span><span class="p">(</span><span class="s1">&#39;timestamp&#39;</span><span class="p">,</span> <span class="n">IntegerType</span><span class="p">(),</span> <span class="kc">True</span><span class="p">)]</span>
+            
+<span class="n">schema</span> <span class="o">=</span> <span class="n">StructType</span><span class="p">(</span><span class="n">fields</span><span class="o">=</span><span class="n">data_schema</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">schema</span><span class="p">(</span><span class="n">schema</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;header&quot;</span><span class="p">,</span><span class="s2">&quot;true&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;inferSchema&quot;</span><span class="p">,</span><span class="s2">&quot;false&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s2">&quot;ml-latest/ratings.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+------+-------+------+----------+
+|userID|movieID|rating| timestamp|
++------+-------+------+----------+
+|     1|    307|   3.5|1256677221|
+|     1|    481|   3.5|1256677456|
+|     1|   1091|   1.5|1256677471|
+|     1|   1257|   4.5|1256677460|
+|     1|   1449|   4.5|1256677264|
++------+-------+------+----------+
+only showing top 5 rows
+
+</pre></div>
+</div>
+</div>
+</div>
+<p>Il timestamp è in formato UNIX, convertiamo in una data utilizzando le funzioni from_unix_time(unix_time) e to_date(time) di spark.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span>  <span class="n">from_unixtime</span> <span class="p">,</span> <span class="n">to_date</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">&#39;timestamp&#39;</span><span class="p">,</span> <span class="n">to_date</span><span class="p">(</span><span class="n">from_unixtime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;timestamp&quot;</span><span class="p">])))</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+------+-------+------+----------+
+|userID|movieID|rating| timestamp|
++------+-------+------+----------+
+|     1|    307|   3.5|2009-10-27|
+|     1|    481|   3.5|2009-10-27|
+|     1|   1091|   1.5|2009-10-27|
+|     1|   1257|   4.5|2009-10-27|
+|     1|   1449|   4.5|2009-10-27|
+|     1|   1590|   2.5|2009-10-27|
+|     1|   1591|   1.5|2009-10-27|
+|     1|   2134|   4.5|2009-10-27|
+|     1|   2478|   4.0|2009-10-27|
+|     1|   2840|   3.0|2009-10-27|
+|     1|   2986|   2.5|2009-10-27|
+|     1|   3020|   4.0|2009-10-27|
+|     1|   3424|   4.5|2009-10-27|
+|     1|   3698|   3.5|2009-10-27|
+|     1|   3826|   2.0|2009-10-27|
+|     1|   3893|   3.5|2009-10-27|
+|     2|    170|   3.5|2007-10-20|
+|     2|    849|   3.5|2007-10-20|
+|     2|   1186|   3.5|2007-10-20|
+|     2|   1235|   3.0|2007-10-20|
++------+-------+------+----------+
+only showing top 20 rows
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">to_utc_timestamp</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">&#39;timestamp&#39;</span><span class="p">,</span> <span class="n">to_utc_timestamp</span><span class="p">(</span><span class="n">from_unixtime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;timestamp&quot;</span><span class="p">]),</span> <span class="s2">&quot;yyyy-MM-dd hh:mm:ss&quot;</span><span class="p">))</span>
+<span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+------+-------+------+-------------------+
+|userID|movieID|rating|          timestamp|
++------+-------+------+-------------------+
+|     1|    307|   3.5|2009-10-27 21:00:21|
+|     1|    481|   3.5|2009-10-27 21:04:16|
+|     1|   1091|   1.5|2009-10-27 21:04:31|
+|     1|   1257|   4.5|2009-10-27 21:04:20|
+|     1|   1449|   4.5|2009-10-27 21:01:04|
++------+-------+------+-------------------+
+only showing top 5 rows
+
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ora abbiamo sia data che ora, diamo uno sguardo allo schema.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>root
+ |-- userID: string (nullable = true)
+ |-- movieID: string (nullable = true)
+ |-- rating: float (nullable = true)
+ |-- timestamp: timestamp (nullable = true)
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="contiamo-le-recensioni-nel-dataset">
+<h2>Contiamo le recensioni nel dataset<a class="headerlink" href="#contiamo-le-recensioni-nel-dataset" title="Permalink to this headline">¶</a></h2>
+<p>Per contare il numero totale di recenioni possiamo semplicemente utilizzare il metodo <em>.count()</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">total_reviews</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total_reviews</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>27753444
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="contare-il-numero-medio-di-recensioni-per-utente">
+<h2>Contare il numero medio di recensioni per utente<a class="headerlink" href="#contare-il-numero-medio-di-recensioni-per-utente" title="Permalink to this headline">¶</a></h2>
+<p>Quante recensioni ha scritto in media un’utente ? Per saperlo dobbiamo innanziatutto conoscere il numero di recensori unici all’interno del dataset, possiamo farlo utilizzando la funzione <em>countDisctinct(col)</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">col</span><span class="p">,</span> <span class="n">countDistinct</span>
+
+<span class="n">total_unique_reviewers</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">countDistinct</span><span class="p">(</span><span class="s2">&quot;userID&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;count_reviewers&quot;</span><span class="p">))</span>
+<span class="n">total_unique_reviewers</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+---------------+
+|count_reviewers|
++---------------+
+|         283228|
++---------------+
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">total_unique_reviewers</span> <span class="o">=</span> <span class="n">total_unique_reviewers</span><span class="o">.</span><span class="n">head</span><span class="p">()[</span><span class="s2">&quot;count_reviewers&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total_unique_reviewers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>283228
+</pre></div>
+</div>
+</div>
+</div>
+<p>Per calcolare il numero di recensioni per recensore dividiamo il numero totale di recensioni (calcolato per la domanda precedente) per il numero totale di recensori</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mean_reviews</span> <span class="o">=</span> <span class="n">total_reviews</span><span class="o">/</span><span class="n">total_unique_reviewers</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mean_reviews</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>97.98976089934611
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="trovare-l-utente-che-ha-scritto-piu-recensioni">
+<h2>Trovare l’utente che ha scritto più recensioni<a class="headerlink" href="#trovare-l-utente-che-ha-scritto-piu-recensioni" title="Permalink to this headline">¶</a></h2>
+<p>Per trovare l’utente che ha scritto più recensioni ci basta raggruppare il Dataframe per gli user id, contare il numero di recensioni per utente e poi ordinare in base a questo valore</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s2">&quot;userID&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+------+-----+
+|userID|count|
++------+-----+
+|123100|23715|
+|117490| 9279|
+|134596| 8381|
+|212343| 7884|
+|242683| 7515|
++------+-----+
+only showing top 5 rows
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#L&#39;utente 123100 è quello che ha scritto più recenioni in assoluto, con ben 23715 recensioni</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s2">&quot;userID == &#39;123100&#39;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;rating&quot;</span><span class="p">:</span><span class="s2">&quot;mean&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+------------------+
+|       avg(rating)|
++------------------+
+|3.1306346194391734|
++------------------+
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="trovare-i-10-film-che-hanno-ricevuto-piu-recensioni">
+<h2>Trovare i 10 film che hanno ricevuto più recensioni<a class="headerlink" href="#trovare-i-10-film-che-hanno-ricevuto-piu-recensioni" title="Permalink to this headline">¶</a></h2>
+<p>Questo è facile, per ottenere i film che hanno avuto più recensioni ci raggruppare per film.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dfMovies</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s2">&quot;movieID&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dfMovies</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+-------+-----+
+|movieID|count|
++-------+-----+
+|    318|97999|
+|    356|97040|
+|    296|92406|
+|    593|87899|
+|   2571|84545|
+|    260|81815|
+|    480|76451|
+|    527|71516|
+|    110|68803|
+|      1|68469|
++-------+-----+
+only showing top 10 rows
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="trovare-i-10-film-con-la-valutazione-piu-alta">
+<h2>Trovare i 10 film con la valutazione più alta<a class="headerlink" href="#trovare-i-10-film-con-la-valutazione-piu-alta" title="Permalink to this headline">¶</a></h2>
+<p>Per prima cosa dobbiamo calcolare sul Datagroup ottenuto appena sopra, la valutazione media e il numero di volte che il film è stato valutato, possiamo farlo in 2 modi.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dfMoviesAvg</span> <span class="o">=</span> <span class="n">dfMovies</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;rating&quot;</span><span class="p">:</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="s2">&quot;movieID&quot;</span><span class="p">:</span><span class="s2">&quot;count&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">withColumnRenamed</span><span class="p">(</span><span class="s2">&quot;avg(rating)&quot;</span><span class="p">,</span><span class="s2">&quot;avg_rating&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">withColumnRenamed</span><span class="p">(</span><span class="s2">&quot;count(movieID)&quot;</span><span class="p">,</span><span class="s2">&quot;count_rating&quot;</span><span class="p">)</span>
+<span class="n">dfMoviesAvg</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+-------+------------------+------------+
+|movieID|        avg_rating|count_rating|
++-------+------------------+------------+
+|    296| 4.173971387139363|       92406|
+|   1090|3.9017529880478086|       18825|
+|   2294|3.2357021735779252|       12974|
+|   3210| 3.636775639067115|        9819|
+|  48738| 3.849010703859877|        6166|
++-------+------------------+------------+
+only showing top 5 rows
+
+</pre></div>
+</div>
+</div>
+</div>
+<p>oppure</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">avg</span><span class="p">,</span> <span class="n">count</span>
+
+<span class="n">dfMoviesAvg</span> <span class="o">=</span> <span class="n">dfMovies</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">avg</span><span class="p">(</span><span class="s2">&quot;rating&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;avg_rating&quot;</span><span class="p">),</span> <span class="n">count</span><span class="p">(</span><span class="s2">&quot;movieID&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;count_rating&quot;</span><span class="p">))</span>
+<span class="n">dfMoviesAvg</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+-------+------------------+------------+
+|movieID|        avg_rating|count_rating|
++-------+------------------+------------+
+|    296| 4.173971387139363|       92406|
+|   1090|3.9017529880478086|       18825|
+|   2294|3.2357021735779252|       12974|
+|   3210| 3.636775639067115|        9819|
+|  48738| 3.849010703859877|        6166|
++-------+------------------+------------+
+only showing top 5 rows
+
+</pre></div>
+</div>
+</div>
+</div>
+<p>Per evitare di trovare in cima film che sono stati recensiti una sola volta con 5 stelle, filtriamo solo i film che hanno ricevuto più di 100 recensioni.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dfMoviesMostRated</span> <span class="o">=</span> <span class="n">dfMoviesAvg</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s2">&quot;count_rating &gt; 100&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ora ci basta ordinare in base alla valutazione media.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dfMoviesTopRated</span> <span class="o">=</span> <span class="n">dfMoviesMostRated</span><span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="s2">&quot;avg_rating&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">dfMoviesTopRated</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+-------+------------------+------------+
+|movieID|        avg_rating|count_rating|
++-------+------------------+------------+
+| 171011|4.4865181711606095|         853|
+| 159817| 4.458092485549133|        1384|
+|    318| 4.424188001918387|       97999|
+| 170705| 4.399898373983739|         984|
+| 174053| 4.350558659217877|        1074|
+| 171495| 4.343949044585988|         157|
+| 172591| 4.339667458432304|         421|
+|    858| 4.332892749244713|       60904|
+|     50| 4.291958829205532|       62180|
+| 176601| 4.263888888888889|         180|
++-------+------------------+------------+
+only showing top 10 rows
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="trovare-i-10-film-con-la-valutazione-piu-bassa">
+<h2>Trovare i 10 film con la valutazione più bassa<a class="headerlink" href="#trovare-i-10-film-con-la-valutazione-piu-bassa" title="Permalink to this headline">¶</a></h2>
+<p>Per trovare i 10 film con la valutazione più bassa, ci basta ottenere il dataframe ottenuto sopra, questa volta in maniera ascendente.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dfMoviesWorstRated</span> <span class="o">=</span> <span class="n">dfMoviesMostRated</span><span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="s2">&quot;avg_rating&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">dfMoviesWorstRated</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+-------+------------------+------------+
+|movieID|        avg_rating|count_rating|
++-------+------------------+------------+
+|   8859|0.8739495798319328|         238|
+|   6483|1.0138592750533049|         469|
+|   4775| 1.141025641025641|         741|
+|   1826|1.2038288288288288|         444|
+|   6587|1.2055555555555555|         810|
+|  31698|1.2441176470588236|         680|
+|   5739|1.2612359550561798|         178|
+|  61348|1.2672849915682969|         593|
+|   5738|1.3549382716049383|         162|
+|   3574|1.3580645161290323|         155|
++-------+------------------+------------+
+only showing top 10 rows
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="trovare-le-10-valutazioni-piu-recenti">
+<h2>Trovare le 10 valutazioni più recenti<a class="headerlink" href="#trovare-le-10-valutazioni-piu-recenti" title="Permalink to this headline">¶</a></h2>
+<p>Questo è semplice, ci basta eseguire l’ordinamento in base al timestamp, spark è in grado di ordinare anche delle date.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="s2">&quot;timestamp&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+------+-------+------+-------------------+
+|userID|movieID|rating|          timestamp|
++------+-------+------+-------------------+
+| 82922| 167780|   4.0|2018-09-26 06:59:09|
+| 82922|  53519|   4.0|2018-09-26 06:58:50|
+|280481|    494|   3.0|2018-09-26 06:58:47|
+|280481|   2355|   3.0|2018-09-26 06:58:43|
+|280481|   2294|   2.0|2018-09-26 06:58:41|
+|280481| 176101|   3.5|2018-09-26 06:58:30|
+|280481|  64614|   3.0|2018-09-26 06:58:22|
+| 82922| 165831|   4.0|2018-09-26 06:58:09|
+|280481|   1079|   2.5|2018-09-26 06:58:06|
+| 82922|  52281|   4.0|2018-09-26 06:58:05|
++------+-------+------+-------------------+
+only showing top 10 rows
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="trovare-i-film-piu-visti-per-anno">
+<h2>Trovare i film più visti per anno<a class="headerlink" href="#trovare-i-film-piu-visti-per-anno" title="Permalink to this headline">¶</a></h2>
+<p>Assumption = solo 1% di chi vede il film recensisce</p>
+<p>Questa domanda è invece più complessa delle altre. Per semplificare le operazioni creiamo una nuova colonna che contiene soltanto l’anno, possiamo estrarre l’anno dalla data usando la funzione <em>year(timestamp)</em> di spark.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">year</span>
+
+<span class="n">dfWithYear</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="n">year</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;timestamp&quot;</span><span class="p">)</span>
+<span class="n">dfWithYear</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+------+-------+------+----+
+|userID|movieID|rating|year|
++------+-------+------+----+
+|     1|    307|   3.5|2009|
+|     1|    481|   3.5|2009|
+|     1|   1091|   1.5|2009|
+|     1|   1257|   4.5|2009|
+|     1|   1449|   4.5|2009|
++------+-------+------+----+
+only showing top 5 rows
+
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ora raggruppiamo il dataframe sia per anno che per id del film, così facendo avremo dei gruppi caratterizzati dalle combinazioni di queste due colonne, e su questo nuovo dataframe calcoliamo il numero di valutazioni.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">avg</span><span class="p">,</span> <span class="n">count</span>
+
+<span class="n">dfMovieYear</span> <span class="o">=</span> <span class="n">dfWithYear</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s2">&quot;year&quot;</span><span class="p">,</span><span class="s2">&quot;movieID&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;rating&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;count_rating&quot;</span><span class="p">))</span>
+<span class="n">dfMovieYear</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+----+-------+------------+
+|year|movieID|count_rating|
++----+-------+------------+
+|2005|    255|          43|
+|2005|   1917|        3460|
+|2005|   3793|        4089|
+|2005|   5064|         788|
+|2005|   6966|         257|
++----+-------+------------+
+only showing top 5 rows
+
+</pre></div>
+</div>
+</div>
+</div>
+<p>Adesso ci dovrebbe bastare raggruppare per anno per poi calcolare le valutazioni massime ricevute e ordinare in base a questo valore.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="nb">max</span><span class="p">,</span> <span class="n">col</span>
+
+<span class="n">dfMostRatedYear</span> <span class="o">=</span> <span class="n">dfMovieYear</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s2">&quot;year&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="s2">&quot;count_rating&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;count_rating&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="s2">&quot;count_rating&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">dfMostRatedYear</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+----+------------+
+|year|count_rating|
++----+------------+
+|1996|       25760|
+|2015|       12776|
+|1997|       11350|
+|2016|        8976|
+|2017|        7873|
++----+------------+
+only showing top 5 rows
+
+</pre></div>
+</div>
+</div>
+</div>
+<p>ERRORE!!! così facendo abbiamo perso la colonna movie id e, pur conoscendo quante volte è stato valutato il film più valutato dell’anno, non sappiamo quale questo effettivamente sia. Dobbiamo trovare un’altra strada. Una soluzione consiste nel sfruttare una Window insieme alla funzione where.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">Window</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="nb">max</span><span class="p">,</span> <span class="n">col</span>
+
+<span class="n">window</span> <span class="o">=</span> <span class="n">Window</span><span class="o">.</span><span class="n">partitionBy</span><span class="p">(</span><span class="s2">&quot;year&quot;</span><span class="p">)</span>
+
+<span class="n">dfMostRatedYear</span> <span class="o">=</span> <span class="n">dfMovieYear</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;max&quot;</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="s2">&quot;count_rating&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">window</span><span class="p">))</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;count_rating&quot;</span><span class="p">)</span><span class="o">==</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;max&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;max&quot;</span><span class="p">)</span>
+<span class="n">dfMostRatedYear</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+----+-------+------------+
+|year|movieID|count_rating|
++----+-------+------------+
+|2003|   5952|        3684|
+|2007|   2571|        3409|
+|2018|    318|        4311|
+|2015|   2571|       12776|
+|2006|   7153|        4001|
+|2013|    318|        2714|
+|1997|    780|       11350|
+|2014|    318|        2672|
+|2004|   7153|        3697|
+|1996|    592|       25760|
+|1998|   1721|        2399|
+|2012|  79132|        2422|
+|2009|  58559|        3720|
+|2016|    318|        8976|
+|1995|     47|           1|
+|1995|     21|           1|
+|1995|   1176|           1|
+|1995|   1079|           1|
+|2001|   1210|        4517|
+|2005|   5952|        6228|
++----+-------+------------+
+only showing top 20 rows
+
+</pre></div>
+</div>
+</div>
+</div>
+<p>Rimuoviamo il 1995 dal dataframe, dato che non contiene nessuna informazione utile.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dfMostRatedYear</span> <span class="o">=</span> <span class="n">dfMostRatedYear</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s2">&quot;year != 1995&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ora moltiplichiamo il <em>count_rating</em> per 100 e, siccome abbiamo affermato che solo l’1% di chi vede un film lo recensisce, otteremo una stima del numero totale di spettatori per film.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dfMostViewedYear</span> <span class="o">=</span> <span class="n">dfMostRatedYear</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;total_viewers&quot;</span><span class="p">,</span><span class="n">dfMostRatedYear</span><span class="p">[</span><span class="s2">&quot;count_rating&quot;</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;count_rating&quot;</span><span class="p">)</span>
+<span class="n">dfMostViewedYear</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+----+-------+-------------+
+|year|movieID|total_viewers|
++----+-------+-------------+
+|2003|   5952|       368400|
+|2007|   2571|       340900|
+|2018|    318|       431100|
+|2015|   2571|      1277600|
+|2006|   7153|       400100|
+|2013|    318|       271400|
+|1997|    780|      1135000|
+|2014|    318|       267200|
+|2004|   7153|       369700|
+|1996|    592|      2576000|
+|1998|   1721|       239900|
+|2012|  79132|       242200|
+|2009|  58559|       372000|
+|2016|    318|       897600|
+|2001|   1210|       451700|
+|2005|   5952|       622800|
+|2000|   1210|       745200|
+|2010|  72998|       388200|
+|2011|  79132|       328000|
+|2008|   2571|       420700|
+|2017|    318|       787300|
+|1999|   2396|       462100|
+|2002|   4993|       355100|
++----+-------+-------------+
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="aggiungiamo-titolo-e-genere-alla-lista-dei-film-piu-visti-per-anno">
+<h2>Aggiungiamo titolo e genere alla lista dei film più visti per anno<a class="headerlink" href="#aggiungiamo-titolo-e-genere-alla-lista-dei-film-piu-visti-per-anno" title="Permalink to this headline">¶</a></h2>
+<p>Abbiamo già detto che all’interno del file movies.csv si trovano titolo e genere dei film. Carichiamo tale film all’interno di un nuovo Dataframe</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df_desc</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s2">&quot;ml-latest/movies.csv&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inferSchema</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_desc</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+-------+--------------------+--------------------+
+|movieId|               title|              genres|
++-------+--------------------+--------------------+
+|      1|    Toy Story (1995)|Adventure|Animati...|
+|      2|      Jumanji (1995)|Adventure|Childre...|
+|      3|Grumpier Old Men ...|      Comedy|Romance|
+|      4|Waiting to Exhale...|Comedy|Drama|Romance|
+|      5|Father of the Bri...|              Comedy|
+|      6|         Heat (1995)|Action|Crime|Thri...|
+|      7|      Sabrina (1995)|      Comedy|Romance|
+|      8| Tom and Huck (1995)|  Adventure|Children|
+|      9| Sudden Death (1995)|              Action|
+|     10|    GoldenEye (1995)|Action|Adventure|...|
++-------+--------------------+--------------------+
+only showing top 10 rows
+
+</pre></div>
+</div>
+</div>
+</div>
+<p>Per aggiungere quelle informazioni al dataframe con i film più visti per anno ci basta eseguire un join lunga la colonna movieID, presente in entrambi i Dataframe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dfMostViewedYear</span> <span class="o">=</span> <span class="n">dfMostViewedYear</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df_desc</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;movieId&quot;</span><span class="p">])</span>
+
+<span class="c1"># impostando il secondo parametro del metodo .show() a False</span>
+<span class="c1"># possiamo visualizzare tutto il Dataframe in ampiezza</span>
+
+<span class="n">dfMostViewedYear</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">27</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+-------+----+-------------+---------------------------------------------------------+-----------------------------------------------+
+|movieID|year|total_viewers|title                                                    |genres                                         |
++-------+----+-------------+---------------------------------------------------------+-----------------------------------------------+
+|5952   |2003|368400       |Lord of the Rings: The Two Towers, The (2002)            |Adventure|Fantasy                              |
+|2571   |2007|340900       |Matrix, The (1999)                                       |Action|Sci-Fi|Thriller                         |
+|318    |2018|431100       |Shawshank Redemption, The (1994)                         |Crime|Drama                                    |
+|2571   |2015|1277600      |Matrix, The (1999)                                       |Action|Sci-Fi|Thriller                         |
+|7153   |2006|400100       |Lord of the Rings: The Return of the King, The (2003)    |Action|Adventure|Drama|Fantasy                 |
+|318    |2013|271400       |Shawshank Redemption, The (1994)                         |Crime|Drama                                    |
+|780    |1997|1135000      |Independence Day (a.k.a. ID4) (1996)                     |Action|Adventure|Sci-Fi|Thriller               |
+|318    |2014|267200       |Shawshank Redemption, The (1994)                         |Crime|Drama                                    |
+|7153   |2004|369700       |Lord of the Rings: The Return of the King, The (2003)    |Action|Adventure|Drama|Fantasy                 |
+|592    |1996|2576000      |Batman (1989)                                            |Action|Crime|Thriller                          |
+|1721   |1998|239900       |Titanic (1997)                                           |Drama|Romance                                  |
+|79132  |2012|242200       |Inception (2010)                                         |Action|Crime|Drama|Mystery|Sci-Fi|Thriller|IMAX|
+|58559  |2009|372000       |Dark Knight, The (2008)                                  |Action|Crime|Drama|IMAX                        |
+|318    |2016|897600       |Shawshank Redemption, The (1994)                         |Crime|Drama                                    |
+|1210   |2001|451700       |Star Wars: Episode VI - Return of the Jedi (1983)        |Action|Adventure|Sci-Fi                        |
+|5952   |2005|622800       |Lord of the Rings: The Two Towers, The (2002)            |Adventure|Fantasy                              |
+|1210   |2000|745200       |Star Wars: Episode VI - Return of the Jedi (1983)        |Action|Adventure|Sci-Fi                        |
+|72998  |2010|388200       |Avatar (2009)                                            |Action|Adventure|Sci-Fi|IMAX                   |
+|79132  |2011|328000       |Inception (2010)                                         |Action|Crime|Drama|Mystery|Sci-Fi|Thriller|IMAX|
+|2571   |2008|420700       |Matrix, The (1999)                                       |Action|Sci-Fi|Thriller                         |
+|318    |2017|787300       |Shawshank Redemption, The (1994)                         |Crime|Drama                                    |
+|2396   |1999|462100       |Shakespeare in Love (1998)                               |Comedy|Drama|Romance                           |
+|4993   |2002|355100       |Lord of the Rings: The Fellowship of the Ring, The (2001)|Adventure|Fantasy                              |
++-------+----+-------------+---------------------------------------------------------+-----------------------------------------------+
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># dfMostViewedYear.toPandas().to_csv(&quot;top_movie_by_year.csv&quot;, header=True)</span>
+<span class="n">dfMostViewedYear</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s2">&quot;top_movie_by_year&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Data la natura parallela di spark, le righe del Dataframe non verranno salvate all’interno di un unico file, ma verrà creato un file per ogni riga. Possiamo unire i file in un singolo file csv utilizzando il comando cat da terminale, infine utilizziamo il comando rm per rimuovere la cartella con i vari file creata da spark.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!cat top_movie_by_year/part* &gt; top_movie_by_year.csv
+!rm -r top_movie_by_year
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="sql">
+<h2>SQL<a class="headerlink" href="#sql" title="Permalink to this headline">¶</a></h2>
+<p>Se sei appassionato di SQL, questa è la query che ci permette di trovare i film più valutati per anno.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dfWithYear</span><span class="o">.</span><span class="n">registerTempTable</span><span class="p">(</span><span class="s1">&#39;movies&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">new_df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">SELECT movieID, YEAR, VALUT FROM (</span>
+<span class="s2">SELECT T.*, RANK() OVER(PARTITION BY YEAR ORDER BY VALUT DESC) RNK FROM (</span>
+<span class="s2">SELECT movieID, YEAR, COUNT(*) VALUT FROM movies</span>
+<span class="s2">GROUP BY movieID, YEAR) T)</span>
+<span class="s2">WHERE RNK = 1</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">new_df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+-------+----+-----+
+|movieID|YEAR|VALUT|
++-------+----+-----+
+|   5952|2003| 3684|
+|   2571|2007| 3409|
+|    318|2018| 4311|
+|   2571|2015|12776|
+|   7153|2006| 4001|
+|    318|2013| 2714|
+|    780|1997|11350|
+|    318|2014| 2672|
+|   7153|2004| 3697|
+|    592|1996|25760|
+|   1721|1998| 2399|
+|  79132|2012| 2422|
+|  58559|2009| 3720|
+|    318|2016| 8976|
+|   1079|1995|    1|
+|     21|1995|    1|
+|     47|1995|    1|
+|   1176|1995|    1|
+|   1210|2001| 4517|
+|   5952|2005| 6228|
++-------+----+-----+
+only showing top 20 rows
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Manuel Rucci / Daniele Grotti<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../../_static/js/index.js"></script>
+    
+  </body>
+</html>

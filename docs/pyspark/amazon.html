@@ -1,0 +1,725 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>PYSPARK &#8212; Tecnologie &amp; Software di Data Science</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/mystnb.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Tecnologie & Software di Data Science</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="../introduzione_generale.html">Introduzione</a>
+  </li>
+  <li class="">
+    <a href="../introduzione_programmazione.html">Introduzione programmazione</a>
+  </li>
+  <li class="">
+    <a href="../google_colab.html">Google Colaboratory</a>
+  </li>
+  <li class="">
+    <a href="../numpy.html">Numpy Array</a>
+  </li>
+  <li class="">
+    <a href="../matplotlib.html">Intro Matplotlib</a>
+  </li>
+  <li class="">
+    <a href="../pandas.html">Pandas</a>
+  </li>
+  <li class="">
+    <a href="../seaborn.html">Seaborn</a>
+  </li>
+  <li class="">
+    <a href="../analisi_covid19_spiegazione.html">Analisi Covid19 dataset usando Pandas, Matplotlib, Plotly, Dash : (Spiegazione)</a>
+  </li>
+  <li class="">
+    <a href="../analisi_covid19_esercizio.html">Analisi Covid19 dataset usando Pandas, Matplotlib, Plotly, Dash : (Soluzione)</a>
+  </li>
+  <li class="">
+    <a href="../solut_tips.html">TIPS</a>
+  </li>
+  <li class="">
+    <a href="../boston_housing.html">Boston Housing Dataset</a>
+  </li>
+  <li class="">
+    <a href="../decision_tree.html">DECISION TREE</a>
+  </li>
+  <li class="">
+    <a href="../regressore.html">Export coeff of regressor</a>
+  </li>
+  <li class="">
+    <a href="../clustering.html">Clustering</a>
+  </li>
+  <li class="">
+    <a href="../pca.html">PCA</a>
+  </li>
+  <li class="">
+    <a href="../pca_regressione.html">PCA: Regressione</a>
+  </li>
+  <li class="">
+    <a href="../binary_classifier.html">Binary classifier 5 or not 5 ?</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="../../_sources/docs/pyspark/amazon.ipynb"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.ipynb</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Source interaction buttons -->
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><a href="https://colab.research.google.com/github/visiont3lab/tecnologie_data_science/blob/master/book/docs/pyspark/amazon.ipynb
+" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<div class="section" id="pyspark">
+<h1>PYSPARK<a class="headerlink" href="#pyspark" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">################ template to run PySpark on Colab #######################</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!apt-get install openjdk-8-jdk-headless -qq &gt; /dev/null
+!wget -q https://www-us.apache.org/dist/spark/spark-2.4.5/spark-2.4.5-bin-hadoop2.7.tgz
+!tar xf spark-2.4.5-bin-hadoop2.7.tgz
+!pip install -q findspark
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;JAVA_HOME&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;/usr/lib/jvm/java-8-openjdk-amd64&quot;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;SPARK_HOME&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;/content/spark-2.4.5-bin-hadoop2.7&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">findspark</span>
+<span class="n">findspark</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+
+<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+<span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">master</span><span class="p">(</span><span class="s2">&quot;local[*]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+<span class="n">spark1</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s1">&#39;basic&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+<span class="c1">#Test must give no error</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyspark</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">################ end template PySpark on Colab ##########################</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="dataset-amazon">
+<h1>Dataset Amazon<a class="headerlink" href="#dataset-amazon" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!wget http://snap.stanford.edu/data/amazon/productGraph/categoryFiles/ratings_Books.csv
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>--2020-06-18 08:10:16--  http://snap.stanford.edu/data/amazon/productGraph/categoryFiles/ratings_Books.csv
+Resolving snap.stanford.edu (snap.stanford.edu)... 171.64.75.80
+Connecting to snap.stanford.edu (snap.stanford.edu)|171.64.75.80|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 916259348 (874M) [text/csv]
+Saving to: ‘ratings_Books.csv’
+
+ratings_Books.csv   100%[===================&gt;] 873.81M  8.69MB/s    in 3m 7s   
+
+2020-06-18 08:13:23 (4.68 MB/s) - ‘ratings_Books.csv’ saved [916259348/916259348]
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark</span> <span class="kn">import</span> <span class="n">SparkConf</span><span class="p">,</span> <span class="n">SparkContext</span>
+<span class="n">conf</span> <span class="o">=</span> <span class="n">SparkConf</span><span class="p">()</span><span class="o">.</span><span class="n">setAppName</span><span class="p">(</span><span class="s2">&quot;basic&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">setMaster</span><span class="p">(</span><span class="s2">&quot;local&quot;</span><span class="p">)</span>
+<span class="c1">#sc = SparkContext(conf=conf)  ## for jupyter and Databricks</span>
+<span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>   <span class="c1">## for Colab</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reviewsRDD</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">textFile</span><span class="p">(</span><span class="s2">&quot;ratings_Books.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vediamo un po’ cosa contiene l’RDD. Avendo 22.5 milioni di elementi, utilizzare il metodo .collect() è sconveniente per ovvie ragioni, al suo posto possiamo usare il metodo .take(n)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reviewsRDD</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;AH2L9G3DQHHAJ,0000000116,4.0,1019865600&#39;,
+ &#39;A2IIIDRK3PRRZY,0000000116,1.0,1395619200&#39;,
+ &#39;A1TADCM7YWPQ8M,0000000868,4.0,1031702400&#39;,
+ &#39;AWGH7V0BDOJKB,0000013714,4.0,1383177600&#39;,
+ &#39;A3UTQPQPM4TQO0,0000013714,5.0,1374883200&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ogni elemento di ogni riga corrisponde a (in ordine):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Id dell&#39;utente che ha lasciato la valutazione.
+Id del libro recensito.
+Valutazione da 1.0 a 5.0.
+Timestamp di quando è stata lasciata la recensione.
+</pre></div>
+</div>
+<div class="section" id="contiamo-il-numero-totale-di-valutazioni">
+<h2>Contiamo il numero totale di valutazioni<a class="headerlink" href="#contiamo-il-numero-totale-di-valutazioni" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reviewsRDD</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>22507155
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="contiamo-le-valutazioni-per-ogni-libro">
+<h2>Contiamo le valutazioni per ogni libro<a class="headerlink" href="#contiamo-le-valutazioni-per-ogni-libro" title="Permalink to this headline">¶</a></h2>
+<p>Per contare le valutazioni che ogni libro ha ricevuto creiamo un nuovo RDD contenente soltanto gli ID dei libri per ogni riga.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">productsRDD</span> <span class="o">=</span> <span class="n">reviewsRDD</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">productsRDD</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;0000000116&#39;, &#39;0000000116&#39;, &#39;0000000868&#39;, &#39;0000013714&#39;, &#39;0000013714&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Poi usiamo semplicemente il metodo .countByValue()
+Stampiamo il numero di valutazioni ricevute per i primi 10 libri.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">productsCount</span> <span class="o">=</span> <span class="n">productsRDD</span><span class="o">.</span><span class="n">countByValue</span><span class="p">()</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ID LIBRO</span><span class="se">\t</span><span class="s2">CONTEGGIO&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">product_id</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">productsCount</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\t</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">product_id</span><span class="p">,</span> <span class="n">count</span><span class="p">))</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">&gt;=</span><span class="mi">10</span><span class="p">):</span>
+        <span class="k">break</span>
+    <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>ID LIBRO	CONTEGGIO
+0000000116	2
+0000000868	1
+0000013714	14
+0000015393	1
+0000029831	5
+0000038504	2
+0000041696	4
+0000095699	1
+0000174076	1
+0000202010	1
+0000230022	10
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="troviamo-i-10-libri-piu-valutati">
+<h2>Troviamo i 10 libri più valutati<a class="headerlink" href="#troviamo-i-10-libri-piu-valutati" title="Permalink to this headline">¶</a></h2>
+<p>Per trovare i 10 libri più valutati potremmo semplicemente utilizzare il defaultdict ottenuto sopra, però voglio farti vedere un’altro modo per farlo !
+Mappiamo ogni elemento ad una lista, contenente l’elemento stesso ed un valore 1</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">productsCount</span> <span class="o">=</span> <span class="n">productsRDD</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">productsCount</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[(&#39;0000000116&#39;, 1),
+ (&#39;0000000116&#39;, 1),
+ (&#39;0000000868&#39;, 1),
+ (&#39;0000013714&#39;, 1),
+ (&#39;0000013714&#39;, 1)]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Utilizziamo il metodo reduceByKey per sommare i valori degli elementi aventi la stessa chiave.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">productsCount</span> <span class="o">=</span> <span class="n">productsCount</span><span class="o">.</span><span class="n">reduceByKey</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span>
+<span class="n">productsCount</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[(&#39;0001006657&#39;, 2),
+ (&#39;0001922408&#39;, 2),
+ (&#39;0002000601&#39;, 6),
+ (&#39;0002006650&#39;, 2),
+ (&#39;0002007770&#39;, 6001)]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Riducendo l’RDD tramite una somma dei valori 1 che abbiamo aggiunto prima abbiamo ottenuto la somma totale delle valutazioni per ogni libro. Ora ci basta ordinarli in senso decrescente e tenere stampare i primi 10 risultati.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">productsCountSorted</span> <span class="o">=</span> <span class="n">productsCount</span><span class="o">.</span><span class="n">sortBy</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">productsCountSorted</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[(&#39;0439023483&#39;, 21398),
+ (&#39;030758836X&#39;, 19867),
+ (&#39;0439023513&#39;, 14114),
+ (&#39;0385537859&#39;, 12973),
+ (&#39;0007444117&#39;, 12629),
+ (&#39;0375831002&#39;, 12571),
+ (&#39;038536315X&#39;, 12564),
+ (&#39;0345803485&#39;, 12290),
+ (&#39;0316055433&#39;, 11746),
+ (&#39;0849922070&#39;, 10424)]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ecco qui i 10 libri più recensiti, qui possiamo vedere il primo:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>https://www.amazon.com/dp/0439023483
+</pre></div>
+</div>
+</div>
+<div class="section" id="calcoliamo-la-valutazione-media">
+<h2>Calcoliamo la valutazione media<a class="headerlink" href="#calcoliamo-la-valutazione-media" title="Permalink to this headline">¶</a></h2>
+<p>Per calcolare la valutazione media creiamo un nuovo RDD contenete soltanto ID del libro e valutazione.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">parseProductRating</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+    <span class="n">columns</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+    <span class="n">product</span> <span class="o">=</span> <span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">rating</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">columns</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    
+    <span class="k">return</span> <span class="p">(</span><span class="n">product</span><span class="p">,</span> <span class="n">rating</span><span class="p">)</span>
+
+<span class="n">productsRDD</span> <span class="o">=</span> <span class="n">reviewsRDD</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">parseProductRating</span><span class="p">)</span>
+<span class="n">productsRDD</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[(&#39;0000000116&#39;, 4.0),
+ (&#39;0000000116&#39;, 1.0),
+ (&#39;0000000868&#39;, 4.0),
+ (&#39;0000013714&#39;, 4.0),
+ (&#39;0000013714&#39;, 5.0)]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Proviamo a somamre il totale delle valutazioni usando il metodo reduceByKey.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ratingSumRDD</span> <span class="o">=</span> <span class="n">productsRDD</span><span class="o">.</span><span class="n">reduceByKey</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span>
+<span class="n">ratingSumRDD</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[(&#39;0001006657&#39;, 10.0),
+ (&#39;0001922408&#39;, 10.0),
+ (&#39;0002000601&#39;, 23.0),
+ (&#39;0002006650&#39;, 8.0),
+ (&#39;0002007770&#39;, 26398.0)]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ora dovremmo dividere per il numero di valutazioni che ogni libro ha ricevuto, ma eseguendo la riduzione abbiamo perso questa informazione, quindi non è la cosa giusta da fare.</p>
+<p>soluzione: mappiamo ogni elemento ad una lista, contenente l’elemento stesso ed un valore 1 che ci servirà come contatore, esattamente come fatto in precedenza, poi eseguiamo la riduzione per chiave sommando sia i contatori che le valutazione come fatto appena sopra</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ratingSumRDD</span> <span class="o">=</span> <span class="n">productsRDD</span><span class="o">.</span><span class="n">mapValues</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">reduceByKey</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">ratingSumRDD</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[(&#39;0001006657&#39;, (10.0, 2)),
+ (&#39;0001922408&#39;, (10.0, 2)),
+ (&#39;0002000601&#39;, (23.0, 6)),
+ (&#39;0002006650&#39;, (8.0, 2)),
+ (&#39;0002007770&#39;, (26398.0, 6001))]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Perfetto ! Ora abbiamo sia la somma che il conteggio, quindi possiamo eseguire un map di nuovo, dividendo il secondo per il primo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ratingMeanRDD</span> <span class="o">=</span> <span class="n">ratingSumRDD</span><span class="o">.</span><span class="n">mapValues</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">ratingMeanRDD</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[(&#39;0001006657&#39;, 5.0),
+ (&#39;0001922408&#39;, 5.0),
+ (&#39;0002000601&#39;, 3.8333333333333335),
+ (&#39;0002006650&#39;, 4.0),
+ (&#39;0002007770&#39;, 4.398933511081486)]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="troviamo-i-10-libri-con-la-valutazione-piu-alta">
+<h2>Troviamo i 10 libri con la valutazione più alta<a class="headerlink" href="#troviamo-i-10-libri-con-la-valutazione-piu-alta" title="Permalink to this headline">¶</a></h2>
+<p>Per trovare i libri con la valutazione più alta potremmo semplicemente ordinare l’RDD calcolato appena sopra, però otterremo dei risulati falsati, dato che libri che hanno ottenuto un’unica valutazione a 5 stelle saranno alle prime posizioni.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## consideriamo solo i libri che sono stati valutati almeno 100 volte</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ratingMeanRDD</span> <span class="o">=</span> <span class="n">ratingSumRDD</span><span class="o">.</span><span class="n">mapValues</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">ratingMeanRDD</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[(&#39;0001006657&#39;, (5.0, 2)),
+ (&#39;0001922408&#39;, (5.0, 2)),
+ (&#39;0002000601&#39;, (3.8333333333333335, 6)),
+ (&#39;0002006650&#39;, (4.0, 2)),
+ (&#39;0002007770&#39;, (4.398933511081486, 6001))]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ratingMeanRDD</span> <span class="o">=</span> <span class="n">ratingMeanRDD</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">&gt;=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">ratingMeanRDD</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>29296
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ora ordiniamo quest’ultimo RDD in base alla valutazione media e stampiamo i primi 10 risultati.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ratingSortedRDD</span> <span class="o">=</span> <span class="n">ratingMeanRDD</span><span class="o">.</span><span class="n">sortBy</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ratingSortedRDD</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[(&#39;0983408904&#39;, (5.0, 128)),
+ (&#39;0830766316&#39;, (5.0, 103)),
+ (&#39;0972394648&#39;, (4.992647058823529, 136)),
+ (&#39;1499390165&#39;, (4.991803278688525, 122)),
+ (&#39;0849381185&#39;, (4.990566037735849, 106)),
+ (&#39;0757317723&#39;, (4.9862068965517246, 145)),
+ (&#39;1939629071&#39;, (4.983193277310924, 119)),
+ (&#39;1499381921&#39;, (4.982857142857143, 350)),
+ (&#39;1616387165&#39;, (4.981308411214953, 107)),
+ (&#39;0814416993&#39;, (4.980769230769231, 104))]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="troviamo-i-10-recensori-piu-critici">
+<h2>Troviamo i 10 recensori più critici<a class="headerlink" href="#troviamo-i-10-recensori-piu-critici" title="Permalink to this headline">¶</a></h2>
+<p>Cerchiamo i 10 recensori più critici, cioè quelli che sono soliti lasciare le recensioni più basse, per farlo calcoliamo la valutazione media lasciata da ogni recensore e ordiniamo l’RDD così ottenuto in maniera ascendente</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">parseReviewerRating</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+    <span class="n">columns</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+    <span class="n">reviewer</span> <span class="o">=</span> <span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">rating</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">columns</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    
+    <span class="k">return</span> <span class="p">(</span><span class="n">reviewer</span><span class="p">,</span> <span class="p">(</span><span class="n">rating</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="n">reviewerRDD</span> <span class="o">=</span> <span class="n">reviewsRDD</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">parseReviewerRating</span><span class="p">)</span>
+<span class="n">reviewerRDD</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[(&#39;AH2L9G3DQHHAJ&#39;, (4.0, 1)),
+ (&#39;A2IIIDRK3PRRZY&#39;, (1.0, 1)),
+ (&#39;A1TADCM7YWPQ8M&#39;, (4.0, 1)),
+ (&#39;AWGH7V0BDOJKB&#39;, (4.0, 1)),
+ (&#39;A3UTQPQPM4TQO0&#39;, (5.0, 1))]
+</pre></div>
+</div>
+</div>
+</div>
+<p>E sommiamo tutte le valutazioni e il contatore.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reviewerRDD</span> <span class="o">=</span> <span class="n">reviewerRDD</span><span class="o">.</span><span class="n">reduceByKey</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">reviewerRDD</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[(&#39;A2742OG8PK8KU6&#39;, (10.0, 2)),
+ (&#39;A2GKR2Q7MD8DG4&#39;, (12.0, 3)),
+ (&#39;A1MC4E00RO5E9T&#39;, (17.0, 4)),
+ (&#39;A3IKTM9D8RVWKU&#39;, (5.0, 1)),
+ (&#39;A3UZSIDE90JWW1&#39;, (5.0, 1))]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## consideriamo solo reviewer che hanno lasciato almeno 100 feedback</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reviewerRDD</span> <span class="o">=</span> <span class="n">reviewerRDD</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">reviewerRDD</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>11244
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ne abbiamo oltre 11mila, vediamo tra questi chi sono i più cattivi, calcoliamo la loro valutazione media.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">criticalReviewerRDD</span> <span class="o">=</span> <span class="n">reviewerRDD</span><span class="o">.</span><span class="n">mapValues</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">criticalReviewerRDD</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[(&#39;A8IPQ1Q1O7YX5&#39;, 4.227048371174728),
+ (&#39;A2PN65B6BSTIYZ&#39;, 3.953271028037383),
+ (&#39;AX724J32HPG1J&#39;, 4.184738955823293),
+ (&#39;AFFGYGNO989PD&#39;, 4.2785714285714285),
+ (&#39;A1WCJEZS66D224&#39;, 3.5789473684210527)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">criticalReviewerSortedRDD</span> <span class="o">=</span> <span class="n">criticalReviewerRDD</span><span class="o">.</span><span class="n">sortBy</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">criticalReviewerSortedRDD</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[(&#39;AH62BQTCMR3BR&#39;, 1.0534188034188035),
+ (&#39;A186OSXC7LHJDB&#39;, 1.2014925373134329),
+ (&#39;A2HESNQJZ9OB7H&#39;, 1.2543859649122806),
+ (&#39;A36IQRD3B5MK8G&#39;, 1.505050505050505),
+ (&#39;A3JF63XRSLLH0P&#39;, 1.5648148148148149),
+ (&#39;A344N0X5LIV43M&#39;, 1.646551724137931),
+ (&#39;A1SS16UHYW77D4&#39;, 1.855421686746988),
+ (&#39;A19UFCMSFGOZ2K&#39;, 2.076923076923077),
+ (&#39;A1NJHOGKZZRAX8&#39;, 2.1588785046728973),
+ (&#39;A1ZY08GYVIKZFM&#39;, 2.2446043165467624)]
+</pre></div>
+</div>
+</div>
+</div>
+<p>L’utente AH62BQTCMR3BR ha il ph molto basso, è un pò acidello!</p>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Manuel Rucci / Daniele Grotti<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../../_static/js/index.js"></script>
+    
+  </body>
+</html>
