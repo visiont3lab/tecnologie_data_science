@@ -1,0 +1,872 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Pyspark &#8212; Tecnologie &amp; Software di Data Science</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/mystnb.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Tecnologie & Software di Data Science</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="../introduzione_generale.html">Introduzione</a>
+  </li>
+  <li class="">
+    <a href="../introduzione_programmazione.html">Introduzione programmazione</a>
+  </li>
+  <li class="">
+    <a href="../google_colab.html">Google Colaboratory</a>
+  </li>
+  <li class="">
+    <a href="../numpy.html">Numpy Array</a>
+  </li>
+  <li class="">
+    <a href="../matplotlib.html">Intro Matplotlib</a>
+  </li>
+  <li class="">
+    <a href="../pandas.html">Pandas</a>
+  </li>
+  <li class="">
+    <a href="../seaborn.html">Seaborn</a>
+  </li>
+  <li class="">
+    <a href="../analisi_covid19_spiegazione.html">Analisi Covid19 dataset usando Pandas, Matplotlib, Plotly, Dash : (Spiegazione)</a>
+  </li>
+  <li class="">
+    <a href="../analisi_covid19_esercizio.html">Analisi Covid19 dataset usando Pandas, Matplotlib, Plotly, Dash : (Soluzione)</a>
+  </li>
+  <li class="">
+    <a href="../solut_tips.html">TIPS</a>
+  </li>
+  <li class="">
+    <a href="../boston_housing.html">Boston Housing Dataset</a>
+  </li>
+  <li class="">
+    <a href="../decision_tree.html">DECISION TREE</a>
+  </li>
+  <li class="">
+    <a href="../regressore.html">Export coeff of regressor</a>
+  </li>
+  <li class="">
+    <a href="../clustering.html">Clustering</a>
+  </li>
+  <li class="">
+    <a href="../pca.html">PCA</a>
+  </li>
+  <li class="">
+    <a href="../pca_regressione.html">PCA: Regressione</a>
+  </li>
+  <li class="">
+    <a href="../binary_classifier.html">Binary classifier 5 or not 5 ?</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="../../_sources/docs/pyspark/pyspark_dataframe_sql.ipynb"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.ipynb</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Source interaction buttons -->
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#sql-e-dataframe-in-pyspark" class="nav-link">SQL e Dataframe in Pyspark</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#creare-una-view" class="nav-link">Creare una View</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#comandi-di-selezione" class="nav-link">Comandi di selezione</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><a href="https://colab.research.google.com/github/visiont3lab/tecnologie_data_science/blob/master/book/docs/pyspark_dataframe_sql.ipynb
+" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<div class="section" id="pyspark">
+<h1>Pyspark<a class="headerlink" href="#pyspark" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">################ template to run PySpark on Colab #######################</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!apt-get install openjdk-8-jdk-headless -qq &gt; /dev/null
+!wget -q https://www-us.apache.org/dist/spark/spark-2.4.5/spark-2.4.5-bin-hadoop2.7.tgz
+!tar xf spark-2.4.5-bin-hadoop2.7.tgz
+!pip install -q findspark
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;JAVA_HOME&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;/usr/lib/jvm/java-8-openjdk-amd64&quot;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;SPARK_HOME&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;/content/spark-2.4.5-bin-hadoop2.7&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">findspark</span>
+<span class="n">findspark</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+
+<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+<span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">master</span><span class="p">(</span><span class="s2">&quot;local[*]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+<span class="n">spark1</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s1">&#39;basic&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+<span class="c1">#Test must give no error</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyspark</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark</span> <span class="kn">import</span> <span class="n">SparkConf</span><span class="p">,</span> <span class="n">SparkContext</span>
+<span class="n">conf</span> <span class="o">=</span> <span class="n">SparkConf</span><span class="p">()</span><span class="o">.</span><span class="n">setAppName</span><span class="p">(</span><span class="s2">&quot;basic&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">setMaster</span><span class="p">(</span><span class="s2">&quot;local&quot;</span><span class="p">)</span>
+<span class="c1">#sc = SparkContext(conf=conf)  ## for jupyter and Databricks</span>
+<span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>   <span class="c1">## for Colab</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.types</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="sql-e-dataframe-in-pyspark">
+<h2>SQL e Dataframe in Pyspark<a class="headerlink" href="#sql-e-dataframe-in-pyspark" title="Permalink to this headline">¶</a></h2>
+<p>Lo Structured Query Language (SQL) è un linguaggio standardizzato per poter interrogare ed operare su Database relazionai. SQL Supporta le seguenti operazioni:</p>
+<ul class="simple">
+<li><p>creare e modificare schemi di database</p></li>
+<li><p>inserire, modificare e gestire dati memorizzati</p></li>
+<li><p>interrogare i dati memorizzati</p></li>
+<li><p>creare e gestire strumenti di controllo e accesso ai dati</p></li>
+</ul>
+<p>E’ possibile utilizzare query SQL su di un Dataframe Spark</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;Gianluca&quot;</span><span class="p">,</span> <span class="s2">&quot;M&quot;</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">174</span><span class="p">,</span> <span class="mf">70.5</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Andrea&quot;</span><span class="p">,</span> <span class="s2">&quot;M&quot;</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">179</span><span class="p">,</span> <span class="mf">68.</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Marco&quot;</span><span class="p">,</span> <span class="s2">&quot;M&quot;</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">172</span><span class="p">,</span> <span class="mf">88.5</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Annalisa&quot;</span><span class="p">,</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">155</span><span class="p">,</span> <span class="mf">50.2</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Monica&quot;</span><span class="p">,</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">165</span><span class="p">,</span> <span class="mf">54.3</span><span class="p">)]</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;gender&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="s2">&quot;height&quot;</span><span class="p">,</span><span class="s2">&quot;weight&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="creare-una-view">
+<h2>Creare una View<a class="headerlink" href="#creare-una-view" title="Permalink to this headline">¶</a></h2>
+<p>Una view è una tabella virtuale, solitamente frutto di un’operazione di SELECT tra più tabelle. Non viene salvata su disco ma risiede in memoria e al termine della sessione viene cancellata. Possiamo creare una View partendo da un Dataframe usando il metodo <em>.createTempView(name)</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">createTempView</span><span class="p">(</span><span class="s2">&quot;people&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Se riproviamo a ricreare la stessa view con lo stesso metodo, otterremo un’eccezione che ci informa del fatto che tale view esiste già.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">createTempView</span><span class="p">(</span><span class="s2">&quot;people&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">Py4JJavaError</span><span class="g g-Whitespace">                             </span>Traceback (most recent call last)
+<span class="nn">~/spark/python/pyspark/sql/utils.py</span> in <span class="ni">deco</span><span class="nt">(*a, **kw)</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span>         <span class="k">try</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">63</span>             <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span>         <span class="k">except</span> <span class="n">py4j</span><span class="o">.</span><span class="n">protocol</span><span class="o">.</span><span class="n">Py4JJavaError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+
+<span class="nn">~/.local/lib/python3.6/site-packages/py4j/protocol.py</span> in <span class="ni">get_return_value</span><span class="nt">(answer, gateway_client, target_id, name)</span>
+<span class="g g-Whitespace">    </span><span class="mi">327</span>                     <span class="s2">&quot;An error occurred while calling </span><span class="si">{0}{1}{2}</span><span class="s2">.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span>
+<span class="ne">--&gt; </span><span class="mi">328</span>                     <span class="nb">format</span><span class="p">(</span><span class="n">target_id</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">),</span> <span class="n">value</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">329</span>             <span class="k">else</span><span class="p">:</span>
+
+<span class="ne">Py4JJavaError</span>: An error occurred while calling o40.createTempView.
+<span class="p">:</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">catalyst</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">TempTableAlreadyExistsException</span><span class="p">:</span> <span class="n">Temporary</span> <span class="n">view</span> <span class="s1">&#39;people&#39;</span> <span class="n">already</span> <span class="n">exists</span><span class="p">;</span>
+	<span class="n">at</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">catalyst</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">SessionCatalog</span><span class="o">.</span><span class="n">createTempView</span><span class="p">(</span><span class="n">SessionCatalog</span><span class="o">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">495</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">execution</span><span class="o">.</span><span class="n">command</span><span class="o">.</span><span class="n">CreateViewCommand</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">views</span><span class="o">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">146</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">execution</span><span class="o">.</span><span class="n">command</span><span class="o">.</span><span class="n">ExecutedCommandExec</span><span class="o">.</span><span class="n">sideEffectResult</span><span class="err">$</span><span class="n">lzycompute</span><span class="p">(</span><span class="n">commands</span><span class="o">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">70</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">execution</span><span class="o">.</span><span class="n">command</span><span class="o">.</span><span class="n">ExecutedCommandExec</span><span class="o">.</span><span class="n">sideEffectResult</span><span class="p">(</span><span class="n">commands</span><span class="o">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">68</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">execution</span><span class="o">.</span><span class="n">command</span><span class="o">.</span><span class="n">ExecutedCommandExec</span><span class="o">.</span><span class="n">executeCollect</span><span class="p">(</span><span class="n">commands</span><span class="o">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">79</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">Dataset</span><span class="err">$$</span><span class="n">anonfun</span><span class="err">$</span><span class="mf">6.</span><span class="n">apply</span><span class="p">(</span><span class="n">Dataset</span><span class="o">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">194</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">Dataset</span><span class="err">$$</span><span class="n">anonfun</span><span class="err">$</span><span class="mf">6.</span><span class="n">apply</span><span class="p">(</span><span class="n">Dataset</span><span class="o">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">194</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">Dataset</span><span class="err">$$</span><span class="n">anonfun</span><span class="err">$</span><span class="mf">53.</span><span class="n">apply</span><span class="p">(</span><span class="n">Dataset</span><span class="o">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">3364</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">execution</span><span class="o">.</span><span class="n">SQLExecution</span><span class="err">$$</span><span class="n">anonfun</span><span class="err">$</span><span class="n">withNewExecutionId</span><span class="err">$</span><span class="mf">1.</span><span class="n">apply</span><span class="p">(</span><span class="n">SQLExecution</span><span class="o">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">78</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">execution</span><span class="o">.</span><span class="n">SQLExecution</span><span class="err">$</span><span class="o">.</span><span class="n">withSQLConfPropagated</span><span class="p">(</span><span class="n">SQLExecution</span><span class="o">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">125</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">execution</span><span class="o">.</span><span class="n">SQLExecution</span><span class="err">$</span><span class="o">.</span><span class="n">withNewExecutionId</span><span class="p">(</span><span class="n">SQLExecution</span><span class="o">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">73</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">withAction</span><span class="p">(</span><span class="n">Dataset</span><span class="o">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">3363</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.&lt;</span><span class="n">init</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Dataset</span><span class="o">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">194</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">Dataset</span><span class="err">$</span><span class="o">.</span><span class="n">ofRows</span><span class="p">(</span><span class="n">Dataset</span><span class="o">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">79</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">org</span><span class="err">$</span><span class="n">apache</span><span class="err">$</span><span class="n">spark</span><span class="err">$</span><span class="n">sql</span><span class="err">$</span><span class="n">Dataset</span><span class="err">$$</span><span class="n">withPlan</span><span class="p">(</span><span class="n">Dataset</span><span class="o">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">3406</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">createTempView</span><span class="p">(</span><span class="n">Dataset</span><span class="o">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">3082</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">sun</span><span class="o">.</span><span class="n">reflect</span><span class="o">.</span><span class="n">NativeMethodAccessorImpl</span><span class="o">.</span><span class="n">invoke0</span><span class="p">(</span><span class="n">Native</span> <span class="n">Method</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">sun</span><span class="o">.</span><span class="n">reflect</span><span class="o">.</span><span class="n">NativeMethodAccessorImpl</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">NativeMethodAccessorImpl</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">62</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">sun</span><span class="o">.</span><span class="n">reflect</span><span class="o">.</span><span class="n">DelegatingMethodAccessorImpl</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">DelegatingMethodAccessorImpl</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">43</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">java</span><span class="o">.</span><span class="n">lang</span><span class="o">.</span><span class="n">reflect</span><span class="o">.</span><span class="n">Method</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">Method</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">498</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">py4j</span><span class="o">.</span><span class="n">reflection</span><span class="o">.</span><span class="n">MethodInvoker</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">MethodInvoker</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">244</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">py4j</span><span class="o">.</span><span class="n">reflection</span><span class="o">.</span><span class="n">ReflectionEngine</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">ReflectionEngine</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">357</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">py4j</span><span class="o">.</span><span class="n">Gateway</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">Gateway</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">282</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">py4j</span><span class="o">.</span><span class="n">commands</span><span class="o">.</span><span class="n">AbstractCommand</span><span class="o">.</span><span class="n">invokeMethod</span><span class="p">(</span><span class="n">AbstractCommand</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">132</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">py4j</span><span class="o">.</span><span class="n">commands</span><span class="o">.</span><span class="n">CallCommand</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">CallCommand</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">79</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">py4j</span><span class="o">.</span><span class="n">GatewayConnection</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">GatewayConnection</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">238</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">java</span><span class="o">.</span><span class="n">lang</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">Thread</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">748</span><span class="p">)</span>
+
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">AnalysisException</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">5</span><span class="o">-</span><span class="n">df07ec3d2e4b</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span><span class="o">.</span><span class="n">createTempView</span><span class="p">(</span><span class="s2">&quot;people&quot;</span><span class="p">)</span>
+
+<span class="nn">~/spark/python/pyspark/sql/dataframe.py</span> in <span class="ni">createTempView</span><span class="nt">(self, name)</span>
+<span class="g g-Whitespace">    </span><span class="mi">159</span> 
+<span class="g g-Whitespace">    </span><span class="mi">160</span>         <span class="s2">&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">161</span><span class="s2">         self._jdf.createTempView(name)</span>
+<span class="g g-Whitespace">    </span><span class="mi">162</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">163</span><span class="s2">     @since(2.0)</span>
+
+<span class="nn">~/.local/lib/python3.6/site-packages/py4j/java_gateway.py</span> in <span class="ni">__call__</span><span class="nt">(self, *args)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1284</span><span class="s2">         answer = self.gateway_client.send_command(command)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1285</span><span class="s2">         return_value = get_return_value(</span>
+<span class="ne">-&gt; </span><span class="mi">1286</span><span class="s2">             answer, self.gateway_client, self.target_id, self.name)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1287</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1288</span><span class="s2">         for temp_arg in temp_args:</span>
+
+<span class="nn">~/spark/python/pyspark/sql/utils.py</span> in <span class="ni">deco</span><span class="nt">(*a, **kw)</span>
+<span class="g g-Whitespace">     </span><span class="mi">69</span><span class="s2">                 raise AnalysisException(s.split(&#39;: &#39;, 1)[1], stackTrace)</span>
+<span class="g g-Whitespace">     </span><span class="mi">70</span><span class="s2">             if s.startswith(&#39;org.apache.spark.sql.catalyst.analysis&#39;):</span>
+<span class="ne">---&gt; </span><span class="mi">71</span><span class="s2">                 raise AnalysisException(s.split(&#39;: &#39;, 1)[1], stackTrace)</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span><span class="s2">             if s.startswith(&#39;org.apache.spark.sql.catalyst.parser.ParseException: &#39;):</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span><span class="s2">                 raise ParseException(s.split(&#39;: &#39;, 1)[1], stackTrace)</span>
+
+<span class="ne">AnalysisException</span>: &quot;Temporary view &#39;people&#39; already exists;&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<p>In questi casi ci conviene usare il metodo <em>.createOrReplaceTempView(name)</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">&quot;People&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="comandi-di-selezione">
+<h2>Comandi di selezione<a class="headerlink" href="#comandi-di-selezione" title="Permalink to this headline">¶</a></h2>
+<p>I comandi SQL sono gli stessi sia per le tabelle che per le view, dato che quest’ultime non sono altro che tabelle virtuali.</p>
+<p>Possiamo selezionare una colonna della view usando l’istruzione <em>SELECT column FROM view</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df_sql</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;SELECT name FROM People&quot;</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">df_sql</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>pyspark.sql.dataframe.DataFrame
+</pre></div>
+</div>
+</div>
+</div>
+<p>Il risultato della query sarà sempre un Dataframe, che quindi possiamo stampare usa</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df_sql</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+--------+
+|    name|
++--------+
+|Gianluca|
+|  Andrea|
+|   Marco|
+|Annalisa|
+|  Monica|
++--------+
+
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>NOTA BENE</strong> SQL è case-insensitive, quindi non fa distinsione tra maiuscole e minuscole.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;Select nAmE FRoM people&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+--------+
+|    nAmE|
++--------+
+|Gianluca|
+|  Andrea|
+|   Marco|
+|Annalisa|
+|  Monica|
++--------+
+
+</pre></div>
+</div>
+</div>
+</div>
+<p>Possiamo utilizzare lo stesso comando anche per selezionare più colonne.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;SELECT name, age FROM People&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+--------+---+
+|    name|age|
++--------+---+
+|Gianluca| 23|
+|  Andrea| 37|
+|   Marco| 33|
+|Annalisa| 38|
+|  Monica| 25|
++--------+---+
+
+</pre></div>
+</div>
+</div>
+</div>
+<p>Per selezionarle tutte possiamo utilizzare il selettore *.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM People&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+--------+------+---+------+------+
+|    name|gender|age|height|weight|
++--------+------+---+------+------+
+|Gianluca|     M| 23|   174|  70.5|
+|  Andrea|     M| 37|   179|  68.0|
+|   Marco|     M| 33|   172|  88.5|
+|Annalisa|     F| 38|   155|  50.2|
+|  Monica|     F| 25|   165|  54.3|
++--------+------+---+------+------+
+
+</pre></div>
+</div>
+</div>
+</div>
+<p>Possiamo effettuare una selezione basata su una condizione utilizzando il comando WHERE, ad esempio selezioniamo nome e altezza solo per gli uomini.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;SELECT name, height FROM People WHERE gender=&#39;M&#39;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+--------+------+
+|    name|height|
++--------+------+
+|Gianluca|   174|
+|  Andrea|   179|
+|   Marco|   172|
++--------+------+
+
+</pre></div>
+</div>
+</div>
+</div>
+<p>Possiamo ordinare il risultato in base ai valori di una colonna utilizzando il comando ORDER BY, ad esempio ordiniamo le righe in base al peso.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM People ORDER BY weight&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+--------+------+---+------+------+
+|    name|gender|age|height|weight|
++--------+------+---+------+------+
+|Annalisa|     F| 38|   155|  50.2|
+|  Monica|     F| 25|   165|  54.3|
+|  Andrea|     M| 37|   179|  68.0|
+|Gianluca|     M| 23|   174|  70.5|
+|   Marco|     M| 33|   172|  88.5|
++--------+------+---+------+------+
+
+</pre></div>
+</div>
+</div>
+</div>
+<p>di default l’ordinamento viene effettuato in maniera ascendente (cioè dal valore più piccolo a quello più grande), se vogliamo effettuare un’ordinamento discendente ci basta aggiungere DESC.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM People ORDER BY weight DESC&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+--------+------+---+------+------+
+|    name|gender|age|height|weight|
++--------+------+---+------+------+
+|   Marco|     M| 33|   172|  88.5|
+|Gianluca|     M| 23|   174|  70.5|
+|  Andrea|     M| 37|   179|  68.0|
+|  Monica|     F| 25|   165|  54.3|
+|Annalisa|     F| 38|   155|  50.2|
++--------+------+---+------+------+
+
+</pre></div>
+</div>
+</div>
+</div>
+<p>Se vogliamo limitare il numero di righe restituite dalla nostra query possiamo utilizzare LIMIT, ad esempio basandoci sulla query eseguita appena sopra limitiamo il risultato alle sole prime 3 righe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM People ORDER BY weight DESC LIMIT 3&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+--------+------+---+------+------+
+|    name|gender|age|height|weight|
++--------+------+---+------+------+
+|   Marco|     M| 33|   172|  88.5|
+|Gianluca|     M| 23|   174|  70.5|
+|  Andrea|     M| 37|   179|  68.0|
++--------+------+---+------+------+
+
+</pre></div>
+</div>
+</div>
+</div>
+<p>Per contare il numero di risultati possiamo utilizzare count, ad esempio contiamo il numero di persone di sesso maschile e più alte di 175 cm.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;SELECT count(*) FROM People WHERE gender=&#39;M&#39; and height&gt;175&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+--------+
+|count(1)|
++--------+
+|       1|
++--------+
+
+</pre></div>
+</div>
+</div>
+</div>
+<p>In questo caso il nome della colonna (count(1)) viene impostato automaticamente, se vogliamo modificarlo possiamo creare un alias con il comando AS, ad esempio modifichiamo in counter.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;SELECT count(*) AS counter FROM People WHERE gender=&#39;M&#39; and height&gt;175&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+-------+
+|counter|
++-------+
+|      1|
++-------+
+
+</pre></div>
+</div>
+</div>
+</div>
+<p>Per concludere vediamo una serie di funzioni statistiche, come la media (avg), usiamola per calolare il peso medio degli uomini.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;SELECT avg(weight) AS avg_weight FROM People WHERE gender=&#39;M&#39;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+-----------------+
+|       avg_weight|
++-----------------+
+|75.66666666666667|
++-----------------+
+
+</pre></div>
+</div>
+</div>
+</div>
+<p>oppure peso massimo (max) e minimo (min), sempre per i soli uomini</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;SELECT max(weight) AS max_weight, min(weight) AS min_weight FROM People WHERE gender=&#39;M&#39;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+----------+----------+
+|max_weight|min_weight|
++----------+----------+
+|      88.5|      68.0|
++----------+----------+
+
+</pre></div>
+</div>
+</div>
+</div>
+<p>Utilizzando il comando GROUP BY possiamo raggruppare le righe in base al valore di una colonna, ad esempio raggruppiamo in base al sesso e poi calcoliamo peso medio, massimo e minimo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;SELECT gender, avg(weight) AS avg_weight, max(weight) AS max_weight, min(weight) AS min_weight FROM People GROUP BY gender&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+------+-----------------+----------+----------+
+|gender|       avg_weight|max_weight|min_weight|
++------+-----------------+----------+----------+
+|     F|            52.25|      54.3|      50.2|
+|     M|75.66666666666667|      88.5|      68.0|
++------+-----------------+----------+----------+
+
+</pre></div>
+</div>
+</div>
+</div>
+<p>Il peso medio per l’uomo ha troppe cifre dopo la virgola, arrotondiamole utilizzando la funzione round.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;SELECT gender, round(avg(weight), 2) AS avg_weight, max(weight) AS max_weight, min(weight) AS min_weight FROM People GROUP BY gender&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+------+----------+----------+----------+
+|gender|avg_weight|max_weight|min_weight|
++------+----------+----------+----------+
+|     F|     52.25|      54.3|      50.2|
+|     M|     75.67|      88.5|      68.0|
++------+----------+----------+----------+
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="creare-una-tabella-permanente">
+<h1>Creare una tabella permanente<a class="headerlink" href="#creare-una-tabella-permanente" title="Permalink to this headline">¶</a></h1>
+<p>Come abbiamo già detto, la view viene salvata in RAM e al termine della sessione viene perduta, per creare una tabella permanente in memoria partendo da un Dataframe possiamo usare il metodo <em>.saveAsTable(name).</em>, per usare questo metodo dobbiamo importare la classe <em>DataFrameWriter</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">DataFrameWriter</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">saveAsTable</span><span class="p">(</span><span class="s2">&quot;People&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Adesso nella directory nella quale stiamo lavorando dovremmo trovarci una cartella spark-warehouse contentente un’altra cartella people</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!ls spark-warehouse/
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>people
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">saveAsTable</span><span class="p">(</span><span class="s2">&quot;People2&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!ls spark-warehouse/
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>people	people2
+</pre></div>
+</div>
+</div>
+</div>
+<p>e qui si trova il nostro database, se proviamo a creare nuovamente la tabella otterremo un’errore, che ci informa che questa già esiste.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">saveAsTable</span><span class="p">(</span><span class="s2">&quot;People&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">Py4JJavaError</span><span class="g g-Whitespace">                             </span>Traceback (most recent call last)
+<span class="nn">/content/spark-2.4.5-bin-hadoop2.7/python/pyspark/sql/utils.py</span> in <span class="ni">deco</span><span class="nt">(*a, **kw)</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span>         <span class="k">try</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">63</span>             <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span>         <span class="k">except</span> <span class="n">py4j</span><span class="o">.</span><span class="n">protocol</span><span class="o">.</span><span class="n">Py4JJavaError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+
+<span class="nn">/content/spark-2.4.5-bin-hadoop2.7/python/lib/py4j-0.10.7-src.zip/py4j/protocol.py</span> in <span class="ni">get_return_value</span><span class="nt">(answer, gateway_client, target_id, name)</span>
+<span class="g g-Whitespace">    </span><span class="mi">327</span>                     <span class="s2">&quot;An error occurred while calling </span><span class="si">{0}{1}{2}</span><span class="s2">.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span>
+<span class="ne">--&gt; </span><span class="mi">328</span>                     <span class="nb">format</span><span class="p">(</span><span class="n">target_id</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">),</span> <span class="n">value</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">329</span>             <span class="k">else</span><span class="p">:</span>
+
+<span class="ne">Py4JJavaError</span>: An error occurred while calling o95.saveAsTable.
+<span class="p">:</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">AnalysisException</span><span class="p">:</span> <span class="n">Table</span> <span class="err">`</span><span class="n">People</span><span class="err">`</span> <span class="n">already</span> <span class="n">exists</span><span class="o">.</span><span class="p">;</span>
+	<span class="n">at</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">DataFrameWriter</span><span class="o">.</span><span class="n">saveAsTable</span><span class="p">(</span><span class="n">DataFrameWriter</span><span class="o">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">424</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">DataFrameWriter</span><span class="o">.</span><span class="n">saveAsTable</span><span class="p">(</span><span class="n">DataFrameWriter</span><span class="o">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">409</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">sun</span><span class="o">.</span><span class="n">reflect</span><span class="o">.</span><span class="n">NativeMethodAccessorImpl</span><span class="o">.</span><span class="n">invoke0</span><span class="p">(</span><span class="n">Native</span> <span class="n">Method</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">sun</span><span class="o">.</span><span class="n">reflect</span><span class="o">.</span><span class="n">NativeMethodAccessorImpl</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">NativeMethodAccessorImpl</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">62</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">sun</span><span class="o">.</span><span class="n">reflect</span><span class="o">.</span><span class="n">DelegatingMethodAccessorImpl</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">DelegatingMethodAccessorImpl</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">43</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">java</span><span class="o">.</span><span class="n">lang</span><span class="o">.</span><span class="n">reflect</span><span class="o">.</span><span class="n">Method</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">Method</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">498</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">py4j</span><span class="o">.</span><span class="n">reflection</span><span class="o">.</span><span class="n">MethodInvoker</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">MethodInvoker</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">244</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">py4j</span><span class="o">.</span><span class="n">reflection</span><span class="o">.</span><span class="n">ReflectionEngine</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">ReflectionEngine</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">357</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">py4j</span><span class="o">.</span><span class="n">Gateway</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">Gateway</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">282</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">py4j</span><span class="o">.</span><span class="n">commands</span><span class="o">.</span><span class="n">AbstractCommand</span><span class="o">.</span><span class="n">invokeMethod</span><span class="p">(</span><span class="n">AbstractCommand</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">132</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">py4j</span><span class="o">.</span><span class="n">commands</span><span class="o">.</span><span class="n">CallCommand</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">CallCommand</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">79</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">py4j</span><span class="o">.</span><span class="n">GatewayConnection</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">GatewayConnection</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">238</span><span class="p">)</span>
+	<span class="n">at</span> <span class="n">java</span><span class="o">.</span><span class="n">lang</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">Thread</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">748</span><span class="p">)</span>
+
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">AnalysisException</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-30-d381aadfbad4&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">saveAsTable</span><span class="p">(</span><span class="s2">&quot;People&quot;</span><span class="p">)</span>
+
+<span class="nn">/content/spark-2.4.5-bin-hadoop2.7/python/pyspark/sql/readwriter.py</span> in <span class="ni">saveAsTable</span><span class="nt">(self, name, format, mode, partitionBy, **options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">776</span>         <span class="k">if</span> <span class="nb">format</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">777</span>             <span class="bp">self</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">format</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">778</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_jwrite</span><span class="o">.</span><span class="n">saveAsTable</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">779</span> 
+<span class="g g-Whitespace">    </span><span class="mi">780</span>     <span class="nd">@since</span><span class="p">(</span><span class="mf">1.4</span><span class="p">)</span>
+
+<span class="nn">/content/spark-2.4.5-bin-hadoop2.7/python/lib/py4j-0.10.7-src.zip/py4j/java_gateway.py</span> in <span class="ni">__call__</span><span class="nt">(self, *args)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1255</span>         <span class="n">answer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gateway_client</span><span class="o">.</span><span class="n">send_command</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1256</span>         <span class="n">return_value</span> <span class="o">=</span> <span class="n">get_return_value</span><span class="p">(</span>
+<span class="ne">-&gt; </span><span class="mi">1257</span>             <span class="n">answer</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gateway_client</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1258</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1259</span>         <span class="k">for</span> <span class="n">temp_arg</span> <span class="ow">in</span> <span class="n">temp_args</span><span class="p">:</span>
+
+<span class="nn">/content/spark-2.4.5-bin-hadoop2.7/python/pyspark/sql/utils.py</span> in <span class="ni">deco</span><span class="nt">(*a, **kw)</span>
+<span class="g g-Whitespace">     </span><span class="mi">67</span>                                              <span class="n">e</span><span class="o">.</span><span class="n">java_exception</span><span class="o">.</span><span class="n">getStackTrace</span><span class="p">()))</span>
+<span class="g g-Whitespace">     </span><span class="mi">68</span>             <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;org.apache.spark.sql.AnalysisException: &#39;</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">69</span>                 <span class="k">raise</span> <span class="n">AnalysisException</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;: &#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">],</span> <span class="n">stackTrace</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">70</span>             <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;org.apache.spark.sql.catalyst.analysis&#39;</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span>                 <span class="k">raise</span> <span class="n">AnalysisException</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;: &#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">],</span> <span class="n">stackTrace</span><span class="p">)</span>
+
+<span class="ne">AnalysisException</span>: &#39;Table `People` already exists.;&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>In questi casi dobbiamo utilizzare il metodo <em>.mode(m)</em>, passando al suo interno:</p>
+<ul class="simple">
+<li><p>‘append’: per eseguire un join con la tabella già esistente, se possibile.</p></li>
+<li><p>‘overwrite’: per sovrascrivere la tabella già esistente.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="s1">&#39;append&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">saveAsTable</span><span class="p">(</span><span class="s2">&quot;People&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Le istruzioni di selezione per le tabelle sono esattamente le stesse di quelle che abbiamo visto su per le view.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM People&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+--------+------+---+------+------+
+|    name|gender|age|height|weight|
++--------+------+---+------+------+
+|Gianluca|     M| 23|   174|  70.5|
+|  Andrea|     M| 37|   179|  68.0|
+|   Marco|     M| 33|   172|  88.5|
+|Annalisa|     F| 38|   155|  50.2|
+|  Monica|     F| 25|   165|  54.3|
++--------+------+---+------+------+
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Manuel Rucci / Daniele Grotti<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../../_static/js/index.js"></script>
+    
+  </body>
+</html>
