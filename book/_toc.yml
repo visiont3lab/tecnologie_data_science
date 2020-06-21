@@ -1,23 +1,55 @@
 # - file: README
+
 - file: docs/introduzione_generale
-  sections:
-    - file: docs/introduzione_programmazione
-    - file: docs/google_colab
-    - file: docs/numpy
-    - file: docs/matplotlib
-    - file: docs/pandas
-    - file: docs/seaborn
-    - file: docs/analisi_covid19_spiegazione
-    - file: docs/analisi_covid19_esercizio
-    - file: docs/iris
-    - file: docs/solut_tips
-    - file: docs/boston_housing
-    - file: docs/decision_tree
-    - file: docs/regressore
-    - file: docs/clustering
-    - file: docs/pca
-    - file: docs/pca_regressione
-    - file: docs/binary_classifier
+
+- header: Programming Tools
+- file: docs/programming/google_colab
+# git (smartgit), heroku, Replit
+
+- header: Introduzione a Python   
+- file: docs/python/introduzione_programmazione
+- file: docs/python/numpy
+
+- header: Data Visualization 
+- file: docs/visualization/pandas
+- file: docs/visualization/matplotlib
+- file: docs/visualization/seaborn
+# plotly dash, dashboard
+- file: docs/visualization/analisi_covid19_spiegazione
+- file: docs/visualization/analisi_covid19_esercizio
+
+- header: Regressione
+- file: docs/regression/tips_dataset
+- file: docs/regression/boston_housing_dataset
+- file: docs/regression/regressore_custom_data
+
+- header: Classificazione
+- file: docs/classification/iris_dataset
+#- file: docs/classification/binary_classifier
+- file: docs/classification/decision_tree
+      
+- header: Unsupervised 
+- file: docs/unsupervised/clustering
+- file: docs/unsupervised/pca
+- file: docs/unsupervised/pca_regressione
+
+- header: PySpark
+- file: docs/pyspark/pyspark_amazon
+- file: docs/pyspark/pyspark_apple_stock
+- file: docs/pyspark/pyspark_movies
+- file: docs/pyspark/pyspark_boston
+- file: docs/pyspark/pyspark_dataframe
+- file: docs/pyspark/pyspark_dataframe_sql
+- file: docs/pyspark/pyspark_RRD
+- file: docs/pyspark/template_pyspark
+
+
+
+
+
+
+
+
     
     
     
