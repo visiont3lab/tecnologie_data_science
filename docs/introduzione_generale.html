@@ -31,7 +31,7 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Introduzione programmazione" href="introduzione_programmazione.html" />
+    <link rel="next" title="Google Colaboratory" href="programming/google_colab.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -69,53 +69,101 @@
   <li class="active">
     <a href="#">Introduzione</a>
   </li>
+<li class="navbar-special">
+<p class="margin-caption">Programming Tools</p>
+</li>
   <li class="">
-    <a href="introduzione_programmazione.html">Introduzione programmazione</a>
+    <a href="programming/google_colab.html">Google Colaboratory</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">Introduzione a Python</p>
+</li>
+  <li class="">
+    <a href="python/introduzione_programmazione.html">Introduzione programmazione</a>
   </li>
   <li class="">
-    <a href="google_colab.html">Google Colaboratory</a>
+    <a href="python/numpy.html">Numpy</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">Data Visualization</p>
+</li>
+  <li class="">
+    <a href="visualization/pandas.html">Pandas</a>
   </li>
   <li class="">
-    <a href="numpy.html">Numpy Array</a>
+    <a href="visualization/matplotlib.html">Matplotlib</a>
   </li>
   <li class="">
-    <a href="matplotlib.html">Intro Matplotlib</a>
+    <a href="visualization/seaborn.html">Seaborn</a>
   </li>
   <li class="">
-    <a href="pandas.html">Pandas</a>
+    <a href="visualization/analisi_covid19_spiegazione.html">Analisi Covid19 dataset usando Pandas, Matplotlib, Plotly, Dash : (Spiegazione)</a>
   </li>
   <li class="">
-    <a href="seaborn.html">Seaborn</a>
+    <a href="visualization/analisi_covid19_esercizio.html">Analisi Covid19 dataset usando Pandas, Matplotlib, Plotly, Dash : (Soluzione)</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">Regressione</p>
+</li>
+  <li class="">
+    <a href="regression/tips_dataset.html">TIPS Dataset</a>
   </li>
   <li class="">
-    <a href="analisi_covid19_spiegazione.html">Analisi Covid19 dataset usando Pandas, Matplotlib, Plotly, Dash : (Spiegazione)</a>
+    <a href="regression/boston_housing_dataset.html">Boston Housing Dataset</a>
   </li>
   <li class="">
-    <a href="analisi_covid19_esercizio.html">Analisi Covid19 dataset usando Pandas, Matplotlib, Plotly, Dash : (Soluzione)</a>
+    <a href="regression/regressore_custom_data.html">Regressione Custom Data</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">Classificazione</p>
+</li>
+  <li class="">
+    <a href="classification/iris_dataset.html">Iris Dataset</a>
   </li>
   <li class="">
-    <a href="solut_tips.html">TIPS</a>
+    <a href="classification/binary_classifier.html">Binary classifier 5 or not 5 ?</a>
   </li>
   <li class="">
-    <a href="boston_housing.html">Boston Housing Dataset</a>
+    <a href="classification/decision_tree.html">Decision Tree</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">Unsupervised</p>
+</li>
+  <li class="">
+    <a href="unsupervised/clustering.html">Clustering</a>
   </li>
   <li class="">
-    <a href="decision_tree.html">DECISION TREE</a>
+    <a href="unsupervised/pca.html">PCA</a>
   </li>
   <li class="">
-    <a href="regressore.html">Export coeff of regressor</a>
+    <a href="unsupervised/pca_regressione.html">PCA: Regressione</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">PySpark</p>
+</li>
+  <li class="">
+    <a href="pyspark/pyspark_amazon.html">PySpark Dataset Amazon</a>
   </li>
   <li class="">
-    <a href="clustering.html">Clustering</a>
+    <a href="pyspark/pyspark_apple_stock.html">PySpark Analisi del prezzo delle Azioni di Apple</a>
   </li>
   <li class="">
-    <a href="pca.html">PCA</a>
+    <a href="pyspark/pyspark_movies.html">PySpark Analisi recensioni film</a>
   </li>
   <li class="">
-    <a href="pca_regressione.html">PCA: Regressione</a>
+    <a href="pyspark/pyspark_boston.html">PySpark Boston Dataset</a>
   </li>
   <li class="">
-    <a href="binary_classifier.html">Binary classifier 5 or not 5 ?</a>
+    <a href="pyspark/pyspark_dataframe.html">PySpark Dataframe</a>
+  </li>
+  <li class="">
+    <a href="pyspark/pyspark_dataframe_sql.html">PySpark SQL e Dataframe</a>
+  </li>
+  <li class="">
+    <a href="pyspark/pyspark_RDD.html">PySpark RDD: Resilient Distributed Dataset</a>
+  </li>
+  <li class="">
+    <a href="pyspark/template_pyspark.html">PYSPARK</a>
   </li>
 </ul>
 </nav>
@@ -136,35 +184,43 @@
     </div>
     <div class="col pl-2 topbar-main">
         
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
             <i class="fas fa-bars"></i>
             <i class="fas fa-arrow-left"></i>
             <i class="fas fa-arrow-up"></i>
         </button>
         
         <div class="dropdown-buttons-trigger">
-            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
 
-            
-            <div class="dropdown-buttons">
-                <!-- ipynb file if we had a myst markdown file -->
-                
-                <!-- Download raw file -->
-                <a class="dropdown-buttons" href="../_sources/docs/introduzione_generale.ipynb"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.ipynb</button></a>
-                <!-- Download PDF via print -->
-                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-            </div>
-            
-        </div>
-
-        <!-- Source interaction buttons -->
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
         
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/docs/introduzione_generale.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
 
         <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
 
         <!-- Launch buttons -->
-        
+
     </div>
     <div class="d-none d-md-block col-md-2 bd-toc show">
 <div class="tocsection onthispage pt-5 pb-3">
@@ -271,6 +327,18 @@
 <p>Per quanto riguarda l’installazione è consigliato scegliere <strong>64-Bit Graphical Installer Python 3.7</strong> poichè la versione Pyhton 2.7 è deprecata.</p>
 <div class="toctree-wrapper compound">
 </div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
 </div>
 </div>
 
@@ -283,7 +351,7 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='right-next' id="next-link" href="introduzione_programmazione.html" title="next page">Introduzione programmazione</a>
+    <a class='right-next' id="next-link" href="programming/google_colab.html" title="next page">Google Colaboratory</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

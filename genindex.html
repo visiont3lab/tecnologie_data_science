@@ -69,53 +69,101 @@
   <li class="">
     <a href="docs/introduzione_generale.html">Introduzione</a>
   </li>
+<li class="navbar-special">
+<p class="margin-caption">Programming Tools</p>
+</li>
   <li class="">
-    <a href="docs/introduzione_programmazione.html">Introduzione programmazione</a>
+    <a href="docs/programming/google_colab.html">Google Colaboratory</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">Introduzione a Python</p>
+</li>
+  <li class="">
+    <a href="docs/python/introduzione_programmazione.html">Introduzione programmazione</a>
   </li>
   <li class="">
-    <a href="docs/google_colab.html">Google Colaboratory</a>
+    <a href="docs/python/numpy.html">Numpy</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">Data Visualization</p>
+</li>
+  <li class="">
+    <a href="docs/visualization/pandas.html">Pandas</a>
   </li>
   <li class="">
-    <a href="docs/numpy.html">Numpy Array</a>
+    <a href="docs/visualization/matplotlib.html">Matplotlib</a>
   </li>
   <li class="">
-    <a href="docs/matplotlib.html">Intro Matplotlib</a>
+    <a href="docs/visualization/seaborn.html">Seaborn</a>
   </li>
   <li class="">
-    <a href="docs/pandas.html">Pandas</a>
+    <a href="docs/visualization/analisi_covid19_spiegazione.html">Analisi Covid19 dataset usando Pandas, Matplotlib, Plotly, Dash : (Spiegazione)</a>
   </li>
   <li class="">
-    <a href="docs/seaborn.html">Seaborn</a>
+    <a href="docs/visualization/analisi_covid19_esercizio.html">Analisi Covid19 dataset usando Pandas, Matplotlib, Plotly, Dash : (Soluzione)</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">Regressione</p>
+</li>
+  <li class="">
+    <a href="docs/regression/tips_dataset.html">TIPS Dataset</a>
   </li>
   <li class="">
-    <a href="docs/analisi_covid19_spiegazione.html">Analisi Covid19 dataset usando Pandas, Matplotlib, Plotly, Dash : (Spiegazione)</a>
+    <a href="docs/regression/boston_housing_dataset.html">Boston Housing Dataset</a>
   </li>
   <li class="">
-    <a href="docs/analisi_covid19_esercizio.html">Analisi Covid19 dataset usando Pandas, Matplotlib, Plotly, Dash : (Soluzione)</a>
+    <a href="docs/regression/regressore_custom_data.html">Regressione Custom Data</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">Classificazione</p>
+</li>
+  <li class="">
+    <a href="docs/classification/iris_dataset.html">Iris Dataset</a>
   </li>
   <li class="">
-    <a href="docs/solut_tips.html">TIPS</a>
+    <a href="docs/classification/binary_classifier.html">Binary classifier 5 or not 5 ?</a>
   </li>
   <li class="">
-    <a href="docs/boston_housing.html">Boston Housing Dataset</a>
+    <a href="docs/classification/decision_tree.html">Decision Tree</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">Unsupervised</p>
+</li>
+  <li class="">
+    <a href="docs/unsupervised/clustering.html">Clustering</a>
   </li>
   <li class="">
-    <a href="docs/decision_tree.html">DECISION TREE</a>
+    <a href="docs/unsupervised/pca.html">PCA</a>
   </li>
   <li class="">
-    <a href="docs/regressore.html">Export coeff of regressor</a>
+    <a href="docs/unsupervised/pca_regressione.html">PCA: Regressione</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">PySpark</p>
+</li>
+  <li class="">
+    <a href="docs/pyspark/pyspark_amazon.html">PySpark Dataset Amazon</a>
   </li>
   <li class="">
-    <a href="docs/clustering.html">Clustering</a>
+    <a href="docs/pyspark/pyspark_apple_stock.html">PySpark Analisi del prezzo delle Azioni di Apple</a>
   </li>
   <li class="">
-    <a href="docs/pca.html">PCA</a>
+    <a href="docs/pyspark/pyspark_movies.html">PySpark Analisi recensioni film</a>
   </li>
   <li class="">
-    <a href="docs/pca_regressione.html">PCA: Regressione</a>
+    <a href="docs/pyspark/pyspark_boston.html">PySpark Boston Dataset</a>
   </li>
   <li class="">
-    <a href="docs/binary_classifier.html">Binary classifier 5 or not 5 ?</a>
+    <a href="docs/pyspark/pyspark_dataframe.html">PySpark Dataframe</a>
+  </li>
+  <li class="">
+    <a href="docs/pyspark/pyspark_dataframe_sql.html">PySpark SQL e Dataframe</a>
+  </li>
+  <li class="">
+    <a href="docs/pyspark/pyspark_RDD.html">PySpark RDD: Resilient Distributed Dataset</a>
+  </li>
+  <li class="">
+    <a href="docs/pyspark/template_pyspark.html">PYSPARK</a>
   </li>
 </ul>
 </nav>
@@ -136,26 +184,31 @@
     </div>
     <div class="col pl-2 topbar-main">
         
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
             <i class="fas fa-bars"></i>
             <i class="fas fa-arrow-left"></i>
             <i class="fas fa-arrow-up"></i>
         </button>
         
         <div class="dropdown-buttons-trigger">
-            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
 
-            
-        </div>
-
+    
+</div>
         <!-- Source interaction buttons -->
-        
+
 
         <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
 
         <!-- Launch buttons -->
-        
+
     </div>
     <div class="d-none d-md-block col-md-2 bd-toc show">
 
