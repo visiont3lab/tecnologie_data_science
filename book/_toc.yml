@@ -25,7 +25,7 @@
 
 - header: Classificazione
 - file: docs/classification/iris_dataset
-#- file: docs/classification/binary_classifier
+- file: docs/classification/binary_classifier
 - file: docs/classification/decision_tree
       
 - header: Unsupervised 
@@ -40,10 +40,8 @@
 - file: docs/pyspark/pyspark_boston
 - file: docs/pyspark/pyspark_dataframe
 - file: docs/pyspark/pyspark_dataframe_sql
-- file: docs/pyspark/pyspark_RRD
+- file: docs/pyspark/pyspark_RDD
 - file: docs/pyspark/template_pyspark
-
-
 
 
 
