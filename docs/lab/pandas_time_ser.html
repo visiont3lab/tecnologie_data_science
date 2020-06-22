@@ -1,0 +1,3793 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Dataset Elaboration &#8212; Tecnologie &amp; Software di Data Science</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/mystnb.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Tecnologie & Software di Data Science</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="../introduzione_generale.html">Introduzione</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">Programming Tools</p>
+</li>
+  <li class="">
+    <a href="../programming/google_colab.html">Google Colaboratory</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">Introduzione a Python</p>
+</li>
+  <li class="">
+    <a href="../python/introduzione_programmazione.html">Introduzione programmazione</a>
+  </li>
+  <li class="">
+    <a href="../python/numpy.html">Numpy</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">Data Visualization</p>
+</li>
+  <li class="">
+    <a href="../visualization/pandas.html">Pandas</a>
+  </li>
+  <li class="">
+    <a href="../visualization/matplotlib.html">Matplotlib</a>
+  </li>
+  <li class="">
+    <a href="../visualization/seaborn.html">Seaborn</a>
+  </li>
+  <li class="">
+    <a href="../visualization/analisi_covid19_spiegazione.html">Analisi Covid19 dataset usando Pandas, Matplotlib, Plotly, Dash : (Spiegazione)</a>
+  </li>
+  <li class="">
+    <a href="../visualization/analisi_covid19_esercizio.html">Analisi Covid19 dataset usando Pandas, Matplotlib, Plotly, Dash : (Soluzione)</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">Regressione</p>
+</li>
+  <li class="">
+    <a href="../regression/tips_dataset.html">TIPS Dataset</a>
+  </li>
+  <li class="">
+    <a href="../regression/boston_housing_dataset.html">Boston Housing Dataset</a>
+  </li>
+  <li class="">
+    <a href="../regression/regressore_custom_data.html">Regressione Custom Data</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">Classificazione</p>
+</li>
+  <li class="">
+    <a href="../classification/iris_dataset.html">Iris Dataset</a>
+  </li>
+  <li class="">
+    <a href="../classification/binary_classifier.html">Binary classifier 5 or not 5 ?</a>
+  </li>
+  <li class="">
+    <a href="../classification/decision_tree.html">Decision Tree</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">Unsupervised</p>
+</li>
+  <li class="">
+    <a href="../unsupervised/clustering.html">Clustering</a>
+  </li>
+  <li class="">
+    <a href="../unsupervised/pca.html">PCA</a>
+  </li>
+  <li class="">
+    <a href="../unsupervised/pca_regressione.html">PCA: Regressione</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">PySpark</p>
+</li>
+  <li class="">
+    <a href="../pyspark/template_pyspark.html">Template</a>
+  </li>
+  <li class="">
+    <a href="../pyspark/pyspark_dataframe.html">Dataframe</a>
+  </li>
+  <li class="">
+    <a href="../pyspark/pyspark_dataframe_sql.html">SQL e Dataframe</a>
+  </li>
+  <li class="">
+    <a href="../pyspark/pyspark_amazon.html">Amazon Ratings Books</a>
+  </li>
+  <li class="">
+    <a href="../pyspark/pyspark_apple_stock.html">Analisi del prezzo delle Azioni di Apple</a>
+  </li>
+  <li class="">
+    <a href="../pyspark/pyspark_movies.html">Analisi recensioni film</a>
+  </li>
+  <li class="">
+    <a href="../pyspark/pyspark_boston.html">Boston Dataset</a>
+  </li>
+  <li class="">
+    <a href="../pyspark/pyspark_RDD.html">RDD: Resilient Distributed Dataset</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/docs/lab/pandas_time_ser.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><a href="https://colab.research.google.com/github/visiont3lab/tecnologie_data_science/blob/master/book/docs/lab/pandas_time_ser.ipynb
+" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<div class="section" id="dataset-elaboration">
+<h1>Dataset Elaboration<a class="headerlink" href="#dataset-elaboration" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Go to this URL in a browser: https://accounts.google.com/o/oauth2/auth?client_id=947318989803-6bn6qk8qdgf4n4g3pfee6491hc0brc4i.apps.googleusercontent.com&amp;redirect_uri=urn%3aietf%3awg%3aoauth%3a2.0%3aoob&amp;response_type=code&amp;scope=email%20https%3a%2f%2fwww.googleapis.com%2fauth%2fdocs.test%20https%3a%2f%2fwww.googleapis.com%2fauth%2fdrive%20https%3a%2f%2fwww.googleapis.com%2fauth%2fdrive.photos.readonly%20https%3a%2f%2fwww.googleapis.com%2fauth%2fpeopleapi.readonly
+
+Enter your authorization code:
+··········
+Mounted at /content/drive
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">drive</span><span class="o">/</span><span class="n">My</span> <span class="n">Drive</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>/content/drive/My Drive
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!ls
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;Colab Notebooks&#39;   FAV   lessons   pandas_time_ser.ipynb   TEMPERATURE
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="make-the-totalfile-for-temperature-csv">
+<h1>Make the Totalfile for TEMPERATURE CSV<a class="headerlink" href="#make-the-totalfile-for-temperature-csv" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;TEMPERATURE&quot;</span>
+
+<span class="n">dfList</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">topdown</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+        <span class="n">filePath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">filePath</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filePath</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="c1">#print(df.info())</span>
+        <span class="n">dfList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">dfList</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">path</span><span class="o">+</span><span class="s2">&quot;/ELABORATI/tot_temp.csv&quot;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1">#df.to_excel(&quot;result.xls&quot;,index=False)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>TEMPERATURE/1901-1930.csv
+TEMPERATURE/1931-1960.csv
+TEMPERATURE/1961-1990.csv
+TEMPERATURE/1991-2016.csv
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## convert on excel the csv and save it xlsx format</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="data-manipulation-on-temperature-dataset">
+<h1>Data Manipulation on Temperature Dataset<a class="headerlink" href="#data-manipulation-on-temperature-dataset" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#Load dataset into Colab</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;TEMPERATURE/ELABORATI/tot_temp.xlsx&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Temperature - (Celsius)</th>
+      <th>Year</th>
+      <th>Statistics</th>
+      <th>Country</th>
+      <th>ISO3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.03780</td>
+      <td>1901.0</td>
+      <td>Jan Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.42348</td>
+      <td>1901.0</td>
+      <td>Feb Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>9.36230</td>
+      <td>1901.0</td>
+      <td>Mar Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>13.55640</td>
+      <td>1901.0</td>
+      <td>Apr Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>18.15090</td>
+      <td>1901.0</td>
+      <td>May Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>272830</th>
+      <td>18.75550</td>
+      <td>2016.0</td>
+      <td>Aug Average</td>
+      <td>Zimbabwe</td>
+      <td>ZWE</td>
+    </tr>
+    <tr>
+      <th>272831</th>
+      <td>22.99190</td>
+      <td>2016.0</td>
+      <td>Sep Average</td>
+      <td>Zimbabwe</td>
+      <td>ZWE</td>
+    </tr>
+    <tr>
+      <th>272832</th>
+      <td>25.86640</td>
+      <td>2016.0</td>
+      <td>Oct Average</td>
+      <td>Zimbabwe</td>
+      <td>ZWE</td>
+    </tr>
+    <tr>
+      <th>272833</th>
+      <td>25.85150</td>
+      <td>2016.0</td>
+      <td>Nov Average</td>
+      <td>Zimbabwe</td>
+      <td>ZWE</td>
+    </tr>
+    <tr>
+      <th>272834</th>
+      <td>25.06930</td>
+      <td>2016.0</td>
+      <td>Dec Average</td>
+      <td>Zimbabwe</td>
+      <td>ZWE</td>
+    </tr>
+  </tbody>
+</table>
+<p>272835 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>Index([&#39;Temperature - (Celsius)&#39;, &#39; Year&#39;, &#39; Statistics&#39;, &#39; Country&#39;, &#39; ISO3&#39;], dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#Rename column to remove the blank space</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Temperature - (Celsius)&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span><span class="s1">&#39;Statistics&#39;</span><span class="p">,</span><span class="s1">&#39;Country&#39;</span><span class="p">,</span><span class="s1">&#39;ISO3&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>Index([&#39;Temperature - (Celsius)&#39;, &#39;Year&#39;, &#39;Statistics&#39;, &#39;Country&#39;, &#39;ISO3&#39;], dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#example to convert string to datatime</span>
+<span class="n">date</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">&quot;2001 Jan&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>2001-01-01 00:00:00
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 272835 entries, 0 to 272834
+Data columns (total 5 columns):
+ #   Column                   Non-Null Count   Dtype  
+---  ------                   --------------   -----  
+ 0   Temperature - (Celsius)  272832 non-null  float64
+ 1   Year                     272832 non-null  float64
+ 2   Statistics               272835 non-null  object 
+ 3   Country                  272835 non-null  object 
+ 4   ISO3                     272835 non-null  object 
+dtypes: float64(2), object(3)
+memory usage: 10.4+ MB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#remove empty rows</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert float year into INT.</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:3: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  This is separate from the ipykernel package so we can avoid doing imports until
+</pre>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert INT into a string</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:3: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  This is separate from the ipykernel package so we can avoid doing imports until
+</pre>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>dtype(&#39;O&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Temperature - (Celsius)</th>
+      <th>Year</th>
+      <th>Statistics</th>
+      <th>Country</th>
+      <th>ISO3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.03780</td>
+      <td>1901</td>
+      <td>Jan Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.42348</td>
+      <td>1901</td>
+      <td>Feb Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>9.36230</td>
+      <td>1901</td>
+      <td>Mar Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>13.55640</td>
+      <td>1901</td>
+      <td>Apr Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>18.15090</td>
+      <td>1901</td>
+      <td>May Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Join str + str into Year</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span><span class="s1">&#39;Statistics&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:3: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  This is separate from the ipykernel package so we can avoid doing imports until
+</pre>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Temperature - (Celsius)</th>
+      <th>Year</th>
+      <th>Statistics</th>
+      <th>Country</th>
+      <th>ISO3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.03780</td>
+      <td>1901  Jan Average</td>
+      <td>Jan Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.42348</td>
+      <td>1901  Feb Average</td>
+      <td>Feb Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>9.36230</td>
+      <td>1901  Mar Average</td>
+      <td>Mar Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>13.55640</td>
+      <td>1901  Apr Average</td>
+      <td>Apr Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>18.15090</td>
+      <td>1901  May Average</td>
+      <td>May Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#rimuovere lo spazio nelle(primo carattere) colonna Country</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Country&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Country&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">::]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:3: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  This is separate from the ipykernel package so we can avoid doing imports until
+</pre>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#remove last 7 characters column Year</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)[:</span><span class="o">-</span><span class="mi">7</span><span class="p">])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:3: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  This is separate from the ipykernel package so we can avoid doing imports until
+</pre>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Temperature - (Celsius)</th>
+      <th>Year</th>
+      <th>Statistics</th>
+      <th>Country</th>
+      <th>ISO3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.03780</td>
+      <td>1901  Jan</td>
+      <td>Jan Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.42348</td>
+      <td>1901  Feb</td>
+      <td>Feb Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>9.36230</td>
+      <td>1901  Mar</td>
+      <td>Mar Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>13.55640</td>
+      <td>1901  Apr</td>
+      <td>Apr Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>18.15090</td>
+      <td>1901  May</td>
+      <td>May Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># transform column to datatime</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:3: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  This is separate from the ipykernel package so we can avoid doing imports until
+</pre>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Temperature - (Celsius)</th>
+      <th>Year</th>
+      <th>Statistics</th>
+      <th>Country</th>
+      <th>ISO3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.03780</td>
+      <td>1901-01-01</td>
+      <td>Jan Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.42348</td>
+      <td>1901-02-01</td>
+      <td>Feb Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>9.36230</td>
+      <td>1901-03-01</td>
+      <td>Mar Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>13.55640</td>
+      <td>1901-04-01</td>
+      <td>Apr Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>18.15090</td>
+      <td>1901-05-01</td>
+      <td>May Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>Index([&#39;Temperature - (Celsius)&#39;, &#39;Year&#39;, &#39;Statistics&#39;, &#39;Country&#39;, &#39;ISO3&#39;], dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Groupby year</span>
+
+<span class="n">df_year</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df_year</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Temperature - (Celsius)</th>
+      <th>Year</th>
+      <th>Statistics</th>
+      <th>Country</th>
+      <th>ISO3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.03780</td>
+      <td>1901-01-01</td>
+      <td>Jan Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.42348</td>
+      <td>1901-02-01</td>
+      <td>Feb Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>9.36230</td>
+      <td>1901-03-01</td>
+      <td>Mar Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>13.55640</td>
+      <td>1901-04-01</td>
+      <td>Apr Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>18.15090</td>
+      <td>1901-05-01</td>
+      <td>May Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>272830</th>
+      <td>18.75550</td>
+      <td>2016-08-01</td>
+      <td>Aug Average</td>
+      <td>Zimbabwe</td>
+      <td>ZWE</td>
+    </tr>
+    <tr>
+      <th>272831</th>
+      <td>22.99190</td>
+      <td>2016-09-01</td>
+      <td>Sep Average</td>
+      <td>Zimbabwe</td>
+      <td>ZWE</td>
+    </tr>
+    <tr>
+      <th>272832</th>
+      <td>25.86640</td>
+      <td>2016-10-01</td>
+      <td>Oct Average</td>
+      <td>Zimbabwe</td>
+      <td>ZWE</td>
+    </tr>
+    <tr>
+      <th>272833</th>
+      <td>25.85150</td>
+      <td>2016-11-01</td>
+      <td>Nov Average</td>
+      <td>Zimbabwe</td>
+      <td>ZWE</td>
+    </tr>
+    <tr>
+      <th>272834</th>
+      <td>25.06930</td>
+      <td>2016-12-01</td>
+      <td>Dec Average</td>
+      <td>Zimbabwe</td>
+      <td>ZWE</td>
+    </tr>
+  </tbody>
+</table>
+<p>272832 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df_year</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df_year</span><span class="p">[</span><span class="s1">&#39;Country&#39;</span><span class="p">])[</span><span class="s1">&#39;Temperature - (Celsius)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sum</th>
+      <th>mean</th>
+      <th>max</th>
+    </tr>
+    <tr>
+      <th>Country</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Afghanistan</th>
+      <td>17977.94965</td>
+      <td>12.915194</td>
+      <td>26.7011</td>
+    </tr>
+    <tr>
+      <th>Albania</th>
+      <td>16109.24642</td>
+      <td>11.572734</td>
+      <td>24.1940</td>
+    </tr>
+    <tr>
+      <th>Algeria</th>
+      <td>31611.10911</td>
+      <td>22.709130</td>
+      <td>34.6643</td>
+    </tr>
+    <tr>
+      <th>Andorra</th>
+      <td>15349.24306</td>
+      <td>11.026755</td>
+      <td>23.3238</td>
+    </tr>
+    <tr>
+      <th>Angola</th>
+      <td>30088.90640</td>
+      <td>21.615594</td>
+      <td>24.8412</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>Venezuela</th>
+      <td>35246.54190</td>
+      <td>25.320792</td>
+      <td>27.9478</td>
+    </tr>
+    <tr>
+      <th>Vietnam</th>
+      <td>33711.02600</td>
+      <td>24.217691</td>
+      <td>28.5423</td>
+    </tr>
+    <tr>
+      <th>Yemen</th>
+      <td>32482.39300</td>
+      <td>23.335052</td>
+      <td>29.5061</td>
+    </tr>
+    <tr>
+      <th>Zambia</th>
+      <td>30327.33050</td>
+      <td>21.786875</td>
+      <td>26.8261</td>
+    </tr>
+    <tr>
+      <th>Zimbabwe</th>
+      <td>29698.07620</td>
+      <td>21.334825</td>
+      <td>26.7265</td>
+    </tr>
+  </tbody>
+</table>
+<p>195 rows × 3 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df_year</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df_year</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">])[</span><span class="s1">&#39;Temperature - (Celsius)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sum</th>
+      <th>mean</th>
+      <th>max</th>
+    </tr>
+    <tr>
+      <th>Year</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1901-01-01</th>
+      <td>2596.63714</td>
+      <td>13.248149</td>
+      <td>27.9777</td>
+    </tr>
+    <tr>
+      <th>1901-02-01</th>
+      <td>2760.16486</td>
+      <td>14.082474</td>
+      <td>30.2423</td>
+    </tr>
+    <tr>
+      <th>1901-03-01</th>
+      <td>3254.86018</td>
+      <td>16.606429</td>
+      <td>29.9669</td>
+    </tr>
+    <tr>
+      <th>1901-04-01</th>
+      <td>3697.89495</td>
+      <td>18.866811</td>
+      <td>31.2064</td>
+    </tr>
+    <tr>
+      <th>1901-05-01</th>
+      <td>3999.89281</td>
+      <td>20.407616</td>
+      <td>32.8948</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2016-08-01</th>
+      <td>4607.11806</td>
+      <td>23.505704</td>
+      <td>38.0620</td>
+    </tr>
+    <tr>
+      <th>2016-09-01</th>
+      <td>4386.57791</td>
+      <td>22.380500</td>
+      <td>34.9538</td>
+    </tr>
+    <tr>
+      <th>2016-10-01</th>
+      <td>3914.22682</td>
+      <td>19.970545</td>
+      <td>30.6901</td>
+    </tr>
+    <tr>
+      <th>2016-11-01</th>
+      <td>3398.24008</td>
+      <td>17.337960</td>
+      <td>28.9574</td>
+    </tr>
+    <tr>
+      <th>2016-12-01</th>
+      <td>3061.38953</td>
+      <td>15.619334</td>
+      <td>28.6566</td>
+    </tr>
+  </tbody>
+</table>
+<p>1392 rows × 3 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Create year only with %Y</span>
+
+<span class="n">df_year_avg</span> <span class="o">=</span> <span class="n">df_year</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="n">df</span><span class="o">.</span><span class="n">Year</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y&#39;</span><span class="p">),</span> <span class="s1">&#39;Country&#39;</span><span class="p">])</span>\
+                            <span class="p">[</span><span class="s1">&#39;Temperature - (Celsius)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Temperature - (Celsius)&#39;</span><span class="p">)</span>
+<span class="n">df_year_avg</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Country</th>
+      <th>Temperature - (Celsius)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1901</td>
+      <td>Afghanistan</td>
+      <td>13.172872</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1901</td>
+      <td>Albania</td>
+      <td>11.030938</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1901</td>
+      <td>Algeria</td>
+      <td>22.290008</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1901</td>
+      <td>Andorra</td>
+      <td>9.960649</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1901</td>
+      <td>Angola</td>
+      <td>21.365725</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>22615</th>
+      <td>2016</td>
+      <td>Venezuela</td>
+      <td>26.478200</td>
+    </tr>
+    <tr>
+      <th>22616</th>
+      <td>2016</td>
+      <td>Vietnam</td>
+      <td>25.073158</td>
+    </tr>
+    <tr>
+      <th>22617</th>
+      <td>2016</td>
+      <td>Yemen</td>
+      <td>24.221200</td>
+    </tr>
+    <tr>
+      <th>22618</th>
+      <td>2016</td>
+      <td>Zambia</td>
+      <td>22.737050</td>
+    </tr>
+    <tr>
+      <th>22619</th>
+      <td>2016</td>
+      <td>Zimbabwe</td>
+      <td>22.310167</td>
+    </tr>
+  </tbody>
+</table>
+<p>22620 rows × 3 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df_year_avg</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 22620 entries, 0 to 22619
+Data columns (total 3 columns):
+ #   Column                   Non-Null Count  Dtype  
+---  ------                   --------------  -----  
+ 0   Year                     22620 non-null  object 
+ 1   Country                  22620 non-null  object 
+ 2   Temperature - (Celsius)  22620 non-null  float64
+dtypes: float64(1), object(2)
+memory usage: 530.3+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df_year_avg</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">=</span><span class="n">df_year_avg</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># create Year_ts (timestamp) x Tableau</span>
+
+<span class="n">df_year_avg</span><span class="p">[</span><span class="s1">&#39;Year_ts&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_year_avg</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">),</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df_year_avg</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Country</th>
+      <th>Temperature - (Celsius)</th>
+      <th>Year_ts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1901</td>
+      <td>Afghanistan</td>
+      <td>13.172872</td>
+      <td>1901-01-01</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1901</td>
+      <td>Albania</td>
+      <td>11.030938</td>
+      <td>1901-01-01</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1901</td>
+      <td>Algeria</td>
+      <td>22.290008</td>
+      <td>1901-01-01</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1901</td>
+      <td>Andorra</td>
+      <td>9.960649</td>
+      <td>1901-01-01</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1901</td>
+      <td>Angola</td>
+      <td>21.365725</td>
+      <td>1901-01-01</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>22615</th>
+      <td>2016</td>
+      <td>Venezuela</td>
+      <td>26.478200</td>
+      <td>2016-01-01</td>
+    </tr>
+    <tr>
+      <th>22616</th>
+      <td>2016</td>
+      <td>Vietnam</td>
+      <td>25.073158</td>
+      <td>2016-01-01</td>
+    </tr>
+    <tr>
+      <th>22617</th>
+      <td>2016</td>
+      <td>Yemen</td>
+      <td>24.221200</td>
+      <td>2016-01-01</td>
+    </tr>
+    <tr>
+      <th>22618</th>
+      <td>2016</td>
+      <td>Zambia</td>
+      <td>22.737050</td>
+      <td>2016-01-01</td>
+    </tr>
+    <tr>
+      <th>22619</th>
+      <td>2016</td>
+      <td>Zimbabwe</td>
+      <td>22.310167</td>
+      <td>2016-01-01</td>
+    </tr>
+  </tbody>
+</table>
+<p>22620 rows × 4 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#Export the avarage by year by country into excel xls</span>
+
+<span class="n">df_year_avg</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;TEMPERATURE/ELABORATI/temp_years_avg.xlsx&#39;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="max">
+<h2>MAx<a class="headerlink" href="#max" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df_year_max</span> <span class="o">=</span> <span class="n">df_year</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="n">df</span><span class="o">.</span><span class="n">Year</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y&#39;</span><span class="p">),</span> <span class="s1">&#39;Country&#39;</span><span class="p">])</span>\
+                            <span class="p">[</span><span class="s1">&#39;Temperature - (Celsius)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Temperature - (Celsius)&#39;</span><span class="p">)</span>
+<span class="n">df_year_max</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Country</th>
+      <th>Temperature - (Celsius)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1901</td>
+      <td>Afghanistan</td>
+      <td>25.3787</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1901</td>
+      <td>Albania</td>
+      <td>21.3348</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1901</td>
+      <td>Algeria</td>
+      <td>32.4921</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1901</td>
+      <td>Andorra</td>
+      <td>19.3953</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1901</td>
+      <td>Angola</td>
+      <td>23.1953</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>22615</th>
+      <td>2016</td>
+      <td>Venezuela</td>
+      <td>27.3357</td>
+    </tr>
+    <tr>
+      <th>22616</th>
+      <td>2016</td>
+      <td>Vietnam</td>
+      <td>28.0570</td>
+    </tr>
+    <tr>
+      <th>22617</th>
+      <td>2016</td>
+      <td>Yemen</td>
+      <td>28.2809</td>
+    </tr>
+    <tr>
+      <th>22618</th>
+      <td>2016</td>
+      <td>Zambia</td>
+      <td>26.6488</td>
+    </tr>
+    <tr>
+      <th>22619</th>
+      <td>2016</td>
+      <td>Zimbabwe</td>
+      <td>26.0157</td>
+    </tr>
+  </tbody>
+</table>
+<p>22620 rows × 3 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#Export the max value(by months) per year by country into excel xls</span>
+
+<span class="n">df_year_max</span><span class="p">[</span><span class="s1">&#39;Year_ts&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_year_max</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">),</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y&#39;</span><span class="p">)</span>
+<span class="n">df_year_max</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Country</th>
+      <th>Temperature - (Celsius)</th>
+      <th>Year_ts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1901</td>
+      <td>Afghanistan</td>
+      <td>25.3787</td>
+      <td>1901-01-01</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1901</td>
+      <td>Albania</td>
+      <td>21.3348</td>
+      <td>1901-01-01</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1901</td>
+      <td>Algeria</td>
+      <td>32.4921</td>
+      <td>1901-01-01</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1901</td>
+      <td>Andorra</td>
+      <td>19.3953</td>
+      <td>1901-01-01</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1901</td>
+      <td>Angola</td>
+      <td>23.1953</td>
+      <td>1901-01-01</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>22615</th>
+      <td>2016</td>
+      <td>Venezuela</td>
+      <td>27.3357</td>
+      <td>2016-01-01</td>
+    </tr>
+    <tr>
+      <th>22616</th>
+      <td>2016</td>
+      <td>Vietnam</td>
+      <td>28.0570</td>
+      <td>2016-01-01</td>
+    </tr>
+    <tr>
+      <th>22617</th>
+      <td>2016</td>
+      <td>Yemen</td>
+      <td>28.2809</td>
+      <td>2016-01-01</td>
+    </tr>
+    <tr>
+      <th>22618</th>
+      <td>2016</td>
+      <td>Zambia</td>
+      <td>26.6488</td>
+      <td>2016-01-01</td>
+    </tr>
+    <tr>
+      <th>22619</th>
+      <td>2016</td>
+      <td>Zimbabwe</td>
+      <td>26.0157</td>
+      <td>2016-01-01</td>
+    </tr>
+  </tbody>
+</table>
+<p>22620 rows × 4 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Export max to xls </span>
+
+<span class="n">df_year_max</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;TEMPERATURE/ELABORATI/temp_years_max.xlsx&#39;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Export the total (with months) and last column only with %Y</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Year_str&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DatetimeIndex</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">year</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:2: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  
+</pre>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Temperature - (Celsius)</th>
+      <th>Year</th>
+      <th>Statistics</th>
+      <th>Country</th>
+      <th>ISO3</th>
+      <th>Year_str</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.03780</td>
+      <td>1901-01-01</td>
+      <td>Jan Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+      <td>1901</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.42348</td>
+      <td>1901-02-01</td>
+      <td>Feb Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+      <td>1901</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>9.36230</td>
+      <td>1901-03-01</td>
+      <td>Mar Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+      <td>1901</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>13.55640</td>
+      <td>1901-04-01</td>
+      <td>Apr Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+      <td>1901</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>18.15090</td>
+      <td>1901-05-01</td>
+      <td>May Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+      <td>1901</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>272830</th>
+      <td>18.75550</td>
+      <td>2016-08-01</td>
+      <td>Aug Average</td>
+      <td>Zimbabwe</td>
+      <td>ZWE</td>
+      <td>2016</td>
+    </tr>
+    <tr>
+      <th>272831</th>
+      <td>22.99190</td>
+      <td>2016-09-01</td>
+      <td>Sep Average</td>
+      <td>Zimbabwe</td>
+      <td>ZWE</td>
+      <td>2016</td>
+    </tr>
+    <tr>
+      <th>272832</th>
+      <td>25.86640</td>
+      <td>2016-10-01</td>
+      <td>Oct Average</td>
+      <td>Zimbabwe</td>
+      <td>ZWE</td>
+      <td>2016</td>
+    </tr>
+    <tr>
+      <th>272833</th>
+      <td>25.85150</td>
+      <td>2016-11-01</td>
+      <td>Nov Average</td>
+      <td>Zimbabwe</td>
+      <td>ZWE</td>
+      <td>2016</td>
+    </tr>
+    <tr>
+      <th>272834</th>
+      <td>25.06930</td>
+      <td>2016-12-01</td>
+      <td>Dec Average</td>
+      <td>Zimbabwe</td>
+      <td>ZWE</td>
+      <td>2016</td>
+    </tr>
+  </tbody>
+</table>
+<p>272832 rows × 6 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Int64Index: 272832 entries, 0 to 272834
+Data columns (total 6 columns):
+ #   Column                   Non-Null Count   Dtype         
+---  ------                   --------------   -----         
+ 0   Temperature - (Celsius)  272832 non-null  float64       
+ 1   Year                     272832 non-null  datetime64[ns]
+ 2   Statistics               272832 non-null  object        
+ 3   Country                  272832 non-null  object        
+ 4   ISO3                     272832 non-null  object        
+ 5   Year_str                 272832 non-null  int64         
+dtypes: datetime64[ns](1), float64(1), int64(1), object(3)
+memory usage: 14.6+ MB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;TEMPERATURE/ELABORATI/temp_months.csv&#39;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##fix month</span>
+<span class="n">df_fixmonth</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Statistics&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;Jun Average&quot;</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df_fixmonth</span> <span class="o">=</span> <span class="n">df_fixmonth</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">df_fixmonth</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s2">&quot;TEMPERATURE/ELABORATI/temp_jun_tot.xlsx&quot;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="rainfall">
+<h1>Rainfall<a class="headerlink" href="#rainfall" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#Rainfall</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;RAINFALL&quot;</span>
+
+<span class="n">dfList</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">topdown</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+        <span class="n">filePath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">filePath</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filePath</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="c1">#print(df.info())</span>
+        <span class="n">dfList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">dfList</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">path</span><span class="o">+</span><span class="s2">&quot;/ELABORATI/tot_rain.csv&quot;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1">#df.to_excel(&quot;result.xlsx&quot;,index=False)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>RAINFALL/1991-2016.csv
+RAINFALL/1931-1960.csv
+RAINFALL/1901-1930.csv
+RAINFALL/1961-1990.csv
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#delete first row with notepad, delete last column and convert to xlsx</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1">#Load dataset into Colab</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">path</span><span class="o">+</span><span class="s1">&#39;/ELABORATI/tot_rain.xlsx&#39;</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Rainfall - (MM)</th>
+      <th>Year</th>
+      <th>Statistics</th>
+      <th>Country</th>
+      <th>ISO3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>64.77650</td>
+      <td>1991.0</td>
+      <td>Jan Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>59.40250</td>
+      <td>1991.0</td>
+      <td>Feb Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>119.62500</td>
+      <td>1991.0</td>
+      <td>Mar Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>51.80250</td>
+      <td>1991.0</td>
+      <td>Apr Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>57.24380</td>
+      <td>1991.0</td>
+      <td>May Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>272830</th>
+      <td>1.60884</td>
+      <td>1990.0</td>
+      <td>Aug Average</td>
+      <td>Zimbabwe</td>
+      <td>ZWE</td>
+    </tr>
+    <tr>
+      <th>272831</th>
+      <td>2.16953</td>
+      <td>1990.0</td>
+      <td>Sep Average</td>
+      <td>Zimbabwe</td>
+      <td>ZWE</td>
+    </tr>
+    <tr>
+      <th>272832</th>
+      <td>11.51510</td>
+      <td>1990.0</td>
+      <td>Oct Average</td>
+      <td>Zimbabwe</td>
+      <td>ZWE</td>
+    </tr>
+    <tr>
+      <th>272833</th>
+      <td>54.98590</td>
+      <td>1990.0</td>
+      <td>Nov Average</td>
+      <td>Zimbabwe</td>
+      <td>ZWE</td>
+    </tr>
+    <tr>
+      <th>272834</th>
+      <td>113.58600</td>
+      <td>1990.0</td>
+      <td>Dec Average</td>
+      <td>Zimbabwe</td>
+      <td>ZWE</td>
+    </tr>
+  </tbody>
+</table>
+<p>272835 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>Index([&#39;Rainfall - (MM)&#39;, &#39; Year&#39;, &#39; Statistics&#39;, &#39; Country&#39;, &#39; ISO3&#39;], dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Rainfall - (MM)&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span><span class="s1">&#39;Statistics&#39;</span><span class="p">,</span><span class="s1">&#39;Country&#39;</span><span class="p">,</span><span class="s1">&#39;ISO3&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>Index([&#39;Rainfall - (MM)&#39;, &#39;Year&#39;, &#39;Statistics&#39;, &#39;Country&#39;, &#39;ISO3&#39;], dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 272835 entries, 0 to 272834
+Data columns (total 5 columns):
+ #   Column           Non-Null Count   Dtype  
+---  ------           --------------   -----  
+ 0   Rainfall - (MM)  272832 non-null  float64
+ 1   Year             272832 non-null  float64
+ 2   Statistics       272835 non-null  object 
+ 3   Country          272835 non-null  object 
+ 4   ISO3             272835 non-null  object 
+dtypes: float64(2), object(3)
+memory usage: 10.4+ MB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#remove empty rows</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert float year into INT.</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:3: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  This is separate from the ipykernel package so we can avoid doing imports until
+</pre>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert INT into a string</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:3: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  This is separate from the ipykernel package so we can avoid doing imports until
+</pre>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>dtype(&#39;O&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Rainfall - (MM)</th>
+      <th>Year</th>
+      <th>Statistics</th>
+      <th>Country</th>
+      <th>ISO3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>64.7765</td>
+      <td>1991</td>
+      <td>Jan Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>59.4025</td>
+      <td>1991</td>
+      <td>Feb Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>119.6250</td>
+      <td>1991</td>
+      <td>Mar Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>51.8025</td>
+      <td>1991</td>
+      <td>Apr Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>57.2438</td>
+      <td>1991</td>
+      <td>May Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Join str + str into Year</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span><span class="s1">&#39;Statistics&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:3: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  This is separate from the ipykernel package so we can avoid doing imports until
+</pre>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Rainfall - (MM)</th>
+      <th>Year</th>
+      <th>Statistics</th>
+      <th>Country</th>
+      <th>ISO3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>64.7765</td>
+      <td>1991  Jan Average</td>
+      <td>Jan Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>59.4025</td>
+      <td>1991  Feb Average</td>
+      <td>Feb Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>119.6250</td>
+      <td>1991  Mar Average</td>
+      <td>Mar Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>51.8025</td>
+      <td>1991  Apr Average</td>
+      <td>Apr Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>57.2438</td>
+      <td>1991  May Average</td>
+      <td>May Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#rimuovere lo spazio nelle(primo carattere) colonna Country</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Country&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Country&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">::]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:3: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  This is separate from the ipykernel package so we can avoid doing imports until
+</pre>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#remove last 7 characters column Year</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)[:</span><span class="o">-</span><span class="mi">7</span><span class="p">])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:3: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  This is separate from the ipykernel package so we can avoid doing imports until
+</pre>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Rainfall - (MM)</th>
+      <th>Year</th>
+      <th>Statistics</th>
+      <th>Country</th>
+      <th>ISO3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>64.7765</td>
+      <td>1991  Jan</td>
+      <td>Jan Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>59.4025</td>
+      <td>1991  Feb</td>
+      <td>Feb Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>119.6250</td>
+      <td>1991  Mar</td>
+      <td>Mar Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>51.8025</td>
+      <td>1991  Apr</td>
+      <td>Apr Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>57.2438</td>
+      <td>1991  May</td>
+      <td>May Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># transform column to datatime</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:3: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  This is separate from the ipykernel package so we can avoid doing imports until
+</pre>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Rainfall - (MM)</th>
+      <th>Year</th>
+      <th>Statistics</th>
+      <th>Country</th>
+      <th>ISO3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>64.7765</td>
+      <td>1991-01-01</td>
+      <td>Jan Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>59.4025</td>
+      <td>1991-02-01</td>
+      <td>Feb Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>119.6250</td>
+      <td>1991-03-01</td>
+      <td>Mar Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>51.8025</td>
+      <td>1991-04-01</td>
+      <td>Apr Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>57.2438</td>
+      <td>1991-05-01</td>
+      <td>May Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Groupby year</span>
+
+<span class="n">df_year</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df_year</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Rainfall - (MM)</th>
+      <th>Year</th>
+      <th>Statistics</th>
+      <th>Country</th>
+      <th>ISO3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>64.77650</td>
+      <td>1991-01-01</td>
+      <td>Jan Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>59.40250</td>
+      <td>1991-02-01</td>
+      <td>Feb Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>119.62500</td>
+      <td>1991-03-01</td>
+      <td>Mar Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>51.80250</td>
+      <td>1991-04-01</td>
+      <td>Apr Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>57.24380</td>
+      <td>1991-05-01</td>
+      <td>May Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>272830</th>
+      <td>1.60884</td>
+      <td>1990-08-01</td>
+      <td>Aug Average</td>
+      <td>Zimbabwe</td>
+      <td>ZWE</td>
+    </tr>
+    <tr>
+      <th>272831</th>
+      <td>2.16953</td>
+      <td>1990-09-01</td>
+      <td>Sep Average</td>
+      <td>Zimbabwe</td>
+      <td>ZWE</td>
+    </tr>
+    <tr>
+      <th>272832</th>
+      <td>11.51510</td>
+      <td>1990-10-01</td>
+      <td>Oct Average</td>
+      <td>Zimbabwe</td>
+      <td>ZWE</td>
+    </tr>
+    <tr>
+      <th>272833</th>
+      <td>54.98590</td>
+      <td>1990-11-01</td>
+      <td>Nov Average</td>
+      <td>Zimbabwe</td>
+      <td>ZWE</td>
+    </tr>
+    <tr>
+      <th>272834</th>
+      <td>113.58600</td>
+      <td>1990-12-01</td>
+      <td>Dec Average</td>
+      <td>Zimbabwe</td>
+      <td>ZWE</td>
+    </tr>
+  </tbody>
+</table>
+<p>272832 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df_year</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df_year</span><span class="p">[</span><span class="s1">&#39;Country&#39;</span><span class="p">])[</span><span class="s1">&#39;Rainfall - (MM)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sum</th>
+      <th>mean</th>
+      <th>max</th>
+    </tr>
+    <tr>
+      <th>Country</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Afghanistan</th>
+      <td>36099.05964</td>
+      <td>25.933233</td>
+      <td>122.3190</td>
+    </tr>
+    <tr>
+      <th>Albania</th>
+      <td>118293.88690</td>
+      <td>84.981241</td>
+      <td>287.3090</td>
+    </tr>
+    <tr>
+      <th>Algeria</th>
+      <td>9659.81071</td>
+      <td>6.939519</td>
+      <td>25.1144</td>
+    </tr>
+    <tr>
+      <th>Andorra</th>
+      <td>91130.92611</td>
+      <td>65.467619</td>
+      <td>228.0360</td>
+    </tr>
+    <tr>
+      <th>Angola</th>
+      <td>114173.97800</td>
+      <td>82.021536</td>
+      <td>310.5920</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>Venezuela</th>
+      <td>227029.18724</td>
+      <td>163.095680</td>
+      <td>428.7110</td>
+    </tr>
+    <tr>
+      <th>Vietnam</th>
+      <td>208007.92554</td>
+      <td>149.430981</td>
+      <td>454.3010</td>
+    </tr>
+    <tr>
+      <th>Yemen</th>
+      <td>19427.62480</td>
+      <td>13.956627</td>
+      <td>123.9450</td>
+    </tr>
+    <tr>
+      <th>Zambia</th>
+      <td>113209.53485</td>
+      <td>81.328689</td>
+      <td>340.2720</td>
+    </tr>
+    <tr>
+      <th>Zimbabwe</th>
+      <td>77712.59660</td>
+      <td>55.828015</td>
+      <td>307.8450</td>
+    </tr>
+  </tbody>
+</table>
+<p>195 rows × 3 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df_year</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df_year</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">])[</span><span class="s1">&#39;Rainfall - (MM)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sum</th>
+      <th>mean</th>
+      <th>max</th>
+    </tr>
+    <tr>
+      <th>Year</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1901-01-01</th>
+      <td>16894.74715</td>
+      <td>86.197690</td>
+      <td>470.443</td>
+    </tr>
+    <tr>
+      <th>1901-02-01</th>
+      <td>15026.56755</td>
+      <td>76.666161</td>
+      <td>543.666</td>
+    </tr>
+    <tr>
+      <th>1901-03-01</th>
+      <td>19337.73591</td>
+      <td>98.661918</td>
+      <td>785.466</td>
+    </tr>
+    <tr>
+      <th>1901-04-01</th>
+      <td>16726.94491</td>
+      <td>85.341556</td>
+      <td>356.152</td>
+    </tr>
+    <tr>
+      <th>1901-05-01</th>
+      <td>19908.40340</td>
+      <td>101.573487</td>
+      <td>553.271</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2016-08-01</th>
+      <td>23549.59643</td>
+      <td>120.151002</td>
+      <td>1678.730</td>
+    </tr>
+    <tr>
+      <th>2016-09-01</th>
+      <td>24435.75368</td>
+      <td>124.672213</td>
+      <td>1228.640</td>
+    </tr>
+    <tr>
+      <th>2016-10-01</th>
+      <td>20374.96907</td>
+      <td>103.953924</td>
+      <td>983.706</td>
+    </tr>
+    <tr>
+      <th>2016-11-01</th>
+      <td>21796.38134</td>
+      <td>111.206027</td>
+      <td>830.682</td>
+    </tr>
+    <tr>
+      <th>2016-12-01</th>
+      <td>18014.14311</td>
+      <td>91.908893</td>
+      <td>724.918</td>
+    </tr>
+  </tbody>
+</table>
+<p>1392 rows × 3 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Create year only with %Y</span>
+
+<span class="n">df_year_avg</span> <span class="o">=</span> <span class="n">df_year</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="n">df</span><span class="o">.</span><span class="n">Year</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y&#39;</span><span class="p">),</span> <span class="s1">&#39;Country&#39;</span><span class="p">])</span>\
+                            <span class="p">[</span><span class="s1">&#39;Rainfall - (MM)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Rainfall - (MM)&#39;</span><span class="p">)</span>
+<span class="n">df_year_avg</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Country</th>
+      <th>Rainfall - (MM)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1901</td>
+      <td>Afghanistan</td>
+      <td>20.910303</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1901</td>
+      <td>Albania</td>
+      <td>103.678117</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1901</td>
+      <td>Algeria</td>
+      <td>9.454398</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1901</td>
+      <td>Andorra</td>
+      <td>72.609292</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1901</td>
+      <td>Angola</td>
+      <td>77.584185</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>22615</th>
+      <td>2016</td>
+      <td>Venezuela</td>
+      <td>153.725275</td>
+    </tr>
+    <tr>
+      <th>22616</th>
+      <td>2016</td>
+      <td>Vietnam</td>
+      <td>165.738483</td>
+    </tr>
+    <tr>
+      <th>22617</th>
+      <td>2016</td>
+      <td>Yemen</td>
+      <td>14.290114</td>
+    </tr>
+    <tr>
+      <th>22618</th>
+      <td>2016</td>
+      <td>Zambia</td>
+      <td>66.956508</td>
+    </tr>
+    <tr>
+      <th>22619</th>
+      <td>2016</td>
+      <td>Zimbabwe</td>
+      <td>37.927746</td>
+    </tr>
+  </tbody>
+</table>
+<p>22620 rows × 3 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df_year_avg</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 22620 entries, 0 to 22619
+Data columns (total 3 columns):
+ #   Column           Non-Null Count  Dtype  
+---  ------           --------------  -----  
+ 0   Year             22620 non-null  object 
+ 1   Country          22620 non-null  object 
+ 2   Rainfall - (MM)  22620 non-null  float64
+dtypes: float64(1), object(2)
+memory usage: 530.3+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df_year_avg</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">=</span><span class="n">df_year_avg</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># create Year_ts (timestamp) x Tableau</span>
+
+<span class="n">df_year_avg</span><span class="p">[</span><span class="s1">&#39;Year_ts&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_year_avg</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">),</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df_year_avg</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Country</th>
+      <th>Rainfall - (MM)</th>
+      <th>Year_ts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1901</td>
+      <td>Afghanistan</td>
+      <td>20.910303</td>
+      <td>1901-01-01</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1901</td>
+      <td>Albania</td>
+      <td>103.678117</td>
+      <td>1901-01-01</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1901</td>
+      <td>Algeria</td>
+      <td>9.454398</td>
+      <td>1901-01-01</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1901</td>
+      <td>Andorra</td>
+      <td>72.609292</td>
+      <td>1901-01-01</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1901</td>
+      <td>Angola</td>
+      <td>77.584185</td>
+      <td>1901-01-01</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>22615</th>
+      <td>2016</td>
+      <td>Venezuela</td>
+      <td>153.725275</td>
+      <td>2016-01-01</td>
+    </tr>
+    <tr>
+      <th>22616</th>
+      <td>2016</td>
+      <td>Vietnam</td>
+      <td>165.738483</td>
+      <td>2016-01-01</td>
+    </tr>
+    <tr>
+      <th>22617</th>
+      <td>2016</td>
+      <td>Yemen</td>
+      <td>14.290114</td>
+      <td>2016-01-01</td>
+    </tr>
+    <tr>
+      <th>22618</th>
+      <td>2016</td>
+      <td>Zambia</td>
+      <td>66.956508</td>
+      <td>2016-01-01</td>
+    </tr>
+    <tr>
+      <th>22619</th>
+      <td>2016</td>
+      <td>Zimbabwe</td>
+      <td>37.927746</td>
+      <td>2016-01-01</td>
+    </tr>
+  </tbody>
+</table>
+<p>22620 rows × 4 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#Export the avarage by year by country into excel xls</span>
+
+<span class="n">df_year_avg</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;RAINFALL/ELABORATI/rain_years_avg.xlsx&#39;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>Max<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df_year_max</span> <span class="o">=</span> <span class="n">df_year</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="n">df</span><span class="o">.</span><span class="n">Year</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y&#39;</span><span class="p">),</span> <span class="s1">&#39;Country&#39;</span><span class="p">])</span>\
+                            <span class="p">[</span><span class="s1">&#39;Rainfall - (MM)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Rainfall - (MM)&#39;</span><span class="p">)</span>
+<span class="n">df_year_max</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Country</th>
+      <th>Rainfall - (MM)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1901</td>
+      <td>Afghanistan</td>
+      <td>55.7448</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1901</td>
+      <td>Albania</td>
+      <td>170.6930</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1901</td>
+      <td>Algeria</td>
+      <td>19.3932</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1901</td>
+      <td>Andorra</td>
+      <td>135.5660</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1901</td>
+      <td>Angola</td>
+      <td>179.1010</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>22615</th>
+      <td>2016</td>
+      <td>Venezuela</td>
+      <td>263.6810</td>
+    </tr>
+    <tr>
+      <th>22616</th>
+      <td>2016</td>
+      <td>Vietnam</td>
+      <td>301.1190</td>
+    </tr>
+    <tr>
+      <th>22617</th>
+      <td>2016</td>
+      <td>Yemen</td>
+      <td>27.9063</td>
+    </tr>
+    <tr>
+      <th>22618</th>
+      <td>2016</td>
+      <td>Zambia</td>
+      <td>194.5400</td>
+    </tr>
+    <tr>
+      <th>22619</th>
+      <td>2016</td>
+      <td>Zimbabwe</td>
+      <td>148.2680</td>
+    </tr>
+  </tbody>
+</table>
+<p>22620 rows × 3 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#Export the max value(by months) per year by country into excel xls</span>
+
+<span class="n">df_year_max</span><span class="p">[</span><span class="s1">&#39;Year_ts&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_year_max</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">),</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y&#39;</span><span class="p">)</span>
+<span class="n">df_year_max</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Country</th>
+      <th>Rainfall - (MM)</th>
+      <th>Year_ts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1901</td>
+      <td>Afghanistan</td>
+      <td>55.7448</td>
+      <td>1901-01-01</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1901</td>
+      <td>Albania</td>
+      <td>170.6930</td>
+      <td>1901-01-01</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1901</td>
+      <td>Algeria</td>
+      <td>19.3932</td>
+      <td>1901-01-01</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1901</td>
+      <td>Andorra</td>
+      <td>135.5660</td>
+      <td>1901-01-01</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1901</td>
+      <td>Angola</td>
+      <td>179.1010</td>
+      <td>1901-01-01</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>22615</th>
+      <td>2016</td>
+      <td>Venezuela</td>
+      <td>263.6810</td>
+      <td>2016-01-01</td>
+    </tr>
+    <tr>
+      <th>22616</th>
+      <td>2016</td>
+      <td>Vietnam</td>
+      <td>301.1190</td>
+      <td>2016-01-01</td>
+    </tr>
+    <tr>
+      <th>22617</th>
+      <td>2016</td>
+      <td>Yemen</td>
+      <td>27.9063</td>
+      <td>2016-01-01</td>
+    </tr>
+    <tr>
+      <th>22618</th>
+      <td>2016</td>
+      <td>Zambia</td>
+      <td>194.5400</td>
+      <td>2016-01-01</td>
+    </tr>
+    <tr>
+      <th>22619</th>
+      <td>2016</td>
+      <td>Zimbabwe</td>
+      <td>148.2680</td>
+      <td>2016-01-01</td>
+    </tr>
+  </tbody>
+</table>
+<p>22620 rows × 4 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Export max to xls </span>
+
+<span class="n">df_year_max</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;RAINFALL/ELABORATI/rain_years_max.xlsx&#39;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Export the total (with months) and last column only with %Y</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Year_str&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DatetimeIndex</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">year</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:2: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  
+</pre>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Rainfall - (MM)</th>
+      <th>Year</th>
+      <th>Statistics</th>
+      <th>Country</th>
+      <th>ISO3</th>
+      <th>Year_str</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>64.77650</td>
+      <td>1991-01-01</td>
+      <td>Jan Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+      <td>1991</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>59.40250</td>
+      <td>1991-02-01</td>
+      <td>Feb Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+      <td>1991</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>119.62500</td>
+      <td>1991-03-01</td>
+      <td>Mar Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+      <td>1991</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>51.80250</td>
+      <td>1991-04-01</td>
+      <td>Apr Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+      <td>1991</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>57.24380</td>
+      <td>1991-05-01</td>
+      <td>May Average</td>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+      <td>1991</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>272830</th>
+      <td>1.60884</td>
+      <td>1990-08-01</td>
+      <td>Aug Average</td>
+      <td>Zimbabwe</td>
+      <td>ZWE</td>
+      <td>1990</td>
+    </tr>
+    <tr>
+      <th>272831</th>
+      <td>2.16953</td>
+      <td>1990-09-01</td>
+      <td>Sep Average</td>
+      <td>Zimbabwe</td>
+      <td>ZWE</td>
+      <td>1990</td>
+    </tr>
+    <tr>
+      <th>272832</th>
+      <td>11.51510</td>
+      <td>1990-10-01</td>
+      <td>Oct Average</td>
+      <td>Zimbabwe</td>
+      <td>ZWE</td>
+      <td>1990</td>
+    </tr>
+    <tr>
+      <th>272833</th>
+      <td>54.98590</td>
+      <td>1990-11-01</td>
+      <td>Nov Average</td>
+      <td>Zimbabwe</td>
+      <td>ZWE</td>
+      <td>1990</td>
+    </tr>
+    <tr>
+      <th>272834</th>
+      <td>113.58600</td>
+      <td>1990-12-01</td>
+      <td>Dec Average</td>
+      <td>Zimbabwe</td>
+      <td>ZWE</td>
+      <td>1990</td>
+    </tr>
+  </tbody>
+</table>
+<p>272832 rows × 6 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:S&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:1: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  &quot;&quot;&quot;Entry point for launching an IPython kernel.
+</pre>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Int64Index: 272832 entries, 0 to 272834
+Data columns (total 6 columns):
+ #   Column           Non-Null Count   Dtype         
+---  ------           --------------   -----         
+ 0   Rainfall - (MM)  272832 non-null  float64       
+ 1   Year             272832 non-null  datetime64[ns]
+ 2   Statistics       272832 non-null  object        
+ 3   Country          272832 non-null  object        
+ 4   ISO3             272832 non-null  object        
+ 5   Year_str         272832 non-null  int64         
+dtypes: datetime64[ns](1), float64(1), int64(1), object(3)
+memory usage: 14.6+ MB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;RAINFALL/ELABORATI/rain_months.csv&#39;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## fixed month</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df_fixmonth</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Statistics&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;Jun Average&quot;</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df_fixmonth</span> <span class="o">=</span> <span class="n">df_fixmonth</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">df_fixmonth</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s2">&quot;RAINFALL/ELABORATI/rain_jun_tot.xlsx&quot;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Manuel Rucci / Daniele Grotti<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../../_static/js/index.js"></script>
+    
+  </body>
+</html>
