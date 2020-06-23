@@ -237,7 +237,7 @@
         
               <div>
                 
-  <p><a href="https://colab.research.google.com/github/visiont3lab/tecnologie_data_science/blob/master/book/docs/PYspark/streaming_basic.ipynb
+  <p><a href="https://colab.research.google.com/github/visiont3lab/tecnologie_data_science/blob/master/book/docs/pyspark/streaming_basic.ipynb
 " target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
 <div class="section" id="pyspark">
 <h1>PYSPARK<a class="headerlink" href="#pyspark" title="Permalink to this headline">¶</a></h1>
@@ -417,7 +417,7 @@ grazie
 <p>Ora, sul nostro DStream, dividiamo i messaggi in base agli spazi, in modo da ottenere le parole, esattamente come fatto in precedenza, poi filtriamo solo i messaggi che contengono le keyword che stiamo monitorando, infine eseguiamo un map e reduceByKey per sommare il numero totale di volte che tale keyword è presente (se è presente).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">keywords</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;professionai&quot;</span><span class="p">,</span><span class="s2">&quot;fastai&quot;</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">keywords</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;sport&quot;</span><span class="p">,</span><span class="s2">&quot;calcio&quot;</span><span class="p">]</span>
 
 <span class="n">lines</span><span class="o">.</span><span class="n">flatMap</span><span class="p">(</span><span class="k">lambda</span> <span class="n">text</span><span class="p">:</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">())</span> \
 <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">word</span><span class="p">:</span> <span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">keywords</span><span class="p">))</span> \
@@ -555,7 +555,7 @@ grazie
 <p>Ora piuttosto che stampare il DStream, utilizziamo il metodo <em>.foreachRDD(func)</em> per dividere il DStream in diversi RDD e passarli alla funzione che abbiamo definito sopra.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">keywords</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;professionai&quot;</span><span class="p">,</span><span class="s2">&quot;fastai&quot;</span><span class="p">,</span><span class="s2">&quot;coursera&quot;</span><span class="p">,</span><span class="s2">&quot;edx&quot;</span><span class="p">,</span><span class="s2">&quot;udacity&quot;</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">keywords</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;calcio&quot;</span><span class="p">,</span><span class="s2">&quot;pallone&quot;</span><span class="p">,</span><span class="s2">&quot;rigori&quot;</span><span class="p">,</span><span class="s2">&quot;goal&quot;</span><span class="p">,</span><span class="s2">&quot;sport&quot;</span><span class="p">]</span>
 
 <span class="n">lines</span><span class="o">.</span><span class="n">flatMap</span><span class="p">(</span><span class="k">lambda</span> <span class="n">text</span><span class="p">:</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">())</span> \
   <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">word</span><span class="p">:</span> <span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">keywords</span><span class="p">))</span> \
@@ -576,27 +576,14 @@ grazie
 </div>
 </div>
 <p>Giochiamo un po’ con nc da terminale per popolare la nostra tabella, quando siamo soddisfatti possiamo vederne il contenuto lanciando una query SQL.</p>
+<p>Non dimenticarti che lo streaming sta continunado a girare in background, quindi quando hai finito terminalo.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">get_sql_context</span><span class="p">(</span><span class="n">sc</span><span class="p">)</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM Popularity ORDER BY count DESC&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>+-----+------------+
-|count|        name|
-+-----+------------+
-|    5|professionai|
-|    3|    coursera|
-|    2|      fastai|
-|    2|     udacity|
-+-----+------------+
-
-</pre></div>
 </div>
-</div>
-</div>
-<p>Non dimenticarti che lo streaming sta continunado a girare in background, quindi quando hai finito terminalo.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ssc.stop()
