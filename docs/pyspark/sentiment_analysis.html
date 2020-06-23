@@ -1,0 +1,773 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title> &#8212; Tecnologie &amp; Software di Data Science</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/mystnb.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Tecnologie & Software di Data Science</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="../introduzione_generale.html">Introduzione</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">Programming Tools</p>
+</li>
+  <li class="">
+    <a href="../programming/google_colab.html">Google Colaboratory</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">Introduzione a Python</p>
+</li>
+  <li class="">
+    <a href="../python/introduzione_programmazione.html">Introduzione programmazione</a>
+  </li>
+  <li class="">
+    <a href="../python/numpy.html">Numpy</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">Data Visualization</p>
+</li>
+  <li class="">
+    <a href="../visualization/pandas.html">Pandas</a>
+  </li>
+  <li class="">
+    <a href="../visualization/matplotlib.html">Matplotlib</a>
+  </li>
+  <li class="">
+    <a href="../visualization/seaborn.html">Seaborn</a>
+  </li>
+  <li class="">
+    <a href="../visualization/analisi_covid19_spiegazione.html">Analisi Covid19 dataset usando Pandas, Matplotlib, Plotly, Dash : (Spiegazione)</a>
+  </li>
+  <li class="">
+    <a href="../visualization/analisi_covid19_esercizio.html">Analisi Covid19 dataset usando Pandas, Matplotlib, Plotly, Dash : (Soluzione)</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">Regressione</p>
+</li>
+  <li class="">
+    <a href="../regression/tips_dataset.html">TIPS Dataset</a>
+  </li>
+  <li class="">
+    <a href="../regression/boston_housing_dataset.html">Boston Housing Dataset</a>
+  </li>
+  <li class="">
+    <a href="../regression/regressore_custom_data.html">Regressione Custom Data</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">Classificazione</p>
+</li>
+  <li class="">
+    <a href="../classification/iris_dataset.html">Iris Dataset</a>
+  </li>
+  <li class="">
+    <a href="../classification/binary_classifier.html">Binary classifier 5 or not 5 ?</a>
+  </li>
+  <li class="">
+    <a href="../classification/decision_tree.html">Decision Tree</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">Unsupervised</p>
+</li>
+  <li class="">
+    <a href="../unsupervised/clustering.html">Clustering</a>
+  </li>
+  <li class="">
+    <a href="../unsupervised/pca.html">PCA</a>
+  </li>
+  <li class="">
+    <a href="../unsupervised/pca_regressione.html">PCA: Regressione</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">PySpark</p>
+</li>
+  <li class="">
+    <a href="template_pyspark.html">Template</a>
+  </li>
+  <li class="">
+    <a href="pyspark_dataframe.html">Dataframe</a>
+  </li>
+  <li class="">
+    <a href="pyspark_dataframe_sql.html">SQL e Dataframe</a>
+  </li>
+  <li class="">
+    <a href="pyspark_amazon.html">Amazon Ratings Books</a>
+  </li>
+  <li class="">
+    <a href="pyspark_apple_stock.html">Analisi del prezzo delle Azioni di Apple</a>
+  </li>
+  <li class="">
+    <a href="pyspark_movies.html">Analisi recensioni film</a>
+  </li>
+  <li class="">
+    <a href="pyspark_boston.html">Pyspark</a>
+  </li>
+  <li class="">
+    <a href="pyspark_RDD.html">RDD: Resilient Distributed Dataset</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/docs/pyspark/sentiment_analysis.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="id1">
+<h1><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p><a href="https://colab.research.google.com/github/visiont3lab/tecnologie_data_science/blob/master/book/docs/spark/sentiment_analysis.ipynb
+" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<p>##PYSPARK</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">################ template to run PySpark on Colab #######################</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!apt-get install openjdk-8-jdk-headless -qq &gt; /dev/null
+!wget -q https://www-us.apache.org/dist/spark/spark-2.4.5/spark-2.4.5-bin-hadoop2.7.tgz
+!tar xf spark-2.4.5-bin-hadoop2.7.tgz
+!pip install -q findspark
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;JAVA_HOME&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;/usr/lib/jvm/java-8-openjdk-amd64&quot;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;SPARK_HOME&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;/content/spark-2.4.5-bin-hadoop2.7&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">findspark</span>
+<span class="n">findspark</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+
+<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+<span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">master</span><span class="p">(</span><span class="s2">&quot;local[*]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+<span class="n">spark1</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s1">&#39;basic&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+<span class="c1">#Test must give no error</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyspark</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark</span> <span class="kn">import</span> <span class="n">SparkConf</span><span class="p">,</span> <span class="n">SparkContext</span>
+<span class="n">conf</span> <span class="o">=</span> <span class="n">SparkConf</span><span class="p">()</span><span class="o">.</span><span class="n">setAppName</span><span class="p">(</span><span class="s2">&quot;basic&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">setMaster</span><span class="p">(</span><span class="s2">&quot;local&quot;</span><span class="p">)</span>
+<span class="c1">#sc = SparkContext(conf=conf)  ## for jupyter and Databricks</span>
+<span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>   <span class="c1">## for Colab</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.types</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">################ end template PySpark on Colab ##########################</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="sentiment-analysis-sulle-recensioni-di-yelp">
+<h1>Sentiment Analysis sulle Recensioni di Yelp<a class="headerlink" href="#sentiment-analysis-sulle-recensioni-di-yelp" title="Permalink to this headline">¶</a></h1>
+<p>La Sentiment Analysis è il processo di identificazione dell’emozione espressa in un testo, positiva o negativa.<br><br>
+In questo notebook useremo Spark e la sua MLlib per costruire un modello di Sentiment Analysis usando il dataset messo a disposizione da Yelp, una famossisima applicazione che permette di recensire locali e attività commerciali.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!wget https://frenzy86.s3.eu-west-2.amazonaws.com/fav/bigdata/yelp_dataset.tgz
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>--2020-06-22 21:55:33--  https://frenzy86.s3.eu-west-2.amazonaws.com/fav/bigdata/yelp_dataset.tgz
+Resolving frenzy86.s3.eu-west-2.amazonaws.com (frenzy86.s3.eu-west-2.amazonaws.com)... 52.95.149.50
+Connecting to frenzy86.s3.eu-west-2.amazonaws.com (frenzy86.s3.eu-west-2.amazonaws.com)|52.95.149.50|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 4772313040 (4.4G) [application/octet-stream]
+Saving to: ‘yelp_dataset.tgz’
+
+yelp_dataset.tgz    100%[===================&gt;]   4.44G  33.8MB/s    in 2m 15s  
+
+2020-06-22 21:57:48 (33.8 MB/s) - ‘yelp_dataset.tgz’ saved [4772313040/4772313040]
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!tar xf yelp_dataset.tgz
+</pre></div>
+</div>
+</div>
+</div>
+<p>L’archivio contiene 4 file json differenti:</p>
+<ul class="simple">
+<li><p>yelp_academic_dataset_business.json</p></li>
+<li><p>yelp_academic_dataset_checkin.json</p></li>
+<li><p>yelp_academic_dataset_review.json</p></li>
+<li><p>yelp_academic_dataset_tip.json</p></li>
+<li><p>yelp_academic_dataset_user.json</p></li>
+</ul>
+<p>Ognuno contiene delle informazioni differenti, quello con le recensioni è <em>yelp_academic_dataset_review.json</em> che è pesa oltre 5 GB.</p>
+<div class="section" id="importiamo-il-dataset-in-un-dataframe">
+<h2>Importiamo il dataset in un DataFrame<a class="headerlink" href="#importiamo-il-dataset-in-un-dataframe" title="Permalink to this headline">¶</a></h2>
+<p>Importiamo il dataset in un DataFrame, trattandosi di un file json possiamo utilizzare la funzione .json.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SQLContext</span>
+<span class="n">sqlContext</span> <span class="o">=</span> <span class="n">SQLContext</span><span class="p">(</span><span class="n">sc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">yelp_df</span> <span class="o">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="s1">&#39;yelp_academic_dataset_review.json&#39;</span><span class="p">)</span>
+<span class="c1">#yelp_df.show(5)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>ATTENZIONE</strong>: Se dovessi ottenere un’errore di tipo <em>permission denied</em>, modifica i permessi sul file json e riprova.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!sudo chmod 777 yelp_academic_dataset_review.json</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vediamo quali sono le colonne del DataFrame</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">yelp_df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;business_id&#39;,
+ &#39;cool&#39;,
+ &#39;date&#39;,
+ &#39;funny&#39;,
+ &#39;review_id&#39;,
+ &#39;stars&#39;,
+ &#39;text&#39;,
+ &#39;useful&#39;,
+ &#39;user_id&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Abbiamo ben 9 colonne, che sono:</p>
+<ul class="simple">
+<li><p>user_id: identificativo del recensore</p></li>
+<li><p>business_id: identificato del business recensito</p></li>
+<li><p>review_id: identificativo della recensione</p></li>
+<li><p>text: testo della recensione</p></li>
+<li><p>date: data della recensione</p></li>
+<li><p>stars: valutazione dell’attività (da 1.0 a 5.0).</p></li>
+<li><p>useful: numero di utenti che hanno segnato la recensione come uile</p></li>
+<li><p>cool: numero degli utenti che hanno segnato la recensione come toga (si dice ancora toga? Forse no).</p></li>
+<li><p>funny: numero di utenti che hanno segnato la recensione come divertente.</p></li>
+</ul>
+<p>Le uniche informazioni che a noi interessano sono il testo e la valutazione, creiamo un nuovo DataFrame con soltanto queste colonne.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reviews_df</span> <span class="o">=</span> <span class="n">yelp_df</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="s2">&quot;stars&quot;</span><span class="p">])</span>
+<span class="c1">#reviews_df.show(5)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Quante recensioni abbiamo a disposizione ? Non lo so, contiamole.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reviews_df</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>8021122
+</pre></div>
+</div>
+</div>
+</div>
+<p>Le recensioni sono ben 8.021.122, davvero tante ! Facciamo una cosa, cominciamo creando un modello utilizzando soltanto il 1% del dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">subreviews_df</span> <span class="o">=</span> <span class="n">reviews_df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">subreviews_df</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>80458
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="preprocessing-del-testo">
+<h2>Preprocessing del testo<a class="headerlink" href="#preprocessing-del-testo" title="Permalink to this headline">¶</a></h2>
+<p>Ora dobbiamo processare il testo delle recensioni per renderlo un buon input per una modello di machine learning. Iniziamo rimuovendo tutta la punteggiatura da ogni frase. Definiamo una funzione per farlo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">string</span>
+
+<span class="k">def</span> <span class="nf">remove_punct</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">))</span>
+
+<span class="n">remove_punct</span><span class="p">(</span><span class="s2">&quot;...che cacchio dici !!!1!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;che cacchio dici 1&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Utilizziamo la funzione <em>udf</em> (User Defined Function - Funzione Definita dall’Utente) per creare una funzione spark partendo da quella che abbiamo definito noi per la rimozione della punteggiatura.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">udf</span>
+
+<span class="n">punct_remove</span> <span class="o">=</span> <span class="n">udf</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">remove_punct</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Fatto questo applichiamo la funzione alla colonna text, per rimuovere la punteggiatura da ogni recensione.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">subreviews_df</span> <span class="o">=</span> <span class="n">subreviews_df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="n">punct_remove</span><span class="p">(</span><span class="n">reviews_df</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]))</span>
+<span class="c1">#reviews_df.show(5)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Fantastico ! Prossimo step, eseguire la <strong>Tokenizzazione</strong>, che ci serve per estrarre i <strong>Token</strong> dal testo, cioè le sue parti costituenti (le parole insomma). Per farlo possiamo usare la classe <em>Tokenizer</em> di MLlib.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">Tokenizer</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;words&quot;</span><span class="p">)</span>
+<span class="n">words_df</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">subreviews_df</span><span class="p">)</span>
+
+<span class="c1">#words_df.show(5)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ora abbiamo ogni recensione rappresentata da una lista di parole, molte di queste parole sono superflue e non portano informazioni utili ai fini della sentiment analysis. Tali parole sono dette StopWords ed è buona pratica rimuoverle, possiamo farlo utilizzando la classe <em>StopWordsRemover</em> di MLlib.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">StopWordsRemover</span>
+
+<span class="n">stopwords</span> <span class="o">=</span> <span class="n">StopWordsRemover</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="s2">&quot;words&quot;</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;filtered&quot;</span><span class="p">)</span>
+<span class="n">words_df</span> <span class="o">=</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">words_df</span><span class="p">)</span>
+
+<span class="c1">#words_df.show(5)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Adesso abbiamo ogni recensione rappresentata da una lista di parole utili, ma un modello di Machine Learning non.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
+
+<span class="n">cv</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="s1">&#39;filtered&#39;</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s1">&#39;features&#39;</span><span class="p">)</span>
+<span class="n">cv_model</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">words_df</span><span class="p">)</span>
+<span class="n">cv_df</span> <span class="o">=</span> <span class="n">cv_model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">words_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ora scartiamo pure tutte le colonne intermedie che abbiamo creato tenendo soltanto quelle che ci serviranno per realizzare il modello, features e stars.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cv_df</span> <span class="o">=</span> <span class="n">cv_df</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s2">&quot;features&quot;</span><span class="p">,</span><span class="s2">&quot;stars&quot;</span><span class="p">])</span>
+<span class="c1">#data_df.show(5)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="quali-sono-le-recensioni-negative">
+<h2>Quali sono le recensioni negative ?<a class="headerlink" href="#quali-sono-le-recensioni-negative" title="Permalink to this headline">¶</a></h2>
+<p>Come abbiamo già detto le recensioni sono accompagnate da una valutazione che va da 1.0 a 5.0 stelle, etichettiamo come positive le recensioni con una valutazione di almeno 3.5 stelle, mentre come negative quelle con una valutazione inferiore alle 2.5 stelle. <br>
+Le recensioni con 3 stelle sono tendenzialmente neutre, quindi rimuoviamole dal dataframe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">when</span>
+
+<span class="n">cv_df</span> <span class="o">=</span> <span class="n">cv_df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s2">&quot;stars != 3.0&quot;</span><span class="p">)</span>
+<span class="n">cv_df</span> <span class="o">=</span> <span class="n">cv_df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">,</span> <span class="n">when</span><span class="p">(</span><span class="n">cv_df</span><span class="p">[</span><span class="s2">&quot;stars&quot;</span><span class="p">]</span><span class="o">&gt;=</span><span class="mf">3.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">otherwise</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Utilizziamo il metodo <em>randomSplit</em> per dividere il DataFrame in due:</p>
+<ul class="simple">
+<li><p>un DataFrame per l’addestramento del modello che conterrà il 70% degli esempi.</p></li>
+<li><p>un DataFrame per il testing del modello che conterrà il restante 30% degli esempi.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span> <span class="o">=</span> <span class="n">cv_df</span><span class="o">.</span><span class="n">randomSplit</span><span class="p">([</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ora possiamo creare il modello, utilizziamo una Regressione Logistica.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.ml.classification</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+
+<span class="n">lr</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">featuresCol</span><span class="o">=</span><span class="s2">&quot;features&quot;</span><span class="p">,</span> <span class="n">labelCol</span><span class="o">=</span><span class="s2">&quot;label&quot;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">lr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Valutiamo il modello addestrato sul DataFrame di test.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">evaluation</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_df</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evaluation</span><span class="o">.</span><span class="n">accuracy</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evaluation</span><span class="o">.</span><span class="n">precisionByLabel</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evaluation</span><span class="o">.</span><span class="n">recallByLabel</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>0.9103168005911149
+[0.8340807174887892, 0.9381937436932392]
+[0.8314993122420908, 0.9392600075767142]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="creiamo-un-modello-con-tutti-i-dati">
+<h2>Creiamo un modello con tutti i dati<a class="headerlink" href="#creiamo-un-modello-con-tutti-i-dati" title="Permalink to this headline">¶</a></h2>
+<p>Bene, adesso addestriamo il modello utilizzando il dataset per intero con tutti le sue 8.021.122 recensioni.
+<br><br>
+<strong>ATTENZIONE</strong> Il processo di creazione del modello richiede molte risorse di calcolo e, di conseguenza, tempo. Dovresti utilizzare almeno una macchina EC2 di tipo t3a.large (costo ~7 centesimi l’ora) o meglio ancora un cluster con EMR.
+<br><br>
+Rimuoviamo la punteggiatura dal testo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data_df</span> <span class="o">=</span> <span class="n">reviews_df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="n">punct_remove</span><span class="p">(</span><span class="n">reviews_df</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Eseguiamo la tokenizzazione e rimuoviamo le stop words.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;words&quot;</span><span class="p">)</span>
+<span class="n">data_df</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
+
+<span class="n">stopwords</span> <span class="o">=</span> <span class="n">StopWordsRemover</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="s2">&quot;words&quot;</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;filtered&quot;</span><span class="p">)</span>
+<span class="n">data_df</span> <span class="o">=</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Questa volta, piuttosto che usare un semplice modello Bag of Words per la rappresentazione delle parole, usiamo un modello più sofisticato, cioè il <strong>TF-IDF</strong> (Term Frequency - Inverse Document Frequency) che assegna un peso maggiore alle parole più rare e penalizza quelle più comuni.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">HashingTF</span><span class="p">,</span> <span class="n">IDF</span>
+
+<span class="n">hashing_tf</span> <span class="o">=</span> <span class="n">HashingTF</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="s1">&#39;filtered&#39;</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s1">&#39;raw_features&#39;</span><span class="p">)</span>
+<span class="n">data_df</span> <span class="o">=</span> <span class="n">hashing_tf</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
+
+<span class="n">idf</span> <span class="o">=</span> <span class="n">IDF</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="s2">&quot;raw_features&quot;</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;features&quot;</span><span class="p">)</span>
+<span class="n">idf_model</span> <span class="o">=</span> <span class="n">idf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
+<span class="n">data_df</span> <span class="o">=</span> <span class="n">idf_model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Creiamo la colonna per il target.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data_df</span> <span class="o">=</span> <span class="n">data_df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s2">&quot;stars != 3.0&quot;</span><span class="p">)</span>
+<span class="n">data_df</span> <span class="o">=</span> <span class="n">data_df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">,</span> <span class="n">when</span><span class="p">(</span><span class="n">data_df</span><span class="p">[</span><span class="s2">&quot;stars&quot;</span><span class="p">]</span><span class="o">&gt;=</span><span class="mf">3.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">otherwise</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dividiamo il dataframe in set di addestramento e di test, avendo moltissimi esempi possiamo anche ridurre la dimensione del set di test all’10%.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span> <span class="o">=</span> <span class="n">data_df</span><span class="o">.</span><span class="n">randomSplit</span><span class="p">([</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Creiamo il modello e addestriamolo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lr</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">featuresCol</span><span class="o">=</span><span class="s2">&quot;features&quot;</span><span class="p">,</span> <span class="n">labelCol</span><span class="o">=</span><span class="s2">&quot;label&quot;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">lr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Valutiamolo sul set di test.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">evaluation</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_df</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evaluation</span><span class="o">.</span><span class="n">accuracy</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evaluation</span><span class="o">.</span><span class="n">precisionByLabel</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evaluation</span><span class="o">.</span><span class="n">recallByLabel</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>0.9103168005911149
+[0.8340807174887892, 0.9381937436932392]
+[0.8314993122420908, 0.9392600075767142]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="testiamo-il-modello">
+<h2>Testiamo il Modello<a class="headerlink" href="#testiamo-il-modello" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reviews</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;World&#39;s Largest Entertainment McDonald&#39;s&quot;</span><span class="p">,</span><span class="s2">&quot;Lazy staff who do not want to serve u would rather stand in corners in groups talking stood at counter 10 minutes with all staff refusing eye contact as fear of having to serve u supervisor went over and shouted at staff they all stood there shrugging shoulders not wanting t serve u then when orders were ready staff came with trays dragging feet and rolling eyes then it was cold horrible won’t return !!&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Disnayland Paris&quot;</span><span class="p">,</span><span class="s2">&quot;Went here 2x with my husband and found it more magical the 2nd time. Still the happiest place on earth on my list. It gets better and better.&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;58 Tour Eiffel Restaurant&quot;</span><span class="p">,</span><span class="s2">&quot;What an experience! what a VIEW!. what a meal!!... Delicious, fine dining. excellent0 excellent service and food. A memory of a lifetime&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Ristorante Cracco&quot;</span><span class="p">,</span><span class="s2">&quot;If you want to start your trip in Milan with good mood, for sure you have to avoid this restaurant - the worst pizza we had and the smallest portion of pasta! And incompatible price for that everything! Even, I am really angry, because this is not my first visit in Italy and not first pizza and I feel myself like ....!!!!&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Happy Wok&quot;</span><span class="p">,</span><span class="s2">&quot;Stay away as far as you can, unless you like goopy tables and mass produced food that appeared to be sitting out for too long. It wasn’t a nice experience and we will not attempt to go back under any circumstance&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Pepe in grani&quot;</span><span class="p">,</span><span class="s2">&quot;45 minutes driving from Naples center. Worth every moment on the way. The best and the most unique pizza I ever tasted. Very nice place, every centimeter was well though and planned before implemented. Nice terrace on top for those like the view. Very welcoming crew, great and fast service. Recommend to order the tasting option for those coming in parties of four. &quot;</span><span class="p">)</span>
+    <span class="p">]</span>
+
+<span class="n">test_df</span> <span class="o">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">reviews</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;location&quot;</span><span class="p">,</span><span class="s2">&quot;text&quot;</span><span class="p">]</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test_df</span> <span class="o">=</span> <span class="n">test_df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="n">punct_remove</span><span class="p">(</span><span class="n">test_df</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test_df</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">test_df</span><span class="p">)</span>
+<span class="n">test_df</span> <span class="o">=</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">test_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test_df</span> <span class="o">=</span> <span class="n">hashing_tf</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">test_df</span><span class="p">)</span>
+<span class="n">test_df</span> <span class="o">=</span> <span class="n">idf_model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">test_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pred_df</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">test_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#pred_df = pred_df.select([&quot;text&quot;, &quot;label&quot;])</span>
+<span class="n">pred_df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Manuel Rucci / Daniele Grotti<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../../_static/js/index.js"></script>
+    
+  </body>
+</html>

@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Boston Dataset &#8212; Tecnologie &amp; Software di Data Science</title>
+    <title>Pyspark &#8212; Tecnologie &amp; Software di Data Science</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="../../_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="../../_static/sphinx-book-theme.css" type="text/css" />
@@ -161,7 +161,7 @@
     <a href="pyspark_movies.html">Analisi recensioni film</a>
   </li>
   <li class="active">
-    <a href="">Boston Dataset</a>
+    <a href="">Pyspark</a>
   </li>
   <li class="">
     <a href="pyspark_RDD.html">RDD: Resilient Distributed Dataset</a>
@@ -224,20 +224,9 @@
 
     </div>
     <div class="d-none d-md-block col-md-2 bd-toc show">
-<div class="tocsection onthispage pt-5 pb-3">
-    <i class="fas fa-list"></i> On this page
-</div>
 
 <nav id="bd-toc-nav">
     <ul class="nav section-nav flex-column">
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#preprocessing-dei-dati" class="nav-link">Preprocessing dei dati</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#testiamo-il-modello-con-dataset-reale" class="nav-link">Testiamo il Modello con Dataset Reale</a>
-        </li>
     
     </ul>
 </nav>
@@ -250,8 +239,10 @@
         
               <div>
                 
-  <p><a href="https://colab.research.google.com/github/visiont3lab/tecnologie_data_science/blob/master/book/docs/pyspark/pyspark_boston.ipynb
+  <p><a href="https://colab.research.google.com/github/visiont3lab/tecnologie_data_science/blob/master/book/docs/pyspark_boston.ipynb
 " target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<div class="section" id="pyspark">
+<h1>Pyspark<a class="headerlink" href="#pyspark" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">################ template to run PySpark on Colab #######################</span>
@@ -360,6 +351,7 @@ only showing top 5 rows
 </div>
 </div>
 </div>
+</div>
 <div class="section" id="boston-dataset">
 <h1>Boston Dataset<a class="headerlink" href="#boston-dataset" title="Permalink to this headline">¶</a></h1>
 <p><strong>CRIM</strong> Tasso di criminalità per capita<br>
@@ -376,9 +368,8 @@ only showing top 5 rows
 <strong>BLACK</strong> 1000(Bk - 0.63)^2 dove Bk è la percentuale di abitanti di colore per città<br>
 <strong>LSTAT</strong> Percentuale della popolazione povera<br>
 <strong>MEDV</strong> Mediana del valore di abitazioni occupate in 1.000 USD.<br></p>
-<div class="section" id="preprocessing-dei-dati">
-<h2>Preprocessing dei dati<a class="headerlink" href="#preprocessing-dei-dati" title="Permalink to this headline">¶</a></h2>
-<p>Creiamo una lista con i nomi delle colonne che saranno le features del nostro modello, cioè tutte le colonne meno l’ID e il target (MEDV).</p>
+<p>##Preprocessing dei dati
+Creiamo una lista con i nomi delle colonne che saranno le features del nostro modello, cioè tutte le colonne meno l’ID e il target (MEDV).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">features_cols</span> <span class="o">=</span> <span class="n">housing_df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
@@ -491,7 +482,8 @@ Nel nostro caso assegnamo il 70% degli esempi al set di addestramento e il 30% a
 </div>
 </div>
 <p>Il metodo <em>evaluate</em> calcolerà diverse metriche che ci possono aiutare a comprendere la qualità del modello, vediamone alcune.</p>
-<p><strong>MAE - Mean Absolute Error (Errore medio assoluto)</strong></p>
+<div class="section" id="mae-mean-absolute-error-errore-medio-assoluto">
+<h2>MAE - Mean Absolute Error (Errore medio assoluto)<a class="headerlink" href="#mae-mean-absolute-error-errore-medio-assoluto" title="Permalink to this headline">¶</a></h2>
 <p>L’errore medio assoluto consiste nella media della somma del valore assoluto degli errori.</p>
 <div class="math notranslate nohighlight">
 \[ MAE = \frac{\sum_{i=1}^n |y_i-\hat{y}_i|}{n} \]</div>
@@ -507,7 +499,9 @@ Nel nostro caso assegnamo il 70% degli esempi al set di addestramento e il 30% a
 </div>
 </div>
 </div>
-<p><strong>MSE - Mean Squared Error (Errore quadratico assoluto)</strong></p>
+</div>
+<div class="section" id="mse-mean-squared-error-errore-quadratico-assoluto">
+<h2>MSE - Mean Squared Error (Errore quadratico assoluto)<a class="headerlink" href="#mse-mean-squared-error-errore-quadratico-assoluto" title="Permalink to this headline">¶</a></h2>
 <p>L’errore quadratico medio consiste nella media della somma degli errori al quadrato.</p>
 <div class="math notranslate nohighlight">
 \[ MSE =  \frac{\sum_{i=1}^n (y_i-\hat{y}_i)^2}{n}\]</div>
@@ -523,7 +517,9 @@ Nel nostro caso assegnamo il 70% degli esempi al set di addestramento e il 30% a
 </div>
 </div>
 </div>
-<p><strong>RMSE - Root Mean Squared Error (Radice dell’errore quadratico medio)</strong></p>
+</div>
+<div class="section" id="rmse-root-mean-squared-error-radice-dell-errore-quadratico-medio">
+<h2>RMSE - Root Mean Squared Error (Radice dell’errore quadratico medio)<a class="headerlink" href="#rmse-root-mean-squared-error-radice-dell-errore-quadratico-medio" title="Permalink to this headline">¶</a></h2>
 <p>Il RMSE è la radice dell’errore quadratico medio, questa metrica indica mediamente di quanto il nostro modello si è sbagliato.</p>
 <div class="math notranslate nohighlight">
 \[ RMSE =  \sqrt \frac{\sum_{i=1}^n (y_i-\hat{y}_i)^2}{n}\]</div>
@@ -539,7 +535,9 @@ Nel nostro caso assegnamo il 70% degli esempi al set di addestramento e il 30% a
 </div>
 </div>
 </div>
-<p><strong>R2 - Coefficient of determination (Coefficiente di Determinazione)</strong></p>
+</div>
+<div class="section" id="r2-coefficient-of-determination-coefficiente-di-determinazione">
+<h2>R2 - Coefficient of determination (Coefficiente di Determinazione)<a class="headerlink" href="#r2-coefficient-of-determination-coefficiente-di-determinazione" title="Permalink to this headline">¶</a></h2>
 <p>In pratica R2 (pronuciato R Squared) è una versione standardizzata del MSE che torna un punteggio compreso tra 0 e 1 per il train set, mentre per il test set può assumere anche valori negativi. Essendo una funzione ma di scoring, un suo valore maggiore indica una qualità migliore del modello, il suo valore può essere così interpretato:</p>
 <ul class="simple">
 <li><p>R2_score &lt; 0.3 il modello è inutile.</p></li>
