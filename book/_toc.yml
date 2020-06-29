@@ -22,6 +22,7 @@
 - file: docs/regression/tips_dataset
 - file: docs/regression/boston_housing_dataset
 - file: docs/regression/regressore_custom_data
+- file: docs/regression/regression_choice
 
 - header: Classificazione
 - file: docs/classification/iris_dataset
